@@ -1,0 +1,1090 @@
+/* =========================================================
+   COUPLE SECTION
+   Luxury Tamil Wedding Theme
+========================================================= */
+
+.couple-section {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 85px 20px 100px;
+
+  overflow: hidden;
+
+  background: var(--invitation-background);
+}
+
+/* =========================================================
+   BACKGROUND PATTERN
+========================================================= */
+
+.couple-section::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.12;
+
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 225, 180, 0.5) 1px,
+    transparent 1px
+  );
+
+  background-size: 34px 34px;
+}
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.couple-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(218, 170, 100, 0.08),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.couple-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(900px, 100%);
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+/* =========================================================
+   FLOATING PETALS
+========================================================= */
+
+.couple-petal {
+  position: absolute;
+
+  z-index: 1;
+
+  color: rgba(242, 204, 145, 0.55);
+
+  font-size: 22px;
+
+  pointer-events: none;
+
+  animation:
+    couplePetalFloat 5s ease-in-out infinite,
+    couplePetalRotate 7s linear infinite;
+}
+
+.couple-petal-1 {
+  left: 8%;
+  top: 18%;
+
+  animation-delay: 0s;
+}
+
+.couple-petal-2 {
+  right: 9%;
+  top: 30%;
+
+  animation-delay: -2s;
+}
+
+.couple-petal-3 {
+  left: 12%;
+  bottom: 20%;
+
+  animation-delay: -3s;
+
+  font-size: 15px;
+}
+
+.couple-petal-4 {
+  right: 12%;
+  bottom: 15%;
+
+  animation-delay: -1s;
+}
+
+@keyframes couplePetalFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateY(-18px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes couplePetalRotate {
+  0% {
+    rotate: 0deg;
+  }
+
+  50% {
+    rotate: 15deg;
+  }
+
+  100% {
+    rotate: 0deg;
+  }
+}
+
+/* =========================================================
+   TOP ORNAMENT
+========================================================= */
+
+.couple-top-ornament {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 22px;
+
+  color: #e7c27c;
+
+  animation: ornamentGlow 3s ease-in-out infinite;
+}
+
+.couple-top-ornament span {
+  font-size: 13px;
+}
+
+.couple-top-ornament i {
+  display: block;
+
+  width: 70px;
+
+  height: 1px;
+
+  background: linear-gradient(to right, transparent, #d7ad68, transparent);
+}
+
+@keyframes ornamentGlow {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.couple-heading {
+  margin-bottom: 40px;
+}
+
+.couple-subtitle {
+  margin: 0 0 10px;
+
+  color: #e5c17b;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 13px;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+}
+
+.couple-title {
+  margin: 0;
+
+  color: #f8dfaa;
+
+  font-family: "Great Vibes", "Brush Script MT", cursive;
+
+  font-size: clamp(48px, 7vw, 72px);
+
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+.couple-intro {
+  width: min(560px, 100%);
+
+  margin: 18px auto 0;
+
+  color: #f2dccc;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 18px;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   COUPLE CARD
+========================================================= */
+
+.couple-card {
+  position: relative;
+
+  width: min(720px, 100%);
+
+  margin: 0 auto;
+
+  padding: 42px 35px 40px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(218, 176, 99, 0.8);
+
+  border-radius: 32px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.85),
+      transparent 35%
+    ),
+    linear-gradient(145deg, #fffaf2, #f7eadf);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.32),
+    0 0 35px rgba(224, 184, 108, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+
+  animation: cardAppear 1s ease both;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   INNER BORDER
+========================================================= */
+
+.couple-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 13px;
+
+  border: 1px solid rgba(173, 122, 68, 0.22);
+
+  border-radius: 23px;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   CORNERS
+========================================================= */
+
+.couple-corner {
+  position: absolute;
+
+  z-index: 3;
+
+  color: #c29452;
+
+  font-size: 12px;
+
+  opacity: 0.8;
+}
+
+.couple-corner-top-left {
+  top: 23px;
+  left: 25px;
+}
+
+.couple-corner-top-right {
+  top: 23px;
+  right: 25px;
+}
+
+.couple-corner-bottom-left {
+  bottom: 23px;
+  left: 25px;
+}
+
+.couple-corner-bottom-right {
+  bottom: 23px;
+  right: 25px;
+}
+
+/* =========================================================
+   PHOTO AREA
+========================================================= */
+
+.couple-photo-area {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 30px;
+}
+
+/* =========================================================
+   PHOTO GLOW
+========================================================= */
+
+.couple-photo-glow {
+  position: absolute;
+
+  width: 310px;
+  height: 310px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(201, 157, 99, 0.28),
+    rgba(255, 255, 255, 0.1) 45%,
+    transparent 72%
+  );
+
+  animation: photoGlow 4s ease-in-out infinite;
+}
+
+@keyframes photoGlow {
+  0%,
+  100% {
+    transform: scale(0.95);
+
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scale(1.08);
+
+    opacity: 0.9;
+  }
+}
+
+/* =========================================================
+   PHOTO FRAME
+========================================================= */
+
+.couple-photo-frame {
+  position: relative;
+
+  z-index: 2;
+
+  width: 310px;
+  height: 380px;
+
+  padding: 8px;
+
+  border-radius: 155px 155px 22px 22px;
+
+  background: linear-gradient(145deg, #d6ad68, #f4d99e, #b88745, #e7c27c);
+
+  box-shadow:
+    0 20px 45px rgba(74, 20, 25, 0.25),
+    0 0 20px rgba(202, 159, 92, 0.2);
+
+  animation: photoFloat 5s ease-in-out infinite;
+}
+
+@keyframes photoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* =========================================================
+   PHOTO INNER
+========================================================= */
+
+.couple-photo-inner {
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border-radius: 150px 150px 17px 17px;
+
+  background: #f6eadc;
+
+  border: 3px solid #fffaf2;
+}
+
+/* =========================================================
+   COUPLE IMAGE
+========================================================= */
+
+.couple-photo {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  transition:
+    transform 0.8s ease,
+    filter 0.8s ease;
+}
+
+.couple-card:hover .couple-photo {
+  transform: scale(1.045);
+
+  filter: brightness(1.03);
+}
+
+/* =========================================================
+   FLOATING HEART
+========================================================= */
+
+.floating-heart {
+  position: absolute;
+
+  z-index: 4;
+
+  right: calc(50% - 175px);
+
+  bottom: 5px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  background: #720d21;
+
+  border: 3px solid #f8dfaa;
+
+  color: #f8dfaa;
+
+  font-size: 19px;
+
+  box-shadow: 0 8px 20px rgba(75, 0, 20, 0.3);
+
+  animation: heartBeat 1.8s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  10% {
+    transform: scale(1.12);
+  }
+
+  20% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.08);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   COUPLE NAMES
+========================================================= */
+
+.couple-names {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    70px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  width: 100%;
+
+  max-width: 620px;
+
+  margin: 0 auto;
+}
+
+.couple-name {
+  color: #720d21;
+
+  font-family: "Great Vibes", "Brush Script MT", cursive;
+
+  font-size: clamp(46px, 7vw, 70px);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  /*
+    Keep names on a single line.
+  */
+  white-space: nowrap;
+
+  overflow: visible;
+}
+
+.vijay-name {
+  text-align: right;
+
+  padding-right: 12px;
+}
+
+.sandhiya-name {
+  text-align: left;
+
+  padding-left: 12px;
+}
+
+/* =========================================================
+   CENTER HEART
+========================================================= */
+
+.couple-heart {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #a6783b;
+}
+
+.couple-heart span {
+  color: #b44c59;
+
+  font-size: 20px;
+
+  animation: heartBeat 2s ease-in-out infinite;
+}
+
+.couple-heart small {
+  margin-top: -2px;
+
+  color: #9c795d;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 24px;
+}
+
+/* =========================================================
+   CAPTION
+========================================================= */
+
+.couple-caption {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 22px 0 0;
+
+  color: #79595b;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 18px;
+
+  line-height: 1.45;
+
+  letter-spacing: 0.4px;
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.couple-divider {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  width: 220px;
+
+  margin: 25px auto 18px;
+
+  color: #c3944e;
+}
+
+.couple-divider span {
+  font-size: 12px;
+}
+
+.couple-divider i {
+  width: 55px;
+
+  height: 1px;
+
+  background: linear-gradient(to right, transparent, #c3944e, transparent);
+}
+
+/* =========================================================
+   FAMILY BLESSING
+========================================================= */
+
+.family-blessing {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(500px, 100%);
+
+  margin: 0 auto;
+
+  padding: 5px 30px 0;
+}
+
+.family-blessing p {
+  margin: 0;
+
+  color: #8b6c64;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 16px;
+
+  font-style: italic;
+
+  line-height: 1.5;
+}
+
+.quote-mark {
+  color: #c3944e;
+
+  font-family: Georgia, serif;
+
+  font-size: 30px;
+
+  line-height: 0.5;
+}
+
+.quote-mark.closing {
+  display: block;
+
+  margin-top: 7px;
+}
+
+/* =========================================================
+   BOTTOM ORNAMENT
+========================================================= */
+
+.couple-bottom-ornament {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-top: 30px;
+
+  color: #e7c27c;
+}
+
+.couple-bottom-ornament span {
+  font-size: 12px;
+}
+
+.couple-bottom-ornament i {
+  width: 65px;
+
+  height: 1px;
+
+  background: linear-gradient(to right, transparent, #d7ad68, transparent);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+  .couple-section {
+    padding: 65px 15px 80px;
+  }
+
+  .couple-heading {
+    margin-bottom: 30px;
+  }
+
+  .couple-title {
+    font-size: 55px;
+  }
+
+  .couple-intro {
+    font-size: 17px;
+  }
+
+  .couple-card {
+    padding: 35px 22px;
+  }
+
+  .couple-photo-frame {
+    width: 275px;
+    height: 340px;
+  }
+
+  .couple-photo-glow {
+    width: 280px;
+    height: 280px;
+  }
+
+  .floating-heart {
+    right: calc(50% - 155px);
+  }
+
+  .couple-name {
+    font-size: 54px;
+
+    white-space: nowrap;
+  }
+
+  .couple-names {
+    grid-template-columns:
+      minmax(0, 1fr)
+      55px
+      minmax(0, 1fr);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .couple-section {
+    padding: 55px 12px 70px;
+  }
+
+  .couple-petal {
+    font-size: 17px;
+  }
+
+  .couple-top-ornament i {
+    width: 45px;
+  }
+
+  .couple-subtitle {
+    font-size: 10px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .couple-title {
+    font-size: 46px;
+
+    line-height: 1.05;
+  }
+
+  .couple-intro {
+    font-size: 15px;
+
+    padding: 0 12px;
+  }
+
+  .couple-card {
+    padding: 30px 15px 32px;
+
+    border-radius: 25px;
+  }
+
+  .couple-card::before {
+    inset: 9px;
+
+    border-radius: 18px;
+  }
+
+  .couple-photo-frame {
+    width: 230px;
+    height: 290px;
+
+    border-radius: 120px 120px 18px 18px;
+  }
+
+  .couple-photo-inner {
+    border-radius: 115px 115px 14px 14px;
+  }
+
+  .couple-photo-glow {
+    width: 240px;
+    height: 240px;
+  }
+
+  .floating-heart {
+    right: calc(50% - 132px);
+
+    bottom: 0;
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 16px;
+  }
+
+  /*
+    =======================================================
+    MOBILE COUPLE NAMES
+    =======================================================
+
+    Keep Vijay Kumar and Sandhiya on ONE LINE.
+  */
+
+  .couple-names {
+    grid-template-columns:
+      minmax(0, 1fr)
+      34px
+      minmax(0, 1fr);
+
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow: visible;
+  }
+
+  .couple-name {
+    font-size: clamp(28px, 8vw, 40px);
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    overflow: visible;
+
+    letter-spacing: -0.4px;
+  }
+
+  .vijay-name {
+    padding-right: 3px;
+
+    text-align: right;
+  }
+
+  .sandhiya-name {
+    padding-left: 3px;
+
+    text-align: left;
+  }
+
+  .couple-heart span {
+    font-size: 16px;
+  }
+
+  .couple-heart small {
+    font-size: 20px;
+  }
+
+  .couple-caption {
+    font-size: 15px;
+  }
+
+  .family-blessing {
+    padding: 5px 20px 0;
+  }
+
+  .family-blessing p {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 390px) {
+  .couple-section {
+    padding: 45px 9px 60px;
+  }
+
+  .couple-title {
+    font-size: 41px;
+  }
+
+  .couple-photo-frame {
+    width: 205px;
+    height: 265px;
+  }
+
+  .couple-photo-glow {
+    width: 215px;
+    height: 215px;
+  }
+
+  .floating-heart {
+    right: calc(50% - 120px);
+  }
+
+  /*
+    Keep Vijay Kumar in one line.
+  */
+
+  .couple-name {
+    font-size: 26px;
+
+    white-space: nowrap;
+
+    line-height: 1;
+
+    letter-spacing: -0.8px;
+  }
+
+  .couple-names {
+    grid-template-columns:
+      minmax(0, 1fr)
+      28px
+      minmax(0, 1fr);
+  }
+
+  .vijay-name {
+    padding-right: 2px;
+  }
+
+  .sandhiya-name {
+    padding-left: 2px;
+  }
+
+  .couple-heart small {
+    font-size: 18px;
+  }
+
+  .couple-caption {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 350px) {
+  .couple-section {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .couple-card {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .couple-names {
+    grid-template-columns:
+      minmax(0, 1fr)
+      24px
+      minmax(0, 1fr);
+  }
+
+  .couple-name {
+    font-size: 22px;
+
+    white-space: nowrap;
+
+    letter-spacing: -1px;
+  }
+
+  .vijay-name {
+    padding-right: 1px;
+  }
+
+  .sandhiya-name {
+    padding-left: 1px;
+  }
+
+  .couple-heart span {
+    font-size: 13px;
+  }
+
+  .couple-heart small {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .couple-petal,
+  .couple-card,
+  .couple-photo-frame,
+  .couple-photo-glow,
+  .floating-heart,
+  .couple-heart span,
+  .couple-top-ornament {
+    animation: none;
+  }
+
+  .couple-card:hover .couple-photo {
+    transform: none;
+  }
+}

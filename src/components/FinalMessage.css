@@ -1,0 +1,1206 @@
+/* =========================================================
+   FINAL MESSAGE SECTION
+   Luxury Ivory + Burgundy + Antique Gold
+   GrandReveal / Venue Matching Theme
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap");
+
+/* =========================================================
+   FINAL SECTION
+========================================================= */
+
+.final-section {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  padding: 100px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  background: var(--invitation-background);
+
+  color: #6b5847;
+}
+
+/* =========================================================
+   BACKGROUND GLOWS
+========================================================= */
+
+.final-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(80px);
+
+  z-index: -2;
+
+  opacity: 0.55;
+}
+
+.final-glow-one {
+  width: 430px;
+  height: 430px;
+
+  top: -180px;
+  left: -160px;
+
+  background: rgba(194, 133, 54, 0.2);
+
+  animation: finalGlowOne 10s ease-in-out infinite;
+}
+
+.final-glow-two {
+  width: 380px;
+  height: 380px;
+
+  right: -160px;
+  bottom: -120px;
+
+  background: rgba(221, 171, 79, 0.14);
+
+  animation: finalGlowTwo 12s ease-in-out infinite;
+}
+
+.final-glow-three {
+  width: 300px;
+  height: 300px;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: rgba(101, 9, 27, 0.1);
+
+  animation: finalGlowThree 7s ease-in-out infinite;
+}
+
+/* =========================================================
+   FLOATING PARTICLES
+========================================================= */
+
+.final-particles {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+.final-particle {
+  position: absolute;
+
+  left: calc((var(--i) * 17.5%) - 5%);
+
+  bottom: -50px;
+
+  color: rgba(196, 148, 78, 0.42);
+
+  font-size: 10px;
+
+  opacity: 0;
+
+  animation: finalParticleFloat calc(9s + (var(--i) * 0.7s)) linear infinite;
+
+  animation-delay: calc(var(--i) * -1.2s);
+}
+
+.final-particle:nth-child(2n) {
+  color: rgba(255, 240, 210, 0.25);
+}
+
+.final-particle:nth-child(3n) {
+  font-size: 7px;
+}
+
+.final-particle:nth-child(4n) {
+  font-size: 13px;
+}
+
+.final-particle:nth-child(5n) {
+  color: rgba(190, 139, 76, 0.3);
+}
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.final-container {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  z-index: 2;
+}
+
+/* =========================================================
+   MAIN CARD
+   GrandReveal Style
+========================================================= */
+
+.final-card {
+  position: relative;
+
+  padding: 1px;
+
+  border-radius: 32px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(206, 162, 86, 0.9),
+    rgba(159, 119, 70, 0.2) 30%,
+    rgba(206, 162, 86, 0.65) 65%,
+    rgba(159, 119, 70, 0.18)
+  );
+
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.32),
+    0 0 60px rgba(174, 113, 62, 0.08);
+
+  animation: finalCardReveal 1.2s ease both;
+}
+
+.final-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 7px;
+
+  border: 1px solid rgba(159, 119, 70, 0.22);
+
+  border-radius: 26px;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   CARD INNER
+========================================================= */
+
+.final-card-inner {
+  position: relative;
+
+  width: 100%;
+
+  padding: 82px 70px 70px;
+
+  border-radius: 31px;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 20% 15%,
+      rgba(255, 255, 255, 0.92),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 85%,
+      rgba(255, 235, 205, 0.65),
+      transparent 32%
+    ),
+    linear-gradient(145deg, #fffaf1, #f8eee3, #fffaf3);
+}
+
+/* =========================================================
+   INNER BORDER
+========================================================= */
+
+.final-card-inner::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 20px;
+
+  border: 1px solid rgba(159, 119, 70, 0.13);
+
+  border-radius: 20px;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   SOFT CENTER GLOW
+========================================================= */
+
+.final-card-inner::after {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: rgba(195, 148, 78, 0.045);
+
+  filter: blur(25px);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   TOP ORNAMENT
+========================================================= */
+
+.final-top-ornament {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-bottom: 28px;
+
+  color: #b08a54;
+
+  animation: finalOrnamentReveal 1.1s ease 0.15s both;
+}
+
+.final-top-ornament span {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 16px;
+
+  color: #b08a54;
+
+  text-shadow: 0 0 10px rgba(176, 138, 84, 0.25);
+}
+
+.final-top-ornament i {
+  display: block;
+
+  width: 70px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(176, 138, 84, 0.65),
+    transparent
+  );
+}
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.final-eyebrow {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0 0 20px;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  color: #a6783b;
+
+  animation: finalFadeUp 1s ease 0.25s both;
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.final-divider {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  max-width: 360px;
+
+  margin: 0 auto 26px;
+
+  animation: finalFadeUp 1s ease 0.35s both;
+}
+
+.final-divider span {
+  flex: 1;
+
+  height: 1px;
+
+  background: linear-gradient(90deg, transparent, rgba(176, 138, 84, 0.55));
+}
+
+.final-divider span:last-child {
+  background: linear-gradient(90deg, rgba(176, 138, 84, 0.55), transparent);
+}
+
+.final-divider b {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 21px;
+
+  font-weight: 400;
+
+  color: #b08a54;
+
+  text-shadow: 0 0 15px rgba(176, 138, 84, 0.25);
+}
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.final-heading {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(44px, 6vw, 70px);
+
+  line-height: 0.98;
+
+  font-weight: 500;
+
+  letter-spacing: -0.5px;
+
+  color: #65091b;
+
+  text-shadow: 0 2px 15px rgba(101, 9, 27, 0.1);
+
+  animation: finalHeadingReveal 1.2s ease 0.45s both;
+}
+
+.final-heading em {
+  display: inline-block;
+
+  margin-top: 7px;
+
+  font-weight: 400;
+
+  font-style: italic;
+
+  background: linear-gradient(90deg, #a6783b, #e7c27c, #a6783b);
+
+  background-size: 200% auto;
+
+  background-clip: text;
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation: finalGoldShimmer 5s ease-in-out infinite;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.final-text {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 30px 0 35px;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 14px;
+
+  line-height: 2;
+
+  font-weight: 300;
+
+  letter-spacing: 0.6px;
+
+  color: rgba(107, 88, 71, 0.76);
+
+  animation: finalFadeUp 1s ease 0.6s both;
+}
+
+/* =========================================================
+   NAMES
+========================================================= */
+
+.final-names {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  margin-top: 20px;
+
+  animation: finalNamesReveal 1.1s ease 0.75s both;
+}
+
+.final-name {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(30px, 5vw, 43px);
+
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+
+  color: #65091b;
+
+  white-space: nowrap;
+
+  text-shadow: 0 2px 12px rgba(101, 9, 27, 0.08);
+}
+
+/* =========================================================
+   HEART
+========================================================= */
+
+.final-heart {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid rgba(195, 148, 78, 0.45);
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(195, 148, 78, 0.12),
+    rgba(101, 9, 27, 0.025)
+  );
+
+  color: #8c3029;
+
+  font-size: 17px;
+
+  box-shadow: 0 0 20px rgba(184, 111, 83, 0.12);
+
+  animation: finalHeartBeat 2.3s ease-in-out infinite;
+}
+
+/* =========================================================
+   NAME DIVIDER
+========================================================= */
+
+.final-name-divider {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  max-width: 290px;
+
+  margin: 27px auto 30px;
+}
+
+.final-name-divider > span:first-child,
+.final-name-divider > span:last-child {
+  flex: 1;
+
+  height: 1px;
+
+  background: linear-gradient(90deg, transparent, rgba(176, 138, 84, 0.45));
+}
+
+.final-name-divider > span:last-child {
+  background: linear-gradient(90deg, rgba(176, 138, 84, 0.45), transparent);
+}
+
+.final-diamond {
+  font-size: 7px;
+
+  color: #b08a54;
+
+  transform: rotate(45deg);
+}
+
+/* =========================================================
+   SPECIAL MESSAGE
+========================================================= */
+
+.final-message {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 540px;
+
+  margin: 0 auto 34px;
+
+  padding: 25px 38px;
+
+  border-top: 1px solid rgba(176, 138, 84, 0.22);
+
+  border-bottom: 1px solid rgba(176, 138, 84, 0.22);
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(195, 148, 78, 0.035),
+    transparent
+  );
+
+  animation: finalFadeUp 1s ease 0.9s both;
+}
+
+.final-message p {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 20px;
+
+  line-height: 1.65;
+
+  font-weight: 400;
+
+  font-style: italic;
+
+  color: rgba(107, 88, 71, 0.8);
+}
+
+/* =========================================================
+   QUOTATION MARKS
+========================================================= */
+
+.final-quote-mark {
+  position: absolute;
+
+  top: 5px;
+  left: 4px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 50px;
+
+  line-height: 1;
+
+  color: rgba(176, 138, 84, 0.32);
+}
+
+.final-quote-right {
+  top: auto;
+
+  left: auto;
+
+  right: 4px;
+
+  bottom: -13px;
+}
+
+/* =========================================================
+   BOTTOM ORNAMENT
+========================================================= */
+
+.final-bottom-ornament {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  margin-top: 10px;
+
+  color: #b08a54;
+
+  animation: finalOrnamentReveal 1s ease 1s both;
+}
+
+.final-bottom-ornament span {
+  font-size: 13px;
+}
+
+.final-bottom-ornament i {
+  display: block;
+
+  width: 52px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(176, 138, 84, 0.5),
+    transparent
+  );
+}
+
+/* =========================================================
+   THANK YOU
+========================================================= */
+
+.final-thank-you {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 19px 0 0;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: rgba(166, 120, 59, 0.72);
+
+  animation: finalFadeUp 1s ease 1.1s both;
+}
+
+/* =========================================================
+   FINAL STAR
+========================================================= */
+
+.final-small-star {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: 25px;
+
+  font-size: 12px;
+
+  color: rgba(166, 120, 59, 0.5);
+
+  animation: finalStarPulse 3s ease-in-out infinite;
+}
+
+/* =========================================================
+   CARD ANIMATION
+========================================================= */
+
+@keyframes finalCardReveal {
+  0% {
+    opacity: 0;
+
+    transform: translateY(45px) scale(0.97);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   FADE UP
+========================================================= */
+
+@keyframes finalFadeUp {
+  0% {
+    opacity: 0;
+
+    transform: translateY(22px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   HEADING REVEAL
+========================================================= */
+
+@keyframes finalHeadingReveal {
+  0% {
+    opacity: 0;
+
+    transform: translateY(28px);
+
+    filter: blur(5px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    filter: blur(0);
+  }
+}
+
+/* =========================================================
+   NAMES REVEAL
+========================================================= */
+
+@keyframes finalNamesReveal {
+  0% {
+    opacity: 0;
+
+    transform: scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   ORNAMENT REVEAL
+========================================================= */
+
+@keyframes finalOrnamentReveal {
+  0% {
+    opacity: 0;
+
+    transform: scaleX(0.5);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: scaleX(1);
+  }
+}
+
+/* =========================================================
+   GOLD SHIMMER
+========================================================= */
+
+@keyframes finalGoldShimmer {
+  0% {
+    background-position: 200% center;
+  }
+
+  50% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* =========================================================
+   HEART BEAT
+========================================================= */
+
+@keyframes finalHeartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  8% {
+    transform: scale(1.09);
+  }
+
+  16% {
+    transform: scale(1);
+  }
+
+  24% {
+    transform: scale(1.09);
+  }
+
+  32% {
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   STAR PULSE
+========================================================= */
+
+@keyframes finalStarPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.85;
+
+    transform: scale(1.25);
+  }
+}
+
+/* =========================================================
+   GLOW ONE
+========================================================= */
+
+@keyframes finalGlowOne {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(50px, 35px);
+  }
+}
+
+/* =========================================================
+   GLOW TWO
+========================================================= */
+
+@keyframes finalGlowTwo {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-45px, -35px);
+  }
+}
+
+/* =========================================================
+   GLOW THREE
+========================================================= */
+
+@keyframes finalGlowThree {
+  0%,
+  100% {
+    opacity: 0.3;
+
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+
+  50% {
+    opacity: 0.7;
+
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+/* =========================================================
+   PARTICLE ANIMATION
+========================================================= */
+
+@keyframes finalParticleFloat {
+  0% {
+    opacity: 0;
+
+    transform: translateY(0) rotate(0deg);
+  }
+
+  10% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: translateY(-110vh) rotate(180deg);
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+  .final-section {
+    min-height: auto;
+
+    padding: 75px 18px;
+  }
+
+  .final-card-inner {
+    padding: 68px 35px 58px;
+  }
+
+  .final-card-inner::before {
+    inset: 15px;
+  }
+
+  .final-heading {
+    font-size: clamp(40px, 9vw, 57px);
+  }
+
+  .final-text {
+    font-size: 13px;
+  }
+
+  .final-name {
+    font-size: 35px;
+  }
+
+  .final-message {
+    padding: 23px 28px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+  .final-section {
+    padding: 55px 12px;
+  }
+
+  .final-card {
+    border-radius: 25px;
+  }
+
+  .final-card-inner {
+    padding: 58px 20px 48px;
+
+    border-radius: 24px;
+  }
+
+  .final-card-inner::before {
+    inset: 11px;
+
+    border-radius: 17px;
+  }
+
+  .final-top-ornament {
+    gap: 9px;
+
+    margin-bottom: 23px;
+  }
+
+  .final-top-ornament span {
+    font-size: 12px;
+  }
+
+  .final-top-ornament i {
+    width: 42px;
+  }
+
+  .final-eyebrow {
+    font-size: 9px;
+
+    letter-spacing: 3px;
+  }
+
+  .final-divider {
+    max-width: 270px;
+
+    gap: 10px;
+  }
+
+  .final-divider b {
+    font-size: 18px;
+  }
+
+  .final-heading {
+    font-size: 40px;
+
+    line-height: 1;
+  }
+
+  .final-text {
+    margin: 25px 0 30px;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+  }
+
+  .final-names {
+    gap: 11px;
+  }
+
+  .final-name {
+    font-size: 27px;
+  }
+
+  .final-heart {
+    width: 34px;
+    height: 34px;
+
+    font-size: 14px;
+  }
+
+  .final-name-divider {
+    max-width: 220px;
+
+    margin: 21px auto 24px;
+  }
+
+  .final-message {
+    padding: 20px 22px;
+
+    margin-bottom: 28px;
+  }
+
+  .final-message p {
+    font-size: 16px;
+
+    line-height: 1.55;
+  }
+
+  .final-quote-mark {
+    font-size: 38px;
+  }
+
+  .final-bottom-ornament {
+    gap: 9px;
+  }
+
+  .final-bottom-ornament i {
+    width: 38px;
+  }
+
+  .final-thank-you {
+    font-size: 8px;
+
+    letter-spacing: 2.2px;
+  }
+
+  .final-glow-one {
+    width: 280px;
+    height: 280px;
+  }
+
+  .final-glow-two {
+    width: 240px;
+    height: 240px;
+  }
+
+  .final-glow-three {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .final-section {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .final-card-inner {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .final-heading {
+    font-size: 34px;
+  }
+
+  .final-name {
+    font-size: 24px;
+  }
+
+  .final-heart {
+    width: 30px;
+    height: 30px;
+
+    font-size: 12px;
+  }
+
+  .final-message p {
+    font-size: 15px;
+  }
+
+  .final-thank-you {
+    font-size: 7px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .final-card,
+  .final-top-ornament,
+  .final-eyebrow,
+  .final-divider,
+  .final-heading,
+  .final-text,
+  .final-names,
+  .final-message,
+  .final-bottom-ornament,
+  .final-thank-you,
+  .final-heading em,
+  .final-particle,
+  .final-glow,
+  .final-heart,
+  .final-small-star {
+    animation: none !important;
+  }
+}

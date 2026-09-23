@@ -5,7 +5,6 @@ import GrandReveal from "./components/GrandReveal";
 import CoupleSection from "./components/CoupleSection";
 import Engagement from "./components/Engagement";
 import Celebration from "./components/Celebration";
-import Reception from "./components/Reception";
 import Venue from "./components/Venue";
 import FinalMessage from "./components/FinalMessage";
 
@@ -16,28 +15,71 @@ function App() {
   const audioRef = useRef(null);
 
   // =====================================================
+  // START MUSIC
+  // =====================================================
+
+  const playMusic = async () => {
+    const audio = audioRef.current;
+
+    if (!audio) {
+      console.warn("Audio element not found.");
+      return;
+    }
+
+    try {
+      // Make sure the browser has loaded the audio
+      audio.volume = 0.7;
+
+      await audio.play();
+
+      setIsPlaying(true);
+
+      console.log("Wedding music started.");
+    } catch (error) {
+      console.error("Unable to play wedding music:", error);
+
+      setIsPlaying(false);
+    }
+  };
+
+  // =====================================================
+  // PAUSE MUSIC
+  // =====================================================
+
+  const pauseMusic = () => {
+    const audio = audioRef.current;
+
+    if (!audio) return;
+
+    audio.pause();
+    setIsPlaying(false);
+
+    console.log("Wedding music paused.");
+  };
+
+  // =====================================================
   // OPEN INVITATION
   // =====================================================
 
-  const openInvitation = () => {
+  const openInvitation = async () => {
     setIsOpened(true);
 
-    // Start music when user clicks the wax seal
-    if (audioRef.current) {
-      audioRef.current
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch((error) => {
-          console.log("Music playback failed:", error);
-        });
-    }
+    // -----------------------------------------------------
+    // Start music directly from the user click.
+    // This is important because browsers block autoplay
+    // until the user interacts with the page.
+    // -----------------------------------------------------
 
+    await playMusic();
+
+    // -----------------------------------------------------
     // Scroll to invitation content
+    // -----------------------------------------------------
+
     setTimeout(() => {
       document.getElementById("invitation-content")?.scrollIntoView({
         behavior: "smooth",
+        block: "start",
       });
     }, 700);
   };
@@ -46,28 +88,20 @@ function App() {
   // MUSIC TOGGLE
   // =====================================================
 
-  const toggleMusic = () => {
+  const toggleMusic = async () => {
     const audio = audioRef.current;
 
     if (!audio) return;
 
     if (audio.paused) {
-      audio
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch((error) => {
-          console.log("Unable to play music:", error);
-        });
+      await playMusic();
     } else {
-      audio.pause();
-      setIsPlaying(false);
+      pauseMusic();
     }
   };
 
   // =====================================================
-  // KEEP MUSIC STATE IN SYNC
+  // AUDIO EVENT LISTENERS
   // =====================================================
 
   useEffect(() => {
@@ -77,24 +111,51 @@ function App() {
 
     const handlePlay = () => {
       setIsPlaying(true);
+      console.log("Audio playing.");
     };
 
     const handlePause = () => {
       setIsPlaying(false);
+      console.log("Audio paused.");
     };
 
     const handleEnded = () => {
       setIsPlaying(false);
+      console.log("Audio ended.");
+    };
+
+    const handleError = () => {
+      setIsPlaying(false);
+
+      console.error(
+        "Wedding music could not be loaded. Check /public/wedding-music.mp3",
+      );
     };
 
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
     audio.addEventListener("ended", handleEnded);
+    audio.addEventListener("error", handleError);
 
     return () => {
       audio.removeEventListener("play", handlePlay);
       audio.removeEventListener("pause", handlePause);
       audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("error", handleError);
+    };
+  }, []);
+
+  // =====================================================
+  // CLEANUP AUDIO WHEN APP UNMOUNTS
+  // =====================================================
+
+  useEffect(() => {
+    return () => {
+      const audio = audioRef.current;
+
+      if (audio) {
+        audio.pause();
+      }
     };
   }, []);
 
@@ -102,18 +163,21 @@ function App() {
     <div className="invitation-app">
       {/* =================================================
           WEDDING MUSIC
-          IMPORTANT:
-          Keep audio OUTSIDE isOpened condition
       ================================================= */}
 
-      <audio ref={audioRef} src="/wedding-music.crdownload" loop preload="auto" />
+      <audio
+        ref={audioRef}
+        src="/wedding-music.crdownload"
+        loop
+        preload="auto"
+      />
 
       {/* =================================================
-          FIRST PAGE MUSIC BUTTON
-          This will now appear on the envelope screen
+          MUSIC BUTTON
       ================================================= */}
 
       <button
+        type="button"
         className={`music-button ${
           isPlaying ? "music-playing" : ""
         } ${!isOpened ? "music-button-first-page" : ""}`}
@@ -129,33 +193,25 @@ function App() {
       </button>
 
       {/* =================================================
-          ENVELOPE
+          FIRST PAGE / INVITATION CONTENT
       ================================================= */}
 
       {!isOpened ? (
         <Envelope onOpen={openInvitation} />
       ) : (
-        <>
-          {/* =================================================
-              INVITATION CONTENT
-          ================================================= */}
+        <main id="invitation-content">
+          <GrandReveal />
 
-          <main id="invitation-content">
-            <GrandReveal />
+          <CoupleSection />
 
-            <CoupleSection />
+          <Engagement />
 
-            <Engagement />
+          <Celebration />
 
-            <Celebration />
+          <Venue />
 
-            <Reception />
-
-            <Venue />
-
-            <FinalMessage />
-          </main>
-        </>
+          <FinalMessage />
+        </main>
       )}
     </div>
   );

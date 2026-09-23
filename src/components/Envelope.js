@@ -1,22 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
+import "./Envelope.css";
 
 function Envelope({ onOpen }) {
   const [isBreaking, setIsBreaking] = useState(false);
   const timerRef = useRef(null);
 
   const handleSealClick = () => {
-    // Prevent multiple clicks
     if (isBreaking) return;
 
     setIsBreaking(true);
 
-    // Open invitation after wax-breaking animation
     timerRef.current = setTimeout(() => {
       onOpen();
-    }, 950);
+    }, 1100);
   };
 
-  // Cleanup timer when component unmounts
   useEffect(() => {
     return () => {
       if (timerRef.current) {
@@ -32,31 +30,77 @@ function Envelope({ onOpen }) {
             ENVELOPE
         ================================================= */}
 
-        <div className="envelope">
+        <div
+          className={`luxury-envelope ${isBreaking ? "envelope-opening" : ""}`}
+        >
+          {/* Inner border */}
+          <div className="envelope-inner-border"></div>
+
           {/* =================================================
-              ENVELOPE FLAP
+              FLORAL DECORATIONS
           ================================================= */}
 
-          <div className="envelope-flap"></div>
+          <div className="flower flower-left-top">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-          {/* =================================================
-              INVITATION PAPER
-          ================================================= */}
+          <div className="flower flower-right-top">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-          <div className="envelope-paper">
-            <div className="paper-content">
-              <p className="small-gold-text">WEDDING INVITATION</p>
+          <div className="flower flower-left-bottom">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-              <p className="paper-invite">A beautiful beginning</p>
-
-              <div className="paper-divider">✦</div>
-
-              <p className="paper-small">TOGETHER WITH OUR FAMILIES</p>
-            </div>
+          <div className="flower flower-right-bottom">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
 
           {/* =================================================
+              LEAF DECORATIONS
+          ================================================= */}
+
+          <div className="leaf-decoration leaf-left"></div>
+
+          <div className="leaf-decoration leaf-right"></div>
+
+          {/* =================================================
+              TOP TITLE
+              
+              ONLY WEDDING INVITATION
+              NO V ♥ S HERE
+          ================================================= */}
+
+          <div className="envelope-heading">
+            <div className="invitation-title">WEDDING INVITATION</div>
+          </div>
+
+          {/* =================================================
+              ENVELOPE FLAPS
+          ================================================= */}
+
+          <div className="envelope-flap envelope-flap-left"></div>
+
+          <div className="envelope-flap envelope-flap-right"></div>
+
+          <div className="envelope-flap envelope-flap-bottom"></div>
+
+          {/* =================================================
               WAX SEAL
+              
+              V ♥ S ONLY INSIDE THE SEAL
           ================================================= */}
 
           <button
@@ -67,39 +111,46 @@ function Envelope({ onOpen }) {
             aria-label="Open wedding invitation"
             aria-busy={isBreaking}
           >
-            {/* Wax seal outer shine */}
-            <span className="wax-shine"></span>
+            <span className="wax-highlight"></span>
 
-            {/* Crack effect */}
-            <span className="wax-cracks" aria-hidden="true">
-              <span className="crack crack-one"></span>
-              <span className="crack crack-two"></span>
-              <span className="crack crack-three"></span>
-              <span className="crack crack-four"></span>
+            <span className="wax-ring wax-ring-one"></span>
+
+            <span className="wax-ring wax-ring-two"></span>
+
+            <span className="wax-monogram">
+              V<span>♥</span>S
             </span>
 
-            {/* Wax seal initials */}
-            <span className="wax-letter">V</span>
+            <span className="wax-crack crack-one"></span>
 
-            <small className="wax-heart">♥</small>
+            <span className="wax-crack crack-two"></span>
 
-            <span className="wax-letter">S</span>
+            <span className="wax-crack crack-three"></span>
           </button>
+
+          {/* Soft seal glow */}
+
+          <div className="envelope-glow"></div>
         </div>
 
         {/* =================================================
             TAP TEXT
         ================================================= */}
 
-        <div className={`tap-text ${isBreaking ? "tap-breaking" : ""}`}>
-          <span>✦</span>
+        <button
+          type="button"
+          className={`tap-seal-text ${isBreaking ? "tap-text-opening" : ""}`}
+          onClick={handleSealClick}
+          disabled={isBreaking}
+        >
+          <span className="tap-star">✦</span>
 
           <span>
-            {isBreaking ? "Opening Your Invitation..." : "Tap the Wax Seal"}
+            {isBreaking ? "OPENING YOUR INVITATION" : "TAP THE SEAL TO OPEN"}
           </span>
 
-          <span>✦</span>
-        </div>
+          <span className="tap-star">✦</span>
+        </button>
       </div>
     </section>
   );
