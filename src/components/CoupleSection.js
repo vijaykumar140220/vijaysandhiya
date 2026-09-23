@@ -1,5 +1,6 @@
 import React from "react";
 import "./CoupleSection.css";
+import coupleImage from "../images/sandhiya.jpeg";
 
 function CoupleSection() {
   return (
@@ -50,7 +51,7 @@ function CoupleSection() {
             <div className="couple-photo-frame">
               <div className="couple-photo-inner">
                 <img
-                  src="/sandhiya.jpeg"
+                  src={coupleImage}
                   alt="Vijay Kumar and Sandhiya"
                   className="couple-photo"
                 />

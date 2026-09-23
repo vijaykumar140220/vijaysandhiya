@@ -1,5 +1,6 @@
 import React from "react";
 import "./GrandReveal.css";
+import ganeshaImage from "../images/ganesha.png";
 
 function GrandReveal() {
   return (
@@ -48,7 +49,7 @@ function GrandReveal() {
             <div className="ganesha-ring ring-two"></div>
 
             <div className="ganesha-circle">
-              <img src="/ganesha.png" alt="Lord Ganesha" />
+              <img src={ganeshaImage} alt="Lord Ganesha" />
             </div>
           </div>
 
@@ -160,7 +161,7 @@ function GrandReveal() {
 
             <strong>01 · 11 · 2026</strong>
 
-            <small>SATTHUMADURAI</small>
+            <small>WALAJABAD</small>
           </div>
 
           {/* =========================================

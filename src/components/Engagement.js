@@ -10,7 +10,7 @@ const WEDDING_EVENT = {
   start: "20261101T073000",
   end: "20261101T090000",
   timezone: "Asia/Kolkata",
-  location: "Satthumadurai",
+  location: "Walajabad",
   description:
     "With the blessings of our families, we invite you to celebrate the wedding of Vijaya & Sandhiya.",
 };
@@ -742,7 +742,7 @@ export default function Engagement() {
             </strong>
 
             <span className="engagement-reveal-location">
-              SATTHUMADURAI
+              WALAJABAD
             </span>
           </div>
 
@@ -800,7 +800,7 @@ export default function Engagement() {
               </span>
 
               <span className="engagement-detail-value">
-                SATTHUMADURAI
+                WALAJABAD
               </span>
             </div>
           </div>

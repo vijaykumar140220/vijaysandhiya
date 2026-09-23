@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Celebration.css";
+import receptionImage from "../images/reception.svg.webp";
+import weddingImage from "../images/wedding.svg.webp";
 
 function Celebration() {
   const [visible, setVisible] = useState(false);
@@ -99,7 +101,7 @@ function Celebration() {
             <div className="image-glow"></div>
 
             <img
-              src="/reception.svg.webp"
+              src={receptionImage}
               alt="Reception celebration"
               className="event-image"
             />
@@ -250,7 +252,7 @@ function Celebration() {
             <div className="image-glow"></div>
 
             <img
-              src="/wedding.svg.webp"
+              src={weddingImage}
               alt="Wedding ceremony"
               className="event-image"
             />
