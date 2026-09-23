@@ -27,7 +27,6 @@ function App() {
     }
 
     try {
-      // Make sure the browser has loaded the audio
       audio.volume = 0.7;
 
       await audio.play();
@@ -64,18 +63,10 @@ function App() {
   const openInvitation = async () => {
     setIsOpened(true);
 
-    // -----------------------------------------------------
-    // Start music directly from the user click.
-    // This is important because browsers block autoplay
-    // until the user interacts with the page.
-    // -----------------------------------------------------
-
+    // Start music from the user's click.
     await playMusic();
 
-    // -----------------------------------------------------
-    // Scroll to invitation content
-    // -----------------------------------------------------
-
+    // Scroll to invitation content.
     setTimeout(() => {
       document.getElementById("invitation-content")?.scrollIntoView({
         behavior: "smooth",
@@ -150,14 +141,20 @@ function App() {
   // =====================================================
 
   useEffect(() => {
-    return () => {
-      const audio = audioRef.current;
+    // Capture the current audio element when the effect runs.
+    // This prevents the React Hook cleanup warning.
+    const audioElement = audioRef.current;
 
-      if (audio) {
-        audio.pause();
+    return () => {
+      if (audioElement) {
+        audioElement.pause();
       }
     };
   }, []);
+
+  // =====================================================
+  // RENDER
+  // =====================================================
 
   return (
     <div className="invitation-app">
