@@ -167,7 +167,7 @@ function App() {
 
       <audio
         ref={audioRef}
-        src="/wedding-music.crdownload"
+        src={`${process.env.PUBLIC_URL}/wedding-music.crdownload`}
         loop
         preload="auto"
       />
