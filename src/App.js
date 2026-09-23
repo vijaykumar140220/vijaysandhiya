@@ -8,15 +8,13 @@ import Celebration from "./components/Celebration";
 import Venue from "./components/Venue";
 import FinalMessage from "./components/FinalMessage";
 
+import weddingMusic from "./images/wedding-music.crdownload";
+
 function App() {
   const [isOpened, setIsOpened] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const audioRef = useRef(null);
-
-  // =====================================================
-  // START MUSIC
-  // =====================================================
 
   const playMusic = async () => {
     const audio = audioRef.current;
@@ -41,10 +39,6 @@ function App() {
     }
   };
 
-  // =====================================================
-  // PAUSE MUSIC
-  // =====================================================
-
   const pauseMusic = () => {
     const audio = audioRef.current;
 
@@ -52,21 +46,13 @@ function App() {
 
     audio.pause();
     setIsPlaying(false);
-
-    console.log("Wedding music paused.");
   };
-
-  // =====================================================
-  // OPEN INVITATION
-  // =====================================================
 
   const openInvitation = async () => {
     setIsOpened(true);
 
-    // Start music from the user's click.
     await playMusic();
 
-    // Scroll to invitation content.
     setTimeout(() => {
       document.getElementById("invitation-content")?.scrollIntoView({
         behavior: "smooth",
@@ -74,10 +60,6 @@ function App() {
       });
     }, 700);
   };
-
-  // =====================================================
-  // MUSIC TOGGLE
-  // =====================================================
 
   const toggleMusic = async () => {
     const audio = audioRef.current;
@@ -91,10 +73,6 @@ function App() {
     }
   };
 
-  // =====================================================
-  // AUDIO EVENT LISTENERS
-  // =====================================================
-
   useEffect(() => {
     const audio = audioRef.current;
 
@@ -102,25 +80,20 @@ function App() {
 
     const handlePlay = () => {
       setIsPlaying(true);
-      console.log("Audio playing.");
     };
 
     const handlePause = () => {
       setIsPlaying(false);
-      console.log("Audio paused.");
     };
 
     const handleEnded = () => {
       setIsPlaying(false);
-      console.log("Audio ended.");
     };
 
     const handleError = () => {
       setIsPlaying(false);
 
-      console.error(
-        "Wedding music could not be loaded. Check /public/wedding-music.mp3",
-      );
+      console.error("Wedding music could not be loaded.");
     };
 
     audio.addEventListener("play", handlePlay);
@@ -136,13 +109,7 @@ function App() {
     };
   }, []);
 
-  // =====================================================
-  // CLEANUP AUDIO WHEN APP UNMOUNTS
-  // =====================================================
-
   useEffect(() => {
-    // Capture the current audio element when the effect runs.
-    // This prevents the React Hook cleanup warning.
     const audioElement = audioRef.current;
 
     return () => {
@@ -152,27 +119,12 @@ function App() {
     };
   }, []);
 
-  // =====================================================
-  // RENDER
-  // =====================================================
-
   return (
     <div className="invitation-app">
-      {/* =================================================
-          WEDDING MUSIC
-      ================================================= */}
+      {/* WEDDING MUSIC */}
+      <audio ref={audioRef} src={weddingMusic} loop preload="auto" />
 
-      <audio
-        ref={audioRef}
-        src={`${process.env.PUBLIC_URL}/wedding-music.crdownload`}
-        loop
-        preload="auto"
-      />
-
-      {/* =================================================
-          MUSIC BUTTON
-      ================================================= */}
-
+      {/* MUSIC BUTTON */}
       <button
         type="button"
         className={`music-button ${
@@ -189,10 +141,7 @@ function App() {
         </span>
       </button>
 
-      {/* =================================================
-          FIRST PAGE / INVITATION CONTENT
-      ================================================= */}
-
+      {/* INVITATION */}
       {!isOpened ? (
         <Envelope onOpen={openInvitation} />
       ) : (
