@@ -2,17 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Envelope.css";
 
 function Envelope({ onOpen }) {
-  const [isBreaking, setIsBreaking] = useState(false);
+  const [isOpening, setIsOpening] = useState(false);
   const timerRef = useRef(null);
 
   const handleSealClick = () => {
-    if (isBreaking) return;
+    if (isOpening) return;
 
-    setIsBreaking(true);
+    setIsOpening(true);
 
+    // Allow the complete opening animation to finish
     timerRef.current = setTimeout(() => {
       onOpen();
-    }, 1100);
+    }, 2500);
   };
 
   useEffect(() => {
@@ -25,21 +26,34 @@ function Envelope({ onOpen }) {
 
   return (
     <section className="envelope-screen">
-      <div className="envelope-container">
-        {/* =================================================
-            ENVELOPE
-        ================================================= */}
+      {/* Ambient floating particles */}
+      <div className="envelope-particles" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
+      <div className="envelope-container">
         <div
-          className={`luxury-envelope ${isBreaking ? "envelope-opening" : ""}`}
+          className={`luxury-envelope ${isOpening ? "envelope-opening" : ""}`}
         >
+          {/* Premium light layers */}
+          <div className="envelope-light"></div>
+          <div className="envelope-light-sweep"></div>
+
           {/* Inner border */}
           <div className="envelope-inner-border"></div>
 
-          {/* =================================================
-              FLORAL DECORATIONS
-          ================================================= */}
-
+          {/* Decorative corner flowers */}
           <div className="flower flower-left-top">
             <span></span>
             <span></span>
@@ -68,49 +82,65 @@ function Envelope({ onOpen }) {
             <span></span>
           </div>
 
-          {/* =================================================
-              LEAF DECORATIONS
-          ================================================= */}
-
+          {/* Leaves */}
           <div className="leaf-decoration leaf-left"></div>
-
           <div className="leaf-decoration leaf-right"></div>
 
-          {/* =================================================
-              TOP TITLE
-              
-              ONLY WEDDING INVITATION
-              NO V ♥ S HERE
-          ================================================= */}
+          {/* Gold corner ornaments */}
+          <div className="corner-ornament corner-top-left"></div>
+          <div className="corner-ornament corner-top-right"></div>
+          <div className="corner-ornament corner-bottom-left"></div>
+          <div className="corner-ornament corner-bottom-right"></div>
 
+          {/* Title */}
           <div className="envelope-heading">
+            <div className="heading-small">Together with their families</div>
+
             <div className="invitation-title">WEDDING INVITATION</div>
+
+            <div className="heading-line">
+              <span></span>
+              <i>✦</i>
+              <span></span>
+            </div>
           </div>
 
-          {/* =================================================
-              ENVELOPE FLAPS
-          ================================================= */}
+          {/* Four envelope flaps */}
 
-          <div className="envelope-flap envelope-flap-left"></div>
+          {/* TOP */}
+          <div className="envelope-flap envelope-flap-top">
+            <div className="flap-shine"></div>
+          </div>
 
-          <div className="envelope-flap envelope-flap-right"></div>
+          {/* LEFT */}
+          <div className="envelope-flap envelope-flap-left">
+            <div className="flap-shine"></div>
+          </div>
 
-          <div className="envelope-flap envelope-flap-bottom"></div>
+          {/* RIGHT */}
+          <div className="envelope-flap envelope-flap-right">
+            <div className="flap-shine"></div>
+          </div>
 
-          {/* =================================================
-              WAX SEAL
-              
-              V ♥ S ONLY INSIDE THE SEAL
-          ================================================= */}
+          {/* BOTTOM */}
+          <div className="envelope-flap envelope-flap-bottom">
+            <div className="flap-shine"></div>
+          </div>
 
+          {/* Center glow */}
+          <div className="envelope-center-glow"></div>
+
+          {/* Wax seal */}
           <button
             type="button"
-            className={`wax-seal ${isBreaking ? "wax-breaking" : ""}`}
+            className={`wax-seal ${isOpening ? "wax-opening" : ""}`}
             onClick={handleSealClick}
-            disabled={isBreaking}
+            disabled={isOpening}
             aria-label="Open wedding invitation"
-            aria-busy={isBreaking}
+            aria-busy={isOpening}
           >
+            <span className="wax-outer-rim"></span>
+
             <span className="wax-highlight"></span>
 
             <span className="wax-ring wax-ring-one"></span>
@@ -121,32 +151,33 @@ function Envelope({ onOpen }) {
               V<span>♥</span>S
             </span>
 
-            <span className="wax-crack crack-one"></span>
-
-            <span className="wax-crack crack-two"></span>
-
-            <span className="wax-crack crack-three"></span>
+            <span className="wax-sparkle sparkle-one">✦</span>
+            <span className="wax-sparkle sparkle-two">✦</span>
+            <span className="wax-sparkle sparkle-three">✧</span>
           </button>
 
-          {/* Soft seal glow */}
+          {/* Seal glow */}
+          <div
+            className={`envelope-glow ${isOpening ? "glow-opening" : ""}`}
+          ></div>
 
-          <div className="envelope-glow"></div>
+          {/* Opening flash */}
+          <div
+            className={`opening-flash ${isOpening ? "flash-opening" : ""}`}
+          ></div>
         </div>
 
-        {/* =================================================
-            TAP TEXT
-        ================================================= */}
-
+        {/* Tap text */}
         <button
           type="button"
-          className={`tap-seal-text ${isBreaking ? "tap-text-opening" : ""}`}
+          className={`tap-seal-text ${isOpening ? "tap-text-opening" : ""}`}
           onClick={handleSealClick}
-          disabled={isBreaking}
+          disabled={isOpening}
         >
           <span className="tap-star">✦</span>
 
-          <span>
-            {isBreaking ? "OPENING YOUR INVITATION" : "TAP THE SEAL TO OPEN"}
+          <span className="tap-message">
+            {isOpening ? "OPENING YOUR INVITATION" : "TAP THE SEAL TO OPEN"}
           </span>
 
           <span className="tap-star">✦</span>

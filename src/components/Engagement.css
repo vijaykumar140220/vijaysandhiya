@@ -1,18 +1,17 @@
 /* =========================================================
    ENGAGEMENT / SAVE THE DATE
    Luxury Tamil Wedding Invitation
-   GrandReveal Color Theme
+   Smooth Mobile Scratch Experience
 ========================================================= */
 
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Tamil:wght@400;500;600&display=swap");
 
 /* =========================================================
-   ROOT SECTION
+   ROOT
 ========================================================= */
 
 .engagement-section {
   position: relative;
-
   width: 100%;
   min-height: 100vh;
   min-height: 100svh;
@@ -69,6 +68,23 @@
   z-index: -4;
 }
 
+.engagement-section::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(35, 0, 8, 0.22) 100%
+  );
+
+  z-index: -3;
+}
+
 @keyframes engagementBackgroundMove {
   0% {
     background-position: 0 0;
@@ -94,7 +110,7 @@
 
   opacity: 0.45;
 
-  z-index: -3;
+  z-index: -2;
 }
 
 .engagement-glow-one {
@@ -202,49 +218,42 @@
 .particle-1 {
   top: 10%;
   left: 10%;
-
   animation-delay: 0s;
 }
 
 .particle-2 {
   top: 20%;
   right: 12%;
-
   animation-delay: 1.2s;
 }
 
 .particle-3 {
   top: 52%;
   left: 5%;
-
   animation-delay: 2.1s;
 }
 
 .particle-4 {
   top: 72%;
   right: 7%;
-
   animation-delay: 3s;
 }
 
 .particle-5 {
   top: 85%;
   left: 18%;
-
   animation-delay: 1.7s;
 }
 
 .particle-6 {
   top: 38%;
   right: 5%;
-
   animation-delay: 4s;
 }
 
 .particle-7 {
   top: 8%;
   left: 48%;
-
   animation-delay: 2.7s;
 }
 
@@ -278,35 +287,30 @@
 .petal-1 {
   top: 8%;
   left: 24%;
-
   animation-delay: 0s;
 }
 
 .petal-2 {
   top: 30%;
   right: 8%;
-
   animation-delay: 2s;
 }
 
 .petal-3 {
   bottom: 12%;
   left: 8%;
-
   animation-delay: 4s;
 }
 
 .petal-4 {
   top: 60%;
   right: 17%;
-
   animation-delay: 1s;
 }
 
 .petal-5 {
   bottom: 25%;
   left: 25%;
-
   animation-delay: 3s;
 }
 
@@ -348,14 +352,14 @@
 
   width: min(100%, 760px);
 
-  animation: engagementContainerAppear 1.2s ease both;
+  animation: engagementContainerAppear 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes engagementContainerAppear {
   from {
     opacity: 0;
 
-    transform: translateY(35px) scale(0.98);
+    transform: translateY(35px) scale(0.96);
   }
 
   to {
@@ -403,6 +407,8 @@
   backdrop-filter: blur(12px);
 
   animation: engagementCardFloat 7s ease-in-out infinite;
+
+  transform: translateZ(0);
 }
 
 .engagement-card::before {
@@ -415,6 +421,8 @@
   border: 1px solid rgba(159, 119, 70, 0.22);
 
   pointer-events: none;
+
+  z-index: 0;
 }
 
 .engagement-card::after {
@@ -437,6 +445,21 @@
   );
 
   pointer-events: none;
+
+  animation: engagementCardGlow 8s ease-in-out infinite;
+}
+
+@keyframes engagementCardGlow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.25);
+  }
 }
 
 .engagement-card-inner {
@@ -447,6 +470,8 @@
   border: 1px solid rgba(159, 119, 70, 0.1);
 
   pointer-events: none;
+
+  z-index: 0;
 }
 
 @keyframes engagementCardFloat {
@@ -458,6 +483,15 @@
   50% {
     transform: translateY(-4px);
   }
+}
+
+/* =========================================================
+   CONTENT ABOVE DECORATION
+========================================================= */
+
+.engagement-card > *:not(.engagement-card-inner) {
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================================================
@@ -518,13 +552,13 @@
   100% {
     opacity: 0.55;
 
-    transform: scale(0.9);
+    transform: scale(0.9) rotate(0deg);
   }
 
   50% {
     opacity: 1;
 
-    transform: scale(1.15);
+    transform: scale(1.18) rotate(8deg);
   }
 }
 
@@ -537,10 +571,7 @@
 
   color: #a6783b;
 
-  font-family: "Montserrat", Arial, sans-serif;
-
   font-size: 11px;
-
   font-weight: 600;
 
   letter-spacing: 5px;
@@ -567,7 +598,7 @@
 
   text-shadow: 0 3px 15px rgba(101, 9, 27, 0.08);
 
-  animation: engagementTitleReveal 1s 0.25s ease both;
+  animation: engagementTitleReveal 1s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes engagementTitleReveal {
@@ -576,7 +607,7 @@
 
     letter-spacing: 15px;
 
-    transform: translateY(15px);
+    transform: translateY(15px) scale(0.94);
   }
 
   to {
@@ -584,7 +615,7 @@
 
     letter-spacing: normal;
 
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -662,18 +693,18 @@
   100% {
     opacity: 0.55;
 
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
   }
 
   50% {
     opacity: 1;
 
-    transform: scale(1.25);
+    transform: scale(1.25) rotate(15deg);
   }
 }
 
 /* =========================================================
-   SCRATCH CARDS
+   SCRATCH WRAPPER
 ========================================================= */
 
 .engagement-scratch-wrapper {
@@ -684,7 +715,13 @@
   gap: 14px;
 
   width: 100%;
+
+  perspective: 1000px;
 }
+
+/* =========================================================
+   SCRATCH CARD
+========================================================= */
 
 .engagement-scratch-card {
   position: relative;
@@ -696,7 +733,6 @@
   flex-direction: column;
 
   align-items: center;
-
   justify-content: center;
 
   overflow: hidden;
@@ -704,7 +740,7 @@
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 0.8),
       transparent 55%
     ),
     linear-gradient(145deg, #fffaf2, #f4e6d6);
@@ -715,21 +751,121 @@
     inset 0 0 35px rgba(230, 181, 89, 0.06),
     0 15px 30px rgba(91, 54, 35, 0.12);
 
+  transform: translateZ(0) scale(1);
+
   transition:
-    transform 0.4s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.4s ease,
     box-shadow 0.4s ease;
+
+  will-change: transform;
+
+  isolation: isolate;
+}
+
+/* Luxury animated border */
+
+.engagement-scratch-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -2px;
+
+  padding: 1px;
+
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(224, 181, 99, 0.7),
+    transparent 20%,
+    transparent 65%,
+    rgba(224, 181, 99, 0.55),
+    transparent
+  );
+
+  animation: scratchBorderRotate 5s linear infinite;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  opacity: 0.7;
+}
+
+@keyframes scratchBorderRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Moving shine */
+
+.engagement-scratch-card::after {
+  content: "";
+
+  position: absolute;
+
+  top: -30%;
+  left: -90%;
+
+  width: 55%;
+  height: 160%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.32),
+    transparent
+  );
+
+  transform: skewX(-18deg);
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  animation: scratchCardShine 5.5s ease-in-out infinite;
+
+  z-index: 1;
+}
+
+@keyframes scratchCardShine {
+  0%,
+  58% {
+    left: -90%;
+    opacity: 0;
+  }
+
+  65% {
+    opacity: 0.7;
+  }
+
+  82% {
+    left: 135%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 135%;
+    opacity: 0;
+  }
 }
 
 .engagement-scratch-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-7px) rotateX(2deg) scale(1.015);
 
   border-color: rgba(179, 138, 84, 0.8);
 
   box-shadow:
     inset 0 0 40px rgba(230, 181, 89, 0.1),
-    0 18px 35px rgba(91, 54, 35, 0.18);
+    0 22px 42px rgba(91, 54, 35, 0.2),
+    0 0 25px rgba(208, 163, 82, 0.12);
 }
+
+/* =========================================================
+   SCRATCH CARD CONTENT
+========================================================= */
 
 .engagement-scratch-card-decoration {
   position: absolute;
@@ -740,6 +876,23 @@
   color: rgba(166, 120, 59, 0.55);
 
   font-size: 13px;
+
+  animation: scratchDecorationPulse 2.5s ease-in-out infinite;
+
+  z-index: 2;
+}
+
+@keyframes scratchDecorationPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(10deg);
+  }
 }
 
 .engagement-scratch-label {
@@ -752,6 +905,8 @@
   font-weight: 600;
 
   letter-spacing: 3px;
+
+  z-index: 2;
 }
 
 .engagement-scratch-value {
@@ -768,6 +923,8 @@
   transition:
     transform 0.6s ease,
     opacity 0.6s ease;
+
+  z-index: 2;
 }
 
 .engagement-scratch-day .engagement-scratch-value {
@@ -786,7 +943,14 @@
   color: rgba(166, 120, 59, 0.55);
 
   font-size: 12px;
+
+  z-index: 2;
 }
+
+/* =========================================================
+   IMPORTANT:
+   SMOOTH MOBILE TOUCH SCRATCHING
+========================================================= */
 
 .engagement-scratch-canvas {
   position: absolute;
@@ -800,10 +964,39 @@
 
   cursor: crosshair;
 
+  /*
+    Critical for mobile.
+    Browser will not steal the touch gesture.
+  */
+
   touch-action: none;
 
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  -webkit-touch-callout: none;
+
+  /*
+    Helps prevent browser image/text selection.
+  */
+
+  overscroll-behavior: contain;
+
   z-index: 5;
+
+  /*
+    Avoid unnecessary browser compositing changes.
+  */
+
+  transform: translateZ(0);
+
+  will-change: contents;
 }
+
+/* =========================================================
+   SCRATCH GLOW
+========================================================= */
 
 .engagement-scratch-glow {
   position: absolute;
@@ -814,44 +1007,173 @@
 
   background: radial-gradient(
     circle at center,
-    rgba(255, 215, 130, 0.12),
+    rgba(255, 215, 130, 0.14),
     transparent 65%
   );
+
+  z-index: 2;
+
+  animation: scratchGlowPulse 3s ease-in-out infinite;
 }
 
+@keyframes scratchGlowPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   SCRATCH SHINE
+========================================================= */
+
+.engagement-scratch-shine {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 6;
+
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(255, 255, 255, 0.18),
+    transparent 30%
+  );
+
+  opacity: 0.8;
+}
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
 .engagement-scratch-card.is-revealed {
-  animation: engagementRevealCard 0.8s ease both;
+  animation: engagementRevealCard 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  border-color: rgba(179, 138, 84, 0.9);
+
+  box-shadow:
+    0 18px 42px rgba(91, 54, 35, 0.18),
+    0 0 35px rgba(210, 167, 82, 0.18),
+    inset 0 0 45px rgba(230, 181, 89, 0.08);
 }
 
 .engagement-scratch-card.is-revealed .engagement-scratch-value {
-  animation: engagementRevealValue 0.8s ease both;
+  animation: engagementRevealValue 0.85s 0.12s cubic-bezier(0.16, 1, 0.3, 1)
+    both;
 }
 
 @keyframes engagementRevealCard {
   0% {
-    transform: scale(1);
+    transform: scale(1) rotateY(0deg);
   }
 
-  40% {
-    transform: scale(1.05);
+  35% {
+    transform: scale(1.06) rotateY(-2deg);
+  }
+
+  70% {
+    transform: scale(0.985) rotateY(1deg);
   }
 
   100% {
-    transform: scale(1);
+    transform: scale(1) rotateY(0deg);
   }
 }
 
 @keyframes engagementRevealValue {
-  from {
+  0% {
     opacity: 0;
 
-    transform: scale(0.7);
+    transform: scale(0.55) translateY(10px);
   }
 
-  to {
+  55% {
     opacity: 1;
 
-    transform: scale(1);
+    transform: scale(1.12) translateY(-2px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* =========================================================
+   REVEAL PARTICLES
+========================================================= */
+
+.engagement-reveal-burst {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 8;
+}
+
+.engagement-reveal-burst span {
+  position: absolute;
+
+  color: #b88a46;
+
+  font-size: 15px;
+
+  opacity: 0;
+
+  animation: revealSpark 1.4s ease-out forwards;
+}
+
+.engagement-reveal-burst span:nth-child(1) {
+  left: 18%;
+  top: 50%;
+}
+
+.engagement-reveal-burst span:nth-child(2) {
+  right: 20%;
+  top: 35%;
+
+  animation-delay: 0.08s;
+}
+
+.engagement-reveal-burst span:nth-child(3) {
+  left: 35%;
+  bottom: 18%;
+
+  animation-delay: 0.14s;
+}
+
+.engagement-reveal-burst span:nth-child(4) {
+  right: 32%;
+  bottom: 22%;
+
+  animation-delay: 0.2s;
+}
+
+@keyframes revealSpark {
+  0% {
+    opacity: 0;
+
+    transform: translate(0, 0) scale(0.2) rotate(0deg);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: translate(var(--spark-x, 0), -45px) scale(1.2) rotate(120deg);
   }
 }
 
@@ -879,6 +1201,7 @@
   transition:
     max-height 0.8s ease,
     margin 0.8s ease,
+    padding 0.8s ease,
     opacity 0.8s ease,
     transform 0.8s ease;
 
@@ -903,6 +1226,19 @@
     rgba(179, 138, 84, 0.1),
     rgba(179, 138, 84, 0.035)
   );
+
+  animation: revealMessageGlow 3s ease-in-out infinite;
+}
+
+@keyframes revealMessageGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(179, 138, 84, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 28px rgba(179, 138, 84, 0.13);
+  }
 }
 
 .engagement-reveal-small {
@@ -981,13 +1317,11 @@
 
 .quote-left {
   top: -2px;
-
   left: 0;
 }
 
 .quote-right {
   right: 0;
-
   bottom: -15px;
 }
 
@@ -1027,6 +1361,19 @@
   color: #a6783b;
 
   font-size: 17px;
+
+  animation: detailIconPulse 3s ease-in-out infinite;
+}
+
+@keyframes detailIconPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15) rotate(4deg);
+  }
 }
 
 .engagement-detail-label {
@@ -1261,6 +1608,19 @@
   color: #a6783b;
 
   font-size: 18px;
+
+  animation: calendarHeart 2.5s ease-in-out infinite;
+}
+
+@keyframes calendarHeart {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
 }
 
 .engagement-calendar-text {
@@ -1342,6 +1702,13 @@
 
   .engagement-card {
     padding: 42px 22px 35px;
+
+    /*
+      Prevent expensive continuous floating
+      from feeling unstable while touching.
+    */
+
+    animation-duration: 9s;
   }
 
   .engagement-card::before {
@@ -1366,6 +1733,18 @@
 
   .engagement-scratch-card {
     min-height: 140px;
+
+    /*
+      Disable hover transform on touch-sized screens.
+    */
+
+    transition:
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+  .engagement-scratch-card:hover {
+    transform: none;
   }
 
   .engagement-scratch-value {
@@ -1564,6 +1943,10 @@
     font-size: 41px;
   }
 
+  .engagement-scratch-wrapper {
+    gap: 4px;
+  }
+
   .engagement-scratch-card {
     min-height: 110px;
   }
@@ -1583,6 +1966,11 @@
   .engagement-countdown-number {
     font-size: 20px;
   }
+
+  .engagement-scratch-label {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
 }
 
 /* =========================================================
@@ -1598,13 +1986,44 @@
   .engagement-petal,
   .engagement-top-ornament span,
   .engagement-bottom-ornament span,
-  .engagement-divider span {
+  .engagement-divider span,
+  .engagement-scratch-card::before,
+  .engagement-scratch-card::after,
+  .engagement-scratch-glow,
+  .engagement-reveal-message.show,
+  .engagement-calendar-icon,
+  .engagement-scratch-card-decoration {
     animation: none !important;
   }
 
   .engagement-calendar-button,
   .engagement-scratch-card,
-  .engagement-countdown-item {
+  .engagement-countdown-item,
+  .engagement-reveal-message {
     transition: none !important;
+  }
+}
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+  .engagement-scratch-card {
+    cursor: default;
+  }
+
+  .engagement-scratch-card:hover {
+    transform: none;
+
+    border-color: rgba(179, 138, 84, 0.48);
+
+    box-shadow:
+      inset 0 0 35px rgba(230, 181, 89, 0.06),
+      0 15px 30px rgba(91, 54, 35, 0.12);
+  }
+
+  .engagement-calendar-button:hover {
+    transform: none;
   }
 }
