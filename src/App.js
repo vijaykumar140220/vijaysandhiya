@@ -8,7 +8,7 @@ import Celebration from "./components/Celebration";
 import Venue from "./components/Venue";
 import FinalMessage from "./components/FinalMessage";
 
-import weddingMusic from "./images/music.mp3";
+import weddingMusic from "./images/music1.mp3";
 
 function App() {
   const [isOpened, setIsOpened] = useState(false);
