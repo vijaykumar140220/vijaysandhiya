@@ -1,7 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Tamil:wght@400;500;600&display=swap");
+
 /* =========================================================
-   GRAND REVEAL
-   Luxury Tamil Wedding Invitation
-   Designed to match Celebration section
+   ROOT
 ========================================================= */
 
 .grand-reveal {
@@ -9,20 +9,38 @@
 
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
-  padding: 70px 20px 90px;
+  padding: 80px 20px;
 
   overflow: hidden;
+  isolation: isolate;
 
-  background: var(--invitation-background);
+  color: #f8ead8;
+
+  background:
+    radial-gradient(circle at 50% 0%, rgba(158, 42, 60, 0.48), transparent 38%),
+    radial-gradient(circle at 0% 50%, rgba(92, 8, 27, 0.9), transparent 42%),
+    radial-gradient(
+      circle at 100% 75%,
+      rgba(118, 20, 42, 0.65),
+      transparent 42%
+    ),
+    #570717;
+}
+
+.grand-reveal *,
+.grand-reveal *::before,
+.grand-reveal *::after {
+  box-sizing: border-box;
 }
 
 /* =========================================================
-   BACKGROUND PATTERN
+   BACKGROUND
 ========================================================= */
 
 .grand-reveal::before {
@@ -33,82 +51,46 @@
 
   pointer-events: none;
 
-  opacity: 0.13;
+  opacity: 0.11;
 
   background-image: radial-gradient(
     circle,
-    rgba(255, 226, 174, 0.55) 1px,
+    rgba(255, 226, 174, 0.65) 1px,
     transparent 1px
   );
 
-  background-size: 32px 32px;
+  background-size: 34px 34px;
 
-  animation: backgroundMove 18s linear infinite;
+  animation: grandBackgroundMove 20s linear infinite;
+
+  z-index: -5;
 }
 
-@keyframes backgroundMove {
-  0% {
+@keyframes grandBackgroundMove {
+  from {
     background-position: 0 0;
   }
 
-  100% {
-    background-position: 32px 32px;
+  to {
+    background-position: 68px 68px;
   }
 }
 
-/* =========================================================
-   BACKGROUND GLOW
-========================================================= */
+.grand-reveal::after {
+  content: "";
 
-.grand-glow {
   position: absolute;
-
-  width: 300px;
-  height: 300px;
-
-  border-radius: 50%;
-
-  background: rgba(240, 190, 110, 0.08);
-
-  filter: blur(45px);
+  inset: 0;
 
   pointer-events: none;
-}
 
-.glow-1 {
-  top: -100px;
-  left: -100px;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(20, 0, 7, 0.25) 100%
+  );
 
-  animation: glowFloatOne 7s ease-in-out infinite;
-}
-
-.glow-2 {
-  right: -120px;
-  bottom: -100px;
-
-  animation: glowFloatTwo 8s ease-in-out infinite;
-}
-
-@keyframes glowFloatOne {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(35px, 25px);
-  }
-}
-
-@keyframes glowFloatTwo {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(-30px, -30px);
-  }
+  z-index: -4;
 }
 
 /* =========================================================
@@ -118,89 +100,196 @@
 .grand-petal {
   position: absolute;
 
-  z-index: 1;
-
-  color: #e8c67d;
-
-  opacity: 0.65;
-
   pointer-events: none;
+  user-select: none;
 
-  font-size: 20px;
+  color: rgba(234, 196, 122, 0.65);
 
-  animation: floatingPetal 6s ease-in-out infinite;
+  text-shadow:
+    0 0 8px rgba(238, 195, 112, 0.45),
+    0 0 25px rgba(238, 195, 112, 0.2);
+
+  z-index: -1;
+
+  animation: grandPetalFloat 9s ease-in-out infinite;
 }
 
 .petal-1 {
-  top: 12%;
+  top: 9%;
   left: 8%;
-
-  animation-delay: 0s;
+  font-size: 24px;
 }
 
 .petal-2 {
-  top: 25%;
-  right: 10%;
-
-  animation-delay: -2s;
-
-  color: #f0d5a2;
+  top: 18%;
+  right: 9%;
+  font-size: 30px;
+  animation-delay: 1.4s;
 }
 
 .petal-3 {
-  top: 55%;
-  left: 5%;
-
-  animation-delay: -4s;
-
-  font-size: 14px;
+  top: 48%;
+  left: 4%;
+  font-size: 17px;
+  animation-delay: 2.4s;
 }
 
 .petal-4 {
-  bottom: 22%;
-  right: 7%;
-
-  animation-delay: -1s;
-
-  font-size: 18px;
+  bottom: 20%;
+  right: 6%;
+  font-size: 27px;
+  animation-delay: 3.3s;
 }
 
 .petal-5 {
-  bottom: 8%;
-  left: 15%;
-
-  animation-delay: -3s;
-
-  font-size: 13px;
+  bottom: 9%;
+  left: 13%;
+  font-size: 21px;
+  animation-delay: 4.2s;
 }
 
-@keyframes floatingPetal {
+@keyframes grandPetalFloat {
   0%,
   100% {
-    transform: translateY(0) rotate(0deg);
+    opacity: 0.25;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.85);
+  }
 
-    opacity: 0.35;
+  25% {
+    opacity: 0.85;
+    transform: translate3d(18px, -22px, 0) rotate(15deg) scale(1.05);
   }
 
   50% {
-    transform: translateY(-18px) rotate(12deg);
+    opacity: 0.4;
+    transform: translate3d(-12px, -40px, 0) rotate(-15deg) scale(0.9);
+  }
 
-    opacity: 0.85;
+  75% {
+    opacity: 0.8;
+    transform: translate3d(22px, -20px, 0) rotate(25deg) scale(1.1);
   }
 }
 
 /* =========================================================
-   MAIN CONTAINER
+   GLOWS
+========================================================= */
+
+.grand-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(80px);
+
+  z-index: -3;
+}
+
+.glow-1 {
+  width: 480px;
+  height: 480px;
+
+  top: -220px;
+  left: -180px;
+
+  background: rgba(224, 170, 75, 0.16);
+
+  animation: grandGlowOne 10s ease-in-out infinite;
+}
+
+.glow-2 {
+  width: 500px;
+  height: 500px;
+
+  right: -230px;
+  bottom: -240px;
+
+  background: rgba(213, 119, 61, 0.16);
+
+  animation: grandGlowTwo 12s ease-in-out infinite;
+}
+
+.glow-3 {
+  width: 280px;
+  height: 280px;
+
+  top: 48%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: rgba(255, 207, 120, 0.08);
+
+  filter: blur(100px);
+
+  animation: grandGlowThree 7s ease-in-out infinite;
+}
+
+@keyframes grandGlowOne {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(45px, 35px) scale(1.15);
+  }
+}
+
+@keyframes grandGlowTwo {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-40px, -35px) scale(1.12);
+  }
+}
+
+@keyframes grandGlowThree {
+  0%,
+  100% {
+    opacity: 0.25;
+
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  50% {
+    opacity: 0.65;
+
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+}
+
+/* =========================================================
+   CONTAINER
 ========================================================= */
 
 .grand-reveal-container {
   position: relative;
 
-  z-index: 3;
+  width: min(100%, 900px);
 
-  width: min(900px, 100%);
+  z-index: 2;
 
-  margin: 0 auto;
+  animation: grandContainerReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes grandContainerReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(45px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* =========================================================
@@ -208,49 +297,56 @@
 ========================================================= */
 
 .grand-top-ornament {
-  width: 240px;
-
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  gap: 9px;
+  gap: 12px;
 
-  margin: 0 auto 25px;
+  margin-bottom: 22px;
 
-  color: #e7c27c;
+  color: #d2aa65;
 
   font-family: "Cormorant Garamond", Georgia, serif;
 
-  animation: ornamentAppear 1.2s ease both;
-}
-
-.grand-top-ornament span {
-  font-size: 12px;
+  font-size: 17px;
 }
 
 .grand-top-ornament i {
-  display: block;
-
-  width: 65px;
-
+  width: 80px;
   height: 1px;
 
-  background: linear-gradient(to right, transparent, #d9ae63, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(211, 171, 99, 0.85),
+    transparent
+  );
 }
 
-@keyframes ornamentAppear {
-  from {
-    opacity: 0;
+.grand-top-ornament span {
+  animation: grandOrnamentGlow 3s ease-in-out infinite;
+}
 
-    transform: scaleX(0.5);
+.grand-top-ornament span:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+@keyframes grandOrnamentGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.85);
   }
 
-  to {
+  50% {
     opacity: 1;
+    transform: scale(1.2);
 
-    transform: scaleX(1);
+    text-shadow:
+      0 0 10px rgba(240, 202, 130, 0.8),
+      0 0 25px rgba(240, 202, 130, 0.35);
   }
 }
 
@@ -261,347 +357,38 @@
 .grand-reveal-card {
   position: relative;
 
-  width: 100%;
-
-  min-height: 820px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: flex-start;
-
-  padding: 55px 55px 45px;
+  padding: 60px 65px 45px;
 
   overflow: hidden;
 
   text-align: center;
 
-  border-radius: 30px;
-
-  border: 1px solid rgba(206, 162, 86, 0.85);
-
   background:
     radial-gradient(
-      circle at 20% 15%,
-      rgba(255, 255, 255, 0.9),
+      circle at 20% 10%,
+      rgba(255, 255, 255, 0.96),
       transparent 30%
     ),
     radial-gradient(
-      circle at 85% 85%,
-      rgba(255, 235, 205, 0.65),
-      transparent 32%
+      circle at 85% 90%,
+      rgba(244, 213, 174, 0.7),
+      transparent 35%
     ),
-    linear-gradient(145deg, #fffaf1, #f8eee3, #fffaf3);
+    linear-gradient(145deg, #fffaf1, #f7ecdf, #fffaf4);
+
+  border: 1px solid rgba(203, 158, 81, 0.9);
 
   box-shadow:
-    0 25px 65px rgba(0, 0, 0, 0.32),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    0 45px 110px rgba(0, 0, 0, 0.42),
+    0 0 55px rgba(223, 176, 92, 0.1),
+    inset 0 0 80px rgba(205, 155, 70, 0.035);
 
-  animation: cardReveal 1s ease both;
+  color: #5c3c2a;
+
+  animation: grandCardFloat 8s ease-in-out infinite;
 }
 
-@keyframes cardReveal {
-  from {
-    opacity: 0;
-
-    transform: translateY(30px) scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* =========================================================
-   INNER BORDER
-========================================================= */
-
-.grand-reveal-card::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 16px;
-
-  border: 1px solid rgba(159, 119, 70, 0.22);
-
-  border-radius: 22px;
-
-  pointer-events: none;
-}
-
-.grand-reveal-card::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 25px;
-
-  border: 1px solid rgba(159, 119, 70, 0.08);
-
-  border-radius: 18px;
-
-  pointer-events: none;
-}
-
-/* =========================================================
-   CORNER DECORATIONS
-========================================================= */
-
-.card-corner {
-  position: absolute;
-
-  width: 55px;
-  height: 55px;
-
-  opacity: 0.65;
-
-  pointer-events: none;
-}
-
-.card-corner::before,
-.card-corner::after {
-  content: "";
-
-  position: absolute;
-
-  background: #c3944e;
-}
-
-.corner-top-left {
-  top: 27px;
-  left: 27px;
-}
-
-.corner-top-left::before {
-  top: 0;
-  left: 0;
-
-  width: 1px;
-  height: 35px;
-}
-
-.corner-top-left::after {
-  top: 0;
-  left: 0;
-
-  width: 35px;
-  height: 1px;
-}
-
-.corner-top-right {
-  top: 27px;
-  right: 27px;
-}
-
-.corner-top-right::before {
-  top: 0;
-  right: 0;
-
-  width: 1px;
-  height: 35px;
-}
-
-.corner-top-right::after {
-  top: 0;
-  right: 0;
-
-  width: 35px;
-  height: 1px;
-}
-
-.corner-bottom-left {
-  bottom: 27px;
-  left: 27px;
-}
-
-.corner-bottom-left::before {
-  bottom: 0;
-  left: 0;
-
-  width: 1px;
-  height: 35px;
-}
-
-.corner-bottom-left::after {
-  bottom: 0;
-  left: 0;
-
-  width: 35px;
-  height: 1px;
-}
-
-.corner-bottom-right {
-  right: 27px;
-  bottom: 27px;
-}
-
-.corner-bottom-right::before {
-  right: 0;
-  bottom: 0;
-
-  width: 1px;
-  height: 35px;
-}
-
-.corner-bottom-right::after {
-  right: 0;
-  bottom: 0;
-
-  width: 35px;
-  height: 1px;
-}
-
-/* =========================================================
-   GANESHA WRAPPER
-========================================================= */
-
-.ganesha-wrapper {
-  position: relative;
-
-  width: 155px;
-  height: 155px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 18px;
-
-  animation: ganeshaEntrance 1.2s ease 0.2s both;
-}
-
-@keyframes ganeshaEntrance {
-  from {
-    opacity: 0;
-
-    transform: translateY(-20px) scale(0.8);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* =========================================================
-   GANESHA CIRCLES
-========================================================= */
-
-.ganesha-ring {
-  position: absolute;
-
-  border-radius: 50%;
-
-  pointer-events: none;
-}
-
-.ring-one {
-  inset: 0;
-
-  border: 1px solid rgba(184, 143, 76, 0.28);
-
-  animation: ringPulse 4s ease-in-out infinite;
-}
-
-.ring-two {
-  inset: 8px;
-
-  border: 1px dashed rgba(184, 143, 76, 0.22);
-
-  animation: ringRotate 18s linear infinite;
-}
-
-@keyframes ringPulse {
-  0%,
-  100% {
-    transform: scale(1);
-
-    opacity: 0.45;
-  }
-
-  50% {
-    transform: scale(1.04);
-
-    opacity: 0.9;
-  }
-}
-
-@keyframes ringRotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* =========================================================
-   GANESHA CIRCLE
-========================================================= */
-
-.ganesha-circle {
-  position: relative;
-
-  z-index: 2;
-
-  width: 125px;
-  height: 125px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: radial-gradient(circle, #fffdf9 0%, #faf2e5 65%, #f0dfc8 100%);
-
-  border: 1px solid rgba(164, 132, 88, 0.35);
-
-  box-shadow:
-    0 10px 30px rgba(91, 70, 43, 0.12),
-    inset 0 0 25px rgba(255, 255, 255, 0.9);
-}
-
-.ganesha-circle::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 7px;
-
-  border-radius: 50%;
-
-  border: 1px solid rgba(164, 132, 88, 0.14);
-
-  pointer-events: none;
-}
-
-.ganesha-circle img {
-  width: 108px;
-  height: 108px;
-
-  display: block;
-
-  object-fit: contain;
-
-  opacity: 0.93;
-
-  filter: grayscale(100%) contrast(0.86) brightness(1.04);
-
-  animation: ganeshaFloat 4s ease-in-out infinite;
-}
-
-@keyframes ganeshaFloat {
+@keyframes grandCardFloat {
   0%,
   100% {
     transform: translateY(0);
@@ -612,204 +399,756 @@
   }
 }
 
-/* =========================================================
-   TAMIL HEADING
-========================================================= */
+.grand-reveal-card::before {
+  content: "";
 
-.tamil-heading {
-  position: relative;
+  position: absolute;
+  inset: 13px;
 
-  z-index: 2;
+  border: 1px solid rgba(157, 115, 59, 0.3);
 
-  margin-top: 2px;
+  pointer-events: none;
 
-  color: #65091b;
-
-  font-family: "Noto Serif Tamil", "Latha", "Nirmala UI", serif;
-
-  font-size: 24px;
-
-  font-weight: 500;
-
-  letter-spacing: 2px;
-
-  animation: textReveal 1s ease 0.45s both;
+  z-index: 1;
 }
 
-/* =========================================================
-   ENGLISH LABEL
-========================================================= */
+.grand-reveal-card::after {
+  content: "";
 
-.invitation-label {
-  position: relative;
+  position: absolute;
 
-  z-index: 2;
+  top: -100%;
+  left: -40%;
 
-  margin-top: 7px;
+  width: 45%;
+  height: 300%;
 
-  color: #a6783b;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
 
-  font-family: "Cormorant Garamond", Georgia, serif;
+  transform: rotate(20deg);
 
-  font-size: 11px;
+  pointer-events: none;
 
-  letter-spacing: 4px;
-
-  text-transform: uppercase;
-
-  animation: textReveal 1s ease 0.55s both;
+  animation: grandCardShine 9s ease-in-out infinite;
 }
 
-@keyframes textReveal {
-  from {
-    opacity: 0;
-
-    transform: translateY(10px);
+@keyframes grandCardShine {
+  0%,
+  65% {
+    left: -50%;
   }
 
-  to {
-    opacity: 1;
-
-    transform: translateY(0);
+  82%,
+  100% {
+    left: 125%;
   }
 }
 
 /* =========================================================
-   TAMIL BLESSING
+   CARD CORNERS
 ========================================================= */
 
-.tamil-blessing {
-  position: relative;
+.card-corner {
+  position: absolute !important;
 
-  z-index: 2;
+  width: 42px;
+  height: 42px;
 
-  margin-top: 18px;
+  border-color: rgba(171, 127, 63, 0.55);
 
-  color: #806d5b;
+  pointer-events: none;
 
-  font-family: "Noto Serif Tamil", "Latha", "Nirmala UI", serif;
+  z-index: 5;
+}
 
-  font-size: 16px;
+.corner-top-left {
+  top: 27px;
+  left: 27px;
 
-  line-height: 1.9;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
 
-  letter-spacing: 0.5px;
+.corner-top-right {
+  top: 27px;
+  right: 27px;
 
-  animation: textReveal 1s ease 0.65s both;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+
+.corner-bottom-left {
+  bottom: 27px;
+  left: 27px;
+
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+.corner-bottom-right {
+  bottom: 27px;
+  right: 27px;
+
+  border-right: 1px solid;
+  border-bottom: 1px solid;
 }
 
 /* =========================================================
-   DIVIDER
+   GANESHA
 ========================================================= */
 
-.grand-divider {
+.ganesha-wrapper {
   position: relative;
 
-  z-index: 2;
+  width: 170px;
+  height: 170px;
 
-  width: 230px;
+  margin: 0 auto 22px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.ganesha-circle {
+  position: relative;
+
+  width: 118px;
+  height: 118px;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  gap: 9px;
+  border-radius: 50%;
 
-  margin: 24px auto 22px;
+  overflow: hidden;
 
-  color: #b08a54;
+  background: radial-gradient(
+    circle at 35% 25%,
+    #fff7d9,
+    #e6c67e 45%,
+    #a97a35 100%
+  );
+
+  border: 2px solid rgba(170, 128, 59, 0.7);
+
+  box-shadow:
+    0 0 0 7px rgba(183, 139, 68, 0.08),
+    0 0 35px rgba(187, 139, 61, 0.22),
+    inset 0 0 30px rgba(255, 255, 255, 0.35);
+
+  animation: ganeshaFloat 5s ease-in-out infinite;
 }
 
-.grand-divider span {
-  font-size: 13px;
+.ganesha-circle img {
+  width: 78%;
+  height: 78%;
 
-  animation: sparkle 2.5s ease-in-out infinite;
+  object-fit: contain;
+
+  filter: drop-shadow(0 5px 10px rgba(100, 52, 19, 0.18));
+
+  animation: ganeshaImageGlow 3.5s ease-in-out infinite;
 }
 
-.grand-divider i {
-  display: block;
+.ganesha-ring {
+  position: absolute;
 
-  width: 55px;
+  border-radius: 50%;
 
-  height: 1px;
+  border: 1px solid rgba(181, 139, 72, 0.42);
 
-  background: linear-gradient(to right, transparent, #b08a54, transparent);
+  pointer-events: none;
 }
 
-@keyframes sparkle {
+.ring-one {
+  width: 135px;
+  height: 135px;
+
+  animation: ringRotate 13s linear infinite;
+}
+
+.ring-two {
+  width: 153px;
+  height: 153px;
+
+  border-style: dashed;
+
+  animation: ringRotateReverse 18s linear infinite;
+}
+
+.ring-three {
+  width: 170px;
+  height: 170px;
+
+  border-color: rgba(181, 139, 72, 0.18);
+
+  animation: ringPulse 4s ease-in-out infinite;
+}
+
+@keyframes ganeshaFloat {
   0%,
   100% {
-    opacity: 0.5;
+    transform: translateY(0);
+  }
 
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes ganeshaImageGlow {
+  0%,
+  100% {
     transform: scale(1);
   }
 
   50% {
-    opacity: 1;
+    transform: scale(1.04);
+  }
+}
 
-    transform: scale(1.3);
+@keyframes ringRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ringRotateReverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes ringPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.04);
   }
 }
 
 /* =========================================================
-   INTRODUCTION
+   GANESHA SPARKS
+========================================================= */
+
+.ganesha-spark {
+  position: absolute;
+
+  color: #b28a4f;
+
+  font-size: 13px;
+
+  text-shadow: 0 0 8px rgba(205, 161, 80, 0.8);
+
+  animation: ganeshaSpark 3s ease-in-out infinite;
+}
+
+.spark-one {
+  top: 16px;
+  left: 13px;
+}
+
+.spark-two {
+  top: 32px;
+  right: 8px;
+
+  animation-delay: 0.8s;
+}
+
+.spark-three {
+  bottom: 28px;
+  left: 5px;
+
+  animation-delay: 1.5s;
+}
+
+.spark-four {
+  right: 4px;
+  bottom: 17px;
+
+  animation-delay: 2.2s;
+}
+
+@keyframes ganeshaSpark {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.7) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25) rotate(20deg);
+  }
+}
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+.tamil-heading {
+  color: #65091b;
+
+  font-family: "Noto Serif Tamil", serif;
+
+  font-size: 26px;
+
+  font-weight: 500;
+
+  animation: grandTextReveal 1s 0.4s ease both;
+}
+
+.invitation-label {
+  margin-top: 9px;
+
+  color: #a6783b;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 5px;
+}
+
+.tamil-blessing {
+  margin-top: 18px;
+
+  color: #765b49;
+
+  font-family: "Noto Serif Tamil", serif;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.grand-divider,
+.bottom-ornament {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 11px;
+
+  color: #b08a54;
+}
+
+.grand-divider {
+  margin: 25px auto 28px;
+
+  max-width: 310px;
+}
+
+.grand-divider i,
+.bottom-ornament i {
+  width: 60px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(176, 138, 84, 0.75),
+    transparent
+  );
+}
+
+.grand-divider span,
+.bottom-ornament span {
+  animation: dividerSpark 3s ease-in-out infinite;
+}
+
+@keyframes dividerSpark {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+
+    text-shadow: 0 0 10px rgba(212, 169, 92, 0.7);
+  }
+}
+
+/* =========================================================
+   INVITATION INTRO
 ========================================================= */
 
 .invitation-intro {
-  position: relative;
+  width: 100%;
+  max-width: 700px;
 
-  z-index: 2;
+  margin: 0 auto;
 
-  color: #6b5847;
+  color: #806d5b;
 
   font-family: "Cormorant Garamond", Georgia, serif;
 
   font-size: 20px;
-
   line-height: 1.45;
 
-  letter-spacing: 0.2px;
-
-  animation: textReveal 1s ease 0.75s both;
+  text-align: center;
 }
 
-.invitation-intro p {
-  margin: 0 0 5px;
+.invitation-intro .intro-line {
+  margin: 0;
+}
+
+.invitation-intro .intro-line + .intro-line {
+  margin-top: 3px;
 }
 
 /* =========================================================
-   COUPLE DISPLAY
+   MOBILE — EXACTLY TWO LINES
+========================================================= */
+
+@media (max-width: 600px) {
+  .invitation-intro {
+    width: 100%;
+
+    max-width: none;
+
+    padding: 0 3px;
+
+    font-size: 14px;
+
+    line-height: 1.45;
+  }
+
+  .invitation-intro .intro-line {
+    white-space: nowrap;
+  }
+
+  .invitation-intro .intro-line + .intro-line {
+    margin-top: 2px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .invitation-intro {
+    font-size: 12.5px;
+
+    padding: 0 1px;
+  }
+
+  .invitation-intro .intro-line {
+    white-space: nowrap;
+  }
+}
+
+/* =========================================================
+   COUPLE
+   DESKTOP + MOBILE = 3 COLUMNS
 ========================================================= */
 
 .couple-display {
-  position: relative;
-
-  z-index: 2;
-
-  width: 100%;
-
-  max-width: 750px;
-
   display: grid;
 
   grid-template-columns:
-    1fr
-    90px
-    1fr;
+    minmax(0, 1fr)
+    75px
+    minmax(0, 1fr);
 
   align-items: center;
 
+  gap: 15px;
+
   margin-top: 30px;
 
-  animation: coupleReveal 1.1s ease 0.85s both;
+  width: 100%;
 }
 
-@keyframes coupleReveal {
+.person-block {
+  min-width: 0;
+
+  text-align: center;
+}
+
+.person-small-label {
+  color: #a6783b;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+}
+
+.person-name {
+  margin: 8px 0;
+
+  color: #65091b;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: clamp(34px, 5vw, 50px);
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.parent-label {
+  color: #b08a54;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+}
+
+.parent-names {
+  margin: 5px 0 0;
+
+  color: #806d5b;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 14px;
+
+  line-height: 1.4;
+}
+
+.couple-center {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+}
+
+.center-line {
+  width: 1px;
+  height: 35px;
+
+  background: linear-gradient(
+    transparent,
+    rgba(176, 138, 84, 0.65),
+    transparent
+  );
+}
+
+.heart-symbol {
+  color: #8a1730;
+
+  font-size: 23px;
+
+  animation: heartPulse 1.8s ease-in-out infinite;
+
+  text-shadow: 0 0 12px rgba(138, 23, 48, 0.25);
+}
+
+.and-symbol {
+  color: #b08a54;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 21px;
+
+  font-style: italic;
+}
+
+@keyframes heartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.22);
+  }
+}
+
+/* =========================================================
+   BOTTOM ORNAMENT
+========================================================= */
+
+.bottom-ornament {
+  margin-top: 34px;
+}
+
+.bottom-ornament i {
+  width: 70px;
+}
+
+/* =========================================================
+   SPECIAL DAYS
+========================================================= */
+
+.special-days {
+  position: relative;
+
+  margin-top: 30px;
+
+  width: 100%;
+}
+
+.special-days-heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+
+  color: #a6783b;
+
+  font-family: "Montserrat", sans-serif;
+}
+
+.heading-line {
+  width: 55px;
+  height: 1px;
+
+  background: linear-gradient(90deg, transparent, rgba(166, 120, 59, 0.6));
+}
+
+.heading-line:last-child {
+  background: linear-gradient(90deg, rgba(166, 120, 59, 0.6), transparent);
+}
+
+.heading-text {
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 4px;
+
+  white-space: nowrap;
+}
+
+.heading-star {
+  font-size: 10px;
+
+  animation: headingStarGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes headingStarGlow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+/* =========================================================
+   SPECIAL DAY GRID
+   ALWAYS TWO COLUMNS
+========================================================= */
+
+.special-days-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 18px;
+
+  width: 100%;
+}
+
+/* =========================================================
+   DATE CARD
+========================================================= */
+
+.special-day-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 220px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px 20px;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.9),
+      transparent 55%
+    ),
+    linear-gradient(145deg, #fffaf3, #f6e9dc);
+
+  border: 1px solid rgba(179, 138, 84, 0.55);
+
+  box-shadow:
+    0 15px 35px rgba(91, 54, 35, 0.12),
+    inset 0 0 35px rgba(213, 164, 82, 0.06);
+
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
+
+  animation: dateCardReveal 1s ease both;
+}
+
+.reception-date-card {
+  animation-delay: 1.35s;
+}
+
+.wedding-date-card {
+  animation-delay: 1.55s;
+}
+
+@keyframes dateCardReveal {
   from {
     opacity: 0;
 
-    transform: translateY(25px) scale(0.97);
+    transform: translateY(35px) scale(0.94);
   }
 
   to {
@@ -819,237 +1158,419 @@
   }
 }
 
-/* =========================================================
-   PERSON BLOCK
-========================================================= */
+.special-day-card:hover {
+  transform: translateY(-8px) scale(1.015);
 
-.person-block {
-  min-width: 0;
+  border-color: rgba(179, 138, 84, 0.9);
 
-  padding: 0 15px;
+  box-shadow:
+    0 25px 50px rgba(91, 54, 35, 0.18),
+    0 0 35px rgba(201, 154, 77, 0.1);
 }
 
-.person-small-label {
-  margin-bottom: 6px;
+/* =========================================================
+   CARD GLOW
+========================================================= */
 
-  color: #a6783b;
+.date-card-glow {
+  position: absolute;
 
-  font-family: "Cormorant Garamond", Georgia, serif;
+  width: 180px;
+  height: 180px;
+
+  top: -100px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(220, 174, 94, 0.18),
+    transparent 70%
+  );
+
+  pointer-events: none;
+
+  animation: dateGlowPulse 4s ease-in-out infinite;
+}
+
+@keyframes dateGlowPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateX(-50%) scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+/* =========================================================
+   DATE CORNERS
+========================================================= */
+
+.date-card-corner {
+  position: absolute;
+
+  color: rgba(166, 120, 59, 0.5);
 
   font-size: 11px;
 
-  letter-spacing: 3px;
+  animation: cornerSpark 3s ease-in-out infinite;
+}
+
+.date-corner-tl {
+  top: 10px;
+  left: 12px;
+}
+
+.date-corner-tr {
+  top: 10px;
+  right: 12px;
+
+  animation-delay: 0.7s;
+}
+
+.date-corner-bl {
+  bottom: 10px;
+  left: 12px;
+
+  animation-delay: 1.4s;
+}
+
+.date-corner-br {
+  right: 12px;
+  bottom: 10px;
+
+  animation-delay: 2.1s;
+}
+
+@keyframes cornerSpark {
+  0%,
+  100% {
+    opacity: 0.35;
+
+    transform: scale(0.8) rotate(0);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.15) rotate(15deg);
+  }
 }
 
 /* =========================================================
-   PERSON NAME
+   DATE ICON
 ========================================================= */
 
-.person-name {
-  margin: 0;
+.date-card-icon {
+  position: relative;
 
-  color: #65091b;
+  width: 38px;
+  height: 38px;
 
-  font-family: "Great Vibes", "Brush Script MT", cursive;
-
-  font-size: clamp(48px, 6vw, 68px);
-
-  font-weight: 400;
-
-  line-height: 1;
-
-  white-space: nowrap;
-
-  transition:
-    transform 0.35s ease,
-    color 0.35s ease;
-}
-
-.person-block:hover .person-name {
-  transform: translateY(-4px);
-
-  color: #8c3029;
-}
-
-/* =========================================================
-   PARENT LABEL
-========================================================= */
-
-.parent-label {
-  margin-top: 13px;
-
-  color: #9a7b62;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 17px;
-
-  font-style: italic;
-}
-
-/* =========================================================
-   PARENT NAMES
-========================================================= */
-
-.parent-names {
-  margin: 3px 0 0;
-
-  color: #725e4d;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 17px;
-
-  line-height: 1.4;
-}
-
-/* =========================================================
-   CENTER
-========================================================= */
-
-.couple-center {
   display: flex;
 
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 8px;
+
+  border: 1px solid rgba(179, 138, 84, 0.45);
+
+  border-radius: 50%;
+
+  color: #a6783b;
+
+  font-size: 18px;
+
+  box-shadow: 0 0 18px rgba(179, 138, 84, 0.08);
+
+  animation: dateIconFloat 3s ease-in-out infinite;
+}
+
+.wedding-date-card .date-card-icon {
+  color: #8a1730;
+}
+
+@keyframes dateIconFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-4px) scale(1.08);
+  }
+}
+
+/* =========================================================
+   DATE LABEL
+========================================================= */
+
+.date-card-label {
+  color: #a6783b;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  letter-spacing: 4px;
+}
+
+/* =========================================================
+   DATE DIVIDER
+========================================================= */
+
+.date-card-divider {
+  display: flex;
 
   align-items: center;
   justify-content: center;
 
   gap: 7px;
+
+  width: 100%;
+
+  margin: 10px 0;
 }
 
-.center-line {
-  width: 1px;
+.date-card-divider span {
+  width: 38px;
+  height: 1px;
 
-  height: 32px;
-
-  background: linear-gradient(to bottom, transparent, #c3944e, transparent);
+  background: linear-gradient(90deg, transparent, rgba(179, 138, 84, 0.55));
 }
 
-.heart-symbol {
-  color: #a6783b;
-
-  font-size: 17px;
-
-  animation: heartBeat 2s ease-in-out infinite;
+.date-card-divider span:last-child {
+  background: linear-gradient(90deg, rgba(179, 138, 84, 0.55), transparent);
 }
 
-.and-symbol {
-  color: #8c3029;
+.date-card-divider b {
+  color: #b08a54;
+
+  font-size: 9px;
+
+  animation: dividerMiniPulse 2s ease-in-out infinite;
+}
+
+@keyframes dividerMiniPulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   DATE TEXT
+========================================================= */
+
+.date-card-date {
+  display: block;
+
+  color: #65091b;
 
   font-family: "Cormorant Garamond", Georgia, serif;
 
-  font-size: 27px;
+  font-size: clamp(17px, 2.2vw, 23px);
 
-  line-height: 1;
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+
+  letter-spacing: 0.2px;
 }
 
-@keyframes heartBeat {
+.date-card-time {
+  margin-top: 7px;
+
+  color: #806d5b;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 15px;
+
+  white-space: nowrap;
+}
+
+.date-card-location {
+  margin-top: 8px;
+
+  color: #a6783b;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+}
+
+/* =========================================================
+   BOTTOM SPARKLES
+========================================================= */
+
+.date-card-bottom {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 13px;
+
+  color: rgba(166, 120, 59, 0.5);
+
+  font-size: 9px;
+}
+
+.date-card-bottom span {
+  animation: bottomSpark 2.5s ease-in-out infinite;
+}
+
+.date-card-bottom span:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.date-card-bottom span:nth-child(3) {
+  animation-delay: 1.6s;
+}
+
+@keyframes bottomSpark {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* =========================================================
+   CONNECTION
+========================================================= */
+
+.date-connection {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 18px;
+}
+
+.connection-line {
+  width: 70px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(176, 138, 84, 0.5),
+    transparent
+  );
+}
+
+.connection-heart {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: #8a1730;
+
+  background: #fff8ed;
+
+  border: 1px solid rgba(179, 138, 84, 0.55);
+
+  box-shadow: 0 5px 18px rgba(91, 54, 35, 0.1);
+
+  animation: connectionHeart 1.8s ease-in-out infinite;
+}
+
+@keyframes connectionHeart {
   0%,
   100% {
     transform: scale(1);
   }
 
   50% {
-    transform: scale(1.25);
+    transform: scale(1.15);
   }
 }
 
 /* =========================================================
-   BOTTOM ORNAMENT
+   FOOTER
 ========================================================= */
 
-.bottom-ornament {
-  position: relative;
-
-  z-index: 2;
-
-  width: 210px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 8px;
-
-  margin-top: 30px;
-
-  color: #b08a54;
-}
-
-.bottom-ornament span {
-  font-size: 11px;
-
-  animation: sparkle 2.5s ease-in-out infinite;
-}
-
-.bottom-ornament i {
-  width: 48px;
-
-  height: 1px;
-
-  background: linear-gradient(to right, transparent, #b08a54, transparent);
-}
-
-/* =========================================================
-   DATE TEASER
-========================================================= */
-
-.date-teaser {
-  position: relative;
-
-  z-index: 2;
-
+.date-teaser-footer {
   display: flex;
 
   flex-direction: column;
 
   align-items: center;
 
-  margin-top: 20px;
-
-  padding: 12px 30px;
-
-  border-top: 1px solid rgba(179, 138, 84, 0.18);
-
-  border-bottom: 1px solid rgba(179, 138, 84, 0.18);
+  margin-top: 22px;
 }
 
-.date-teaser span {
+.date-teaser-footer span {
   color: #a6783b;
 
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Montserrat", sans-serif;
 
-  font-size: 10px;
+  font-size: 8px;
+
+  font-weight: 600;
 
   letter-spacing: 3px;
 }
 
-.date-teaser strong {
-  margin-top: 3px;
+.date-teaser-footer strong {
+  margin-top: 5px;
 
   color: #65091b;
 
   font-family: "Cormorant Garamond", Georgia, serif;
 
-  font-size: 20px;
+  font-size: 23px;
 
-  font-weight: 500;
-
-  letter-spacing: 3px;
+  font-weight: 600;
 }
 
-.date-teaser small {
-  margin-top: 2px;
+.date-teaser-footer small {
+  margin-top: 4px;
 
   color: #927c68;
 
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Montserrat", sans-serif;
 
-  font-size: 10px;
+  font-size: 7px;
 
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 /* =========================================================
@@ -1057,401 +1578,147 @@
 ========================================================= */
 
 .scroll-reveal {
-  position: relative;
-
-  z-index: 2;
-
-  margin-top: 28px;
-
   display: flex;
 
   flex-direction: column;
 
   align-items: center;
 
-  gap: 8px;
+  margin-top: 27px;
+
+  color: #a6783b;
 }
 
 .scroll-text {
-  color: #9b8270;
+  font-family: "Montserrat", sans-serif;
 
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 7px;
 
-  font-size: 11px;
+  font-weight: 600;
 
   letter-spacing: 3px;
 }
 
 .scroll-arrow {
-  color: #9d8069;
+  margin-top: 7px;
 
-  font-size: 23px;
+  font-size: 19px;
 
-  line-height: 1;
-
-  animation: scrollArrow 1.8s ease-in-out infinite;
+  animation: scrollBounce 1.6s ease-in-out infinite;
 }
 
-@keyframes scrollArrow {
+@keyframes scrollBounce {
   0%,
   100% {
     transform: translateY(0);
-
-    opacity: 0.5;
+    opacity: 0.55;
   }
 
   50% {
     transform: translateY(8px);
-
     opacity: 1;
   }
-}
-
-/* =========================================================
-   HOVER EFFECT
-========================================================= */
-
-.grand-reveal-card:hover {
-  box-shadow:
-    0 30px 75px rgba(0, 0, 0, 0.36),
-    0 0 35px rgba(231, 194, 124, 0.1),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
 /* =========================================================
    TABLET
 ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   .grand-reveal {
-    padding: 45px 14px 65px;
+    padding: 50px 14px;
   }
 
   .grand-reveal-card {
-    min-height: auto;
-
-    padding: 45px 28px 40px;
-
-    border-radius: 26px;
+    padding: 50px 35px 38px;
   }
 
-  .grand-reveal-card::before {
-    inset: 12px;
-
-    border-radius: 18px;
-  }
-
-  .grand-reveal-card::after {
-    inset: 20px;
-
-    border-radius: 15px;
-  }
-
-  .ganesha-wrapper {
-    width: 140px;
-    height: 140px;
-  }
-
-  .ganesha-circle {
-    width: 115px;
-    height: 115px;
-  }
-
-  .ganesha-circle img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .tamil-heading {
-    font-size: 21px;
-  }
-
-  .tamil-blessing {
-    font-size: 14px;
-  }
-
-  .invitation-intro {
-    font-size: 18px;
-  }
+  /*
+     IMPORTANT:
+     Groom / Heart / Bride remain LEFT-CENTER-RIGHT.
+  */
 
   .couple-display {
     grid-template-columns:
-      1fr
-      65px
-      1fr;
+      minmax(0, 1fr)
+      55px
+      minmax(0, 1fr);
+
+    gap: 8px;
   }
 
   .person-name {
-    font-size: clamp(40px, 7vw, 55px);
-
-    white-space: nowrap;
+    font-size: clamp(29px, 5.5vw, 42px);
   }
 
   .parent-names {
-    font-size: 15px;
+    font-size: 13px;
   }
 
-  .person-block {
-    padding: 0 8px;
+  /*
+     IMPORTANT:
+     Reception / Wedding remain LEFT-RIGHT.
+  */
+
+  .special-days-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap: 12px;
+  }
+
+  .special-day-card {
+    padding: 25px 12px;
+  }
+
+  .date-card-date {
+    font-size: clamp(15px, 3vw, 20px);
+  }
+
+  .date-card-time {
+    font-size: 13px;
   }
 }
 
 /* =========================================================
    MOBILE
+   IMPORTANT:
+   NEVER CHANGE THESE TO 1fr.
 ========================================================= */
 
-@media (max-width: 560px) {
+@media (max-width: 600px) {
   .grand-reveal {
-    padding: 30px 10px 55px;
+    padding: 30px 7px 40px;
   }
 
   .grand-top-ornament {
-    width: 190px;
-
-    margin-bottom: 18px;
-  }
-
-  .grand-top-ornament i {
-    width: 45px;
-  }
-
-  .grand-reveal-card {
-    padding: 35px 18px 32px;
-
-    border-radius: 24px;
-  }
-
-  .grand-reveal-card::before {
-    inset: 9px;
-
-    border-radius: 17px;
-  }
-
-  .grand-reveal-card::after {
-    inset: 16px;
-
-    border-radius: 14px;
-  }
-
-  .card-corner {
-    display: none;
-  }
-
-  /* =======================================================
-     GANESHA
-  ======================================================= */
-
-  .ganesha-wrapper {
-    width: 120px;
-    height: 120px;
+    gap: 7px;
 
     margin-bottom: 14px;
   }
 
-  .ganesha-circle {
-    width: 100px;
-    height: 100px;
-  }
-
-  .ganesha-circle img {
-    width: 87px;
-    height: 87px;
-  }
-
-  /* =======================================================
-     HEADING
-  ======================================================= */
-
-  .tamil-heading {
-    font-size: 18px;
-
-    letter-spacing: 1px;
-  }
-
-  .invitation-label {
-    font-size: 9px;
-
-    letter-spacing: 3px;
-  }
-
-  /* =======================================================
-     TAMIL BLESSING
-     
-     IMPORTANT:
-     The JSX already contains <br /> between the two
-     Tamil lines. nowrap prevents either line from wrapping
-     into additional lines.
-  ======================================================= */
-
-  .tamil-blessing {
-    margin-top: 12px;
-
-    font-size: 12.5px;
-
-    line-height: 1.75;
-
-    white-space: nowrap;
-  }
-
-  /* =======================================================
-     DIVIDER
-  ======================================================= */
-
-  .grand-divider {
-    width: 180px;
-
-    margin: 18px auto;
-  }
-
-  .grand-divider i {
-    width: 38px;
-  }
-
-  /* =======================================================
-     INTRO
-  ======================================================= */
-
-  .invitation-intro {
-    font-size: 16px;
-
-    line-height: 1.4;
-  }
-
-  /* =======================================================
-     COUPLE
-  ======================================================= */
-
-  .couple-display {
-    grid-template-columns:
-      1fr
-      38px
-      1fr;
-
-    margin-top: 22px;
-  }
-
-  .person-block {
-    padding: 0 2px;
-
-    min-width: 0;
-  }
-
-  .person-small-label {
-    font-size: 8px;
-
-    letter-spacing: 2px;
-  }
-
-  /*
-    IMPORTANT:
-    Keep Vijay Kumar and Sandhiya on a single line.
-  */
-
-  .person-name {
-    font-size: clamp(27px, 8vw, 40px);
-
-    white-space: nowrap;
-
-    line-height: 1;
-
-    letter-spacing: -0.5px;
-  }
-
-  .parent-label {
-    margin-top: 8px;
-
-    font-size: 14px;
-  }
-
-  .parent-names {
-    font-size: 12.5px;
-
-    line-height: 1.3;
-  }
-
-  /* =======================================================
-     CENTER
-  ======================================================= */
-
-  .couple-center {
-    gap: 5px;
-  }
-
-  .center-line {
-    height: 24px;
-  }
-
-  .heart-symbol {
-    font-size: 14px;
-  }
-
-  .and-symbol {
-    font-size: 22px;
-  }
-
-  /* =======================================================
-     BOTTOM
-  ======================================================= */
-
-  .bottom-ornament {
-    width: 175px;
-
-    margin-top: 22px;
-  }
-
-  .bottom-ornament i {
-    width: 37px;
-  }
-
-  .date-teaser {
-    margin-top: 17px;
-
-    padding: 10px 20px;
-  }
-
-  .date-teaser strong {
-    font-size: 17px;
-  }
-
-  .date-teaser small {
-    font-size: 9px;
-  }
-
-  .scroll-reveal {
-    margin-top: 22px;
-  }
-
-  .scroll-text {
-    font-size: 9px;
-
-    letter-spacing: 2px;
-  }
-
-  .scroll-arrow {
-    font-size: 19px;
-  }
-
-  .grand-petal {
-    font-size: 14px;
-  }
-}
-
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-
-@media (max-width: 390px) {
-  .grand-reveal {
-    padding: 22px 7px 45px;
+  .grand-top-ornament i {
+    width: 35px;
   }
 
   .grand-reveal-card {
-    padding: 30px 12px 27px;
+    padding: 38px 10px 30px;
   }
 
+  .grand-reveal-card::before {
+    inset: 8px;
+  }
+
+  /* =======================================================
+     GANESHA
+  ======================================================== */
+
   .ganesha-wrapper {
-    width: 105px;
-    height: 105px;
+    width: 125px;
+    height: 125px;
+
+    margin-bottom: 15px;
   }
 
   .ganesha-circle {
@@ -1460,152 +1727,518 @@
   }
 
   .ganesha-circle img {
-    width: 77px;
-    height: 77px;
+    width: 72%;
+    height: 72%;
   }
 
-  .tamil-heading {
-    font-size: 16px;
+  .ring-one {
+    width: 105px;
+    height: 105px;
+  }
+
+  .ring-two {
+    width: 117px;
+    height: 117px;
+  }
+
+  .ring-three {
+    width: 125px;
+    height: 125px;
   }
 
   /* =======================================================
-     TAMIL BLESSING
-     EXACTLY TWO LINES
-  ======================================================= */
+     HEADING
+  ======================================================== */
+
+  .tamil-heading {
+    font-size: 21px;
+  }
+
+  .invitation-label {
+    font-size: 7px;
+
+    letter-spacing: 3px;
+  }
 
   .tamil-blessing {
     font-size: 11px;
 
-    line-height: 1.75;
+    line-height: 1.7;
 
     white-space: nowrap;
-
-    letter-spacing: 0;
   }
+
+  /* =======================================================
+     INTRO
+  ======================================================== */
 
   .invitation-intro {
-    font-size: 14px;
+    font-size: 15px;
+
+    line-height: 1.35;
   }
+
+  /* =======================================================
+     COUPLE
+     LEFT | HEART | RIGHT
+  ======================================================== */
 
   .couple-display {
+    display: grid;
+
     grid-template-columns:
-      1fr
-      30px
-      1fr;
+      minmax(0, 1fr)
+      38px
+      minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 3px;
+
+    width: 100%;
+
+    margin-top: 22px;
   }
 
-  /*
-    Keep both names in one line even at very small widths.
-  */
+  .person-block {
+    min-width: 0;
 
-  .person-name {
-    font-size: 27px;
-
-    white-space: nowrap;
-
-    letter-spacing: -0.8px;
-  }
-
-  .parent-label {
-    font-size: 12px;
-  }
-
-  .parent-names {
-    font-size: 11px;
+    padding: 0 2px;
   }
 
   .person-small-label {
     font-size: 7px;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
+
+    white-space: nowrap;
   }
 
-  .and-symbol {
-    font-size: 19px;
+  .person-name {
+    /*
+      IMPORTANT:
+      Vijay Kumar and Sandhiya stay
+      LEFT and RIGHT.
+    */
+
+    display: block;
+
+    width: 100%;
+
+    font-size: clamp(25px, 7.5vw, 36px);
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    letter-spacing: -0.5px;
+  }
+
+  .parent-label {
+    margin-top: 7px;
+
+    font-size: 11px;
+  }
+
+  .parent-names {
+    font-size: clamp(10px, 3.1vw, 12.5px);
+
+    line-height: 1.35;
+
+    white-space: normal;
+  }
+
+  /* =======================================================
+     CENTER HEART
+  ======================================================== */
+
+  .couple-center {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 3px;
+  }
+
+  .center-line {
+    width: 1px;
+
+    height: 22px;
   }
 
   .heart-symbol {
+    font-size: 15px;
+  }
+
+  .and-symbol {
+    font-size: 18px;
+  }
+
+  /* =======================================================
+     BOTTOM ORNAMENT
+  ======================================================== */
+
+  .bottom-ornament {
+    margin-top: 23px;
+  }
+
+  .bottom-ornament i {
+    width: 38px;
+  }
+
+  /* =======================================================
+     SPECIAL DAYS HEADING
+  ======================================================== */
+
+  .special-days {
+    margin-top: 20px;
+  }
+
+  .special-days-heading {
+    gap: 5px;
+
+    margin-bottom: 13px;
+  }
+
+  .heading-line {
+    width: 23px;
+  }
+
+  .heading-text {
+    font-size: 7px;
+
+    letter-spacing: 2px;
+  }
+
+  .heading-star {
+    font-size: 7px;
+  }
+
+  /* =======================================================
+     RECEPTION | WEDDING
+     LEFT | RIGHT
+  ======================================================== */
+
+  .special-days-grid {
+    display: grid;
+
+    /*
+      THIS IS THE IMPORTANT FIX.
+      TWO COLUMNS ON MOBILE.
+    */
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap: 7px;
+
+    width: 100%;
+  }
+
+  .special-day-card {
+    min-width: 0;
+
+    min-height: 190px;
+
+    padding: 18px 4px 15px;
+
+    border-radius: 0;
+
+    overflow: hidden;
+  }
+
+  /* =======================================================
+     DATE ICON
+  ======================================================== */
+
+  .date-card-icon {
+    width: 36px;
+    height: 36px;
+
+    margin-bottom: 8px;
+
+    font-size: 16px;
+  }
+
+  /* =======================================================
+     LABEL
+  ======================================================== */
+
+  .date-card-label {
+    font-size: 6.5px;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+  }
+
+  /* =======================================================
+     DIVIDER
+  ======================================================== */
+
+  .date-card-divider {
+    gap: 4px;
+
+    margin: 8px 0;
+  }
+
+  .date-card-divider span {
+    width: 17px;
+  }
+
+  .date-card-divider b {
+    font-size: 6px;
+  }
+
+  /* =======================================================
+     DATE
+  ======================================================== */
+
+  .date-card-date {
+    /*
+      Keep complete date on one line.
+    */
+
+    display: block;
+
+    width: max-content;
+
+    max-width: none;
+
+    font-size: clamp(12px, 3.4vw, 16px);
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+
+    letter-spacing: -0.1px;
+  }
+
+  .date-card-time {
+    margin-top: 7px;
+
+    font-size: clamp(9px, 2.7vw, 12px);
+
+    white-space: nowrap;
+  }
+
+  .date-card-location {
+    margin-top: 6px;
+
+    font-size: 5.5px;
+
+    letter-spacing: 2px;
+  }
+
+  .date-card-bottom {
+    gap: 7px;
+
+    margin-top: 10px;
+
+    font-size: 7px;
+  }
+
+  .date-card-corner {
+    font-size: 8px;
+  }
+
+  .date-corner-tl {
+    top: 7px;
+    left: 7px;
+  }
+
+  .date-corner-tr {
+    top: 7px;
+    right: 7px;
+  }
+
+  .date-corner-bl {
+    bottom: 7px;
+    left: 7px;
+  }
+
+  .date-corner-br {
+    right: 7px;
+    bottom: 7px;
+  }
+
+  /* =======================================================
+     CONNECTION
+  ======================================================== */
+
+  .date-connection {
+    margin-top: 13px;
+
+    gap: 7px;
+  }
+
+  .connection-line {
+    width: 35px;
+  }
+
+  .connection-heart {
+    width: 29px;
+    height: 29px;
+
     font-size: 12px;
   }
 
-  .date-teaser strong {
-    font-size: 15px;
+  /* =======================================================
+     FOOTER
+  ======================================================== */
+
+  .date-teaser-footer {
+    margin-top: 17px;
+  }
+
+  .date-teaser-footer span {
+    font-size: 5.5px;
 
     letter-spacing: 2px;
+
+    white-space: nowrap;
+  }
+
+  .date-teaser-footer strong {
+    font-size: 18px;
+  }
+
+  .date-teaser-footer small {
+    font-size: 6px;
+  }
+
+  /* =======================================================
+     SCROLL
+  ======================================================== */
+
+  .scroll-reveal {
+    margin-top: 21px;
+  }
+
+  .scroll-text {
+    font-size: 6px;
+
+    letter-spacing: 2px;
+  }
+
+  .scroll-arrow {
+    font-size: 16px;
+  }
+
+  /* Smaller decorations */
+
+  .grand-petal {
+    font-size: 13px;
   }
 }
 
 /* =========================================================
-   ULTRA SMALL DEVICES
+   VERY SMALL MOBILE
 ========================================================= */
 
-@media (max-width: 350px) {
-  .grand-reveal-card {
-    padding-left: 8px;
-    padding-right: 8px;
+@media (max-width: 380px) {
+  .grand-reveal {
+    padding-left: 5px;
+    padding-right: 5px;
   }
+
+  .grand-reveal-card {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  /* Groom / Bride */
 
   .couple-display {
     grid-template-columns:
       minmax(0, 1fr)
-      26px
+      34px
       minmax(0, 1fr);
+
+    gap: 2px;
   }
 
   .person-name {
-    font-size: 24px;
-
-    white-space: nowrap;
-
-    letter-spacing: -1px;
+    font-size: clamp(23px, 7.2vw, 31px);
   }
 
   .person-small-label {
     font-size: 6px;
 
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+  }
+
+  .parent-label {
+    font-size: 10px;
   }
 
   .parent-names {
-    font-size: 10px;
+    font-size: 9.5px;
   }
 
-  .tamil-blessing {
-    font-size: 10px;
+  /* Reception / Wedding */
+
+  .special-days-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap: 5px;
   }
 
-  .and-symbol {
-    font-size: 17px;
+  .special-day-card {
+    min-height: 180px;
+
+    padding: 16px 2px 13px;
   }
 
-  .heart-symbol {
-    font-size: 11px;
+  .date-card-date {
+    font-size: 11.5px;
+  }
+
+  .date-card-time {
+    font-size: 8.5px;
+  }
+
+  .date-card-location {
+    font-size: 5px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .date-card-label {
+    font-size: 6px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .date-card-icon {
+    width: 32px;
+    height: 32px;
+
+    font-size: 14px;
+  }
+
+  .date-card-divider span {
+    width: 13px;
   }
 }
 
 /* =========================================================
-   REDUCED MOTION
+   ACCESSIBILITY
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .grand-reveal::before,
-  .grand-glow,
-  .grand-petal,
-  .ganesha-ring,
-  .ganesha-circle img,
-  .grand-divider span,
-  .heart-symbol,
-  .scroll-arrow {
+  .grand-reveal *,
+  .grand-reveal *::before,
+  .grand-reveal *::after {
     animation: none !important;
-  }
 
-  .grand-reveal-card,
-  .ganesha-wrapper,
-  .tamil-heading,
-  .invitation-label,
-  .tamil-blessing,
-  .invitation-intro,
-  .couple-display {
-    animation: none !important;
+    transition: none !important;
   }
 }
