@@ -97,10 +97,8 @@ function Celebration() {
         ================================================== */}
 
         <article className="event-card reception-card">
-          {/* Animated border shine */}
           <div className="card-shine"></div>
 
-          {/* Decorative corners */}
           <span className="card-corner corner-top-left">❋</span>
           <span className="card-corner corner-top-right">❋</span>
           <span className="card-corner corner-bottom-left">❋</span>
@@ -142,8 +140,6 @@ function Celebration() {
 
             <div className="event-tamil">வரவேற்பு</div>
 
-            {/* SINGLE LINE DATE */}
-
             <div className="event-date">Saturday, 31 October 2026</div>
 
             <div className="event-time">6:30 PM onwards</div>
@@ -154,12 +150,12 @@ function Celebration() {
               <span>────</span>
             </div>
 
-            <p className="event-description">
-              An evening filled with
-              <br />
-              joy, love, laughter
-              <br />
-              and beautiful memories.
+            {/* EXACTLY TWO LINES */}
+
+            <p className="event-description reception-description">
+              <span>An evening filled with joy, love, laughter</span>
+
+              <span>and beautiful memories.</span>
             </p>
           </div>
         </article>
@@ -173,9 +169,7 @@ function Celebration() {
 
           <div className="heart-orbit">
             <span>✦</span>
-
             <b>♡</b>
-
             <span>✦</span>
           </div>
 
@@ -187,10 +181,7 @@ function Celebration() {
         ================================================== */}
 
         <article className="event-card wedding-card">
-          {/* Animated border shine */}
           <div className="card-shine"></div>
-
-          {/* Decorative corners */}
 
           <span className="card-corner corner-top-left">❋</span>
           <span className="card-corner corner-top-right">❋</span>
@@ -212,8 +203,6 @@ function Celebration() {
 
             <div className="event-tamil">திருமணம்</div>
 
-            {/* SINGLE LINE DATE */}
-
             <div className="event-date">Sunday, 01 November 2026</div>
 
             <div className="event-time">7:30 AM — 9:00 AM</div>
@@ -224,11 +213,12 @@ function Celebration() {
               <span>────</span>
             </div>
 
-            <p className="event-description">
-              With the blessings of
-              <br />
-              our families, we begin
-              <br />a beautiful new chapter.
+            {/* EXACTLY TWO LINES */}
+
+            <p className="event-description wedding-description">
+              <span>With the blessings of our families, we begin</span>
+
+              <span>a beautiful new chapter.</span>
             </p>
           </div>
 

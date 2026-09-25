@@ -1,7 +1,7 @@
 /* =========================================================
    ENGAGEMENT / SAVE THE DATE
-   Luxury Tamil Wedding Invitation
-   Smooth Mobile Scratch Experience
+   Luxury Wedding Invitation
+   Responsive Mobile First Improvements
 ========================================================= */
 
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Tamil:wght@400;500;600&display=swap");
@@ -218,42 +218,47 @@
 .particle-1 {
   top: 10%;
   left: 10%;
-  animation-delay: 0s;
 }
 
 .particle-2 {
   top: 20%;
   right: 12%;
+
   animation-delay: 1.2s;
 }
 
 .particle-3 {
   top: 52%;
   left: 5%;
+
   animation-delay: 2.1s;
 }
 
 .particle-4 {
   top: 72%;
   right: 7%;
+
   animation-delay: 3s;
 }
 
 .particle-5 {
   top: 85%;
   left: 18%;
+
   animation-delay: 1.7s;
 }
 
 .particle-6 {
   top: 38%;
   right: 5%;
+
   animation-delay: 4s;
 }
 
 .particle-7 {
   top: 8%;
   left: 48%;
+
   animation-delay: 2.7s;
 }
 
@@ -287,30 +292,33 @@
 .petal-1 {
   top: 8%;
   left: 24%;
-  animation-delay: 0s;
 }
 
 .petal-2 {
   top: 30%;
   right: 8%;
+
   animation-delay: 2s;
 }
 
 .petal-3 {
   bottom: 12%;
   left: 8%;
+
   animation-delay: 4s;
 }
 
 .petal-4 {
   top: 60%;
   right: 17%;
+
   animation-delay: 1s;
 }
 
 .petal-5 {
   bottom: 25%;
   left: 25%;
+
   animation-delay: 3s;
 }
 
@@ -453,11 +461,13 @@
   0%,
   100% {
     opacity: 0.45;
+
     transform: scale(1);
   }
 
   50% {
     opacity: 0.9;
+
     transform: scale(1.25);
   }
 }
@@ -486,11 +496,12 @@
 }
 
 /* =========================================================
-   CONTENT ABOVE DECORATION
+   CONTENT
 ========================================================= */
 
 .engagement-card > *:not(.engagement-card-inner) {
   position: relative;
+
   z-index: 2;
 }
 
@@ -572,6 +583,7 @@
   color: #a6783b;
 
   font-size: 11px;
+
   font-weight: 600;
 
   letter-spacing: 5px;
@@ -717,6 +729,8 @@
   width: 100%;
 
   perspective: 1000px;
+
+  min-width: 0;
 }
 
 /* =========================================================
@@ -726,6 +740,8 @@
 .engagement-scratch-card {
   position: relative;
 
+  min-width: 0;
+
   min-height: 160px;
 
   display: flex;
@@ -733,6 +749,7 @@
   flex-direction: column;
 
   align-items: center;
+
   justify-content: center;
 
   overflow: hidden;
@@ -763,7 +780,9 @@
   isolation: isolate;
 }
 
-/* Luxury animated border */
+/* =========================================================
+   ANIMATED BORDER
+========================================================= */
 
 .engagement-scratch-card::before {
   content: "";
@@ -799,7 +818,9 @@
   }
 }
 
-/* Moving shine */
+/* =========================================================
+   CARD SHINE
+========================================================= */
 
 .engagement-scratch-card::after {
   content: "";
@@ -852,15 +873,21 @@
   }
 }
 
-.engagement-scratch-card:hover {
-  transform: translateY(-7px) rotateX(2deg) scale(1.015);
+/* =========================================================
+   DESKTOP HOVER
+========================================================= */
 
-  border-color: rgba(179, 138, 84, 0.8);
+@media (hover: hover) and (pointer: fine) {
+  .engagement-scratch-card:hover {
+    transform: translateY(-7px) rotateX(2deg) scale(1.015);
 
-  box-shadow:
-    inset 0 0 40px rgba(230, 181, 89, 0.1),
-    0 22px 42px rgba(91, 54, 35, 0.2),
-    0 0 25px rgba(208, 163, 82, 0.12);
+    border-color: rgba(179, 138, 84, 0.8);
+
+    box-shadow:
+      inset 0 0 40px rgba(230, 181, 89, 0.1),
+      0 22px 42px rgba(91, 54, 35, 0.2),
+      0 0 25px rgba(208, 163, 82, 0.12);
+  }
 }
 
 /* =========================================================
@@ -886,11 +913,13 @@
   0%,
   100% {
     opacity: 0.45;
+
     transform: scale(0.9);
   }
 
   50% {
     opacity: 1;
+
     transform: scale(1.2) rotate(10deg);
   }
 }
@@ -907,9 +936,13 @@
   letter-spacing: 3px;
 
   z-index: 2;
+
+  white-space: nowrap;
 }
 
 .engagement-scratch-value {
+  max-width: 100%;
+
   color: #65091b;
 
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -919,6 +952,8 @@
   font-weight: 600;
 
   letter-spacing: 1px;
+
+  white-space: nowrap;
 
   transition:
     transform 0.6s ease,
@@ -948,8 +983,7 @@
 }
 
 /* =========================================================
-   IMPORTANT:
-   SMOOTH MOBILE TOUCH SCRATCHING
+   SCRATCH CANVAS
 ========================================================= */
 
 .engagement-scratch-canvas {
@@ -964,11 +998,6 @@
 
   cursor: crosshair;
 
-  /*
-    Critical for mobile.
-    Browser will not steal the touch gesture.
-  */
-
   touch-action: none;
 
   user-select: none;
@@ -977,17 +1006,9 @@
 
   -webkit-touch-callout: none;
 
-  /*
-    Helps prevent browser image/text selection.
-  */
-
   overscroll-behavior: contain;
 
   z-index: 5;
-
-  /*
-    Avoid unnecessary browser compositing changes.
-  */
 
   transform: translateZ(0);
 
@@ -1050,7 +1071,7 @@
 }
 
 /* =========================================================
-   REVEAL ANIMATION
+   REVEAL
 ========================================================= */
 
 .engagement-scratch-card.is-revealed {
@@ -1348,6 +1369,8 @@
 .engagement-detail-item {
   flex: 1;
 
+  min-width: 0;
+
   display: flex;
 
   flex-direction: column;
@@ -1384,6 +1407,8 @@
   font-weight: 600;
 
   letter-spacing: 3px;
+
+  white-space: nowrap;
 }
 
 .engagement-detail-value {
@@ -1394,12 +1419,16 @@
   font-weight: 500;
 
   letter-spacing: 1.5px;
+
+  white-space: nowrap;
 }
 
 .engagement-detail-line {
   width: 1px;
 
   height: 48px;
+
+  flex-shrink: 0;
 
   background: linear-gradient(
     transparent,
@@ -1445,6 +1474,8 @@
 }
 
 .engagement-countdown-item {
+  min-width: 0;
+
   padding: 12px 5px;
 
   border: 1px solid rgba(179, 138, 84, 0.2);
@@ -1596,6 +1627,8 @@
   width: 34px;
   height: 34px;
 
+  flex-shrink: 0;
+
   display: flex;
 
   align-items: center;
@@ -1630,6 +1663,8 @@
 
   flex: 1;
 
+  min-width: 0;
+
   display: flex;
 
   flex-direction: column;
@@ -1657,6 +1692,8 @@
   font-weight: 500;
 
   letter-spacing: 0.4px;
+
+  white-space: nowrap;
 }
 
 .engagement-calendar-arrow {
@@ -1692,21 +1729,20 @@
 }
 
 /* =========================================================
-   MOBILE
+   TABLET
 ========================================================= */
 
 @media (max-width: 700px) {
   .engagement-section {
-    padding: 35px 14px;
+    padding: 30px 12px;
+  }
+
+  .engagement-container {
+    width: 100%;
   }
 
   .engagement-card {
-    padding: 42px 22px 35px;
-
-    /*
-      Prevent expensive continuous floating
-      from feeling unstable while touching.
-    */
+    padding: 42px 20px 35px;
 
     animation-duration: 9s;
   }
@@ -1720,35 +1756,41 @@
   }
 
   .engagement-title {
-    font-size: clamp(44px, 14vw, 65px);
+    font-size: clamp(44px, 13vw, 65px);
   }
 
   .engagement-subtitle {
     font-size: 17px;
   }
 
+  /* -------------------------------------------------------
+     SCRATCH CARDS
+  ------------------------------------------------------- */
+
   .engagement-scratch-wrapper {
-    gap: 8px;
+    gap: 9px;
   }
 
   .engagement-scratch-card {
-    min-height: 140px;
+    min-height: 145px;
 
-    /*
-      Disable hover transform on touch-sized screens.
-    */
+    border-radius: 2px;
 
     transition:
       border-color 0.35s ease,
       box-shadow 0.35s ease;
   }
 
-  .engagement-scratch-card:hover {
-    transform: none;
+  .engagement-scratch-label {
+    font-size: 8px;
+
+    letter-spacing: 2px;
   }
 
   .engagement-scratch-value {
     font-size: 22px;
+
+    letter-spacing: 0.5px;
   }
 
   .engagement-scratch-day .engagement-scratch-value {
@@ -1758,6 +1800,23 @@
   .engagement-scratch-year .engagement-scratch-value {
     font-size: 29px;
   }
+
+  .engagement-scratch-card-decoration {
+    top: 8px;
+    right: 9px;
+
+    font-size: 11px;
+  }
+
+  .engagement-scratch-bottom {
+    bottom: 8px;
+
+    font-size: 10px;
+  }
+
+  /* -------------------------------------------------------
+     OTHER CONTENT
+  ------------------------------------------------------- */
 
   .engagement-love-message p {
     font-size: 18px;
@@ -1775,16 +1834,16 @@
 }
 
 /* =========================================================
-   SMALL MOBILE
+   MOBILE
 ========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .engagement-section {
-    padding: 25px 9px;
+    padding: 18px 8px;
   }
 
   .engagement-card {
-    padding: 36px 14px 30px;
+    padding: 34px 13px 28px;
   }
 
   .engagement-card::before {
@@ -1792,95 +1851,227 @@
   }
 
   .engagement-card-inner {
-    inset: 13px;
+    inset: 12px;
+  }
+
+  /* -------------------------------------------------------
+     TOP ORNAMENT
+  ------------------------------------------------------- */
+
+  .engagement-top-ornament,
+  .engagement-bottom-ornament {
+    gap: 7px;
+  }
+
+  .engagement-top-ornament {
+    margin-bottom: 17px;
   }
 
   .engagement-top-ornament i,
   .engagement-bottom-ornament i {
-    width: 30px;
+    width: 27px;
   }
 
-  .engagement-eyebrow {
-    font-size: 8px;
+  /* -------------------------------------------------------
+     TITLE
+  ------------------------------------------------------- */
 
-    letter-spacing: 3px;
+  .engagement-eyebrow {
+    margin-bottom: 8px;
+
+    font-size: 7px;
+
+    letter-spacing: 2.5px;
   }
 
   .engagement-title {
-    font-size: 47px;
+    font-size: clamp(40px, 13vw, 52px);
+
+    line-height: 0.95;
   }
 
   .engagement-subtitle {
+    margin-top: 13px;
+
     font-size: 15px;
+
+    line-height: 1.35;
   }
 
+  /* -------------------------------------------------------
+     DIVIDER
+  ------------------------------------------------------- */
+
   .engagement-divider {
-    margin: 22px auto 24px;
+    gap: 7px;
+
+    margin: 20px auto 21px;
   }
+
+  .engagement-divider i {
+    width: 32px;
+  }
+
+  /* -------------------------------------------------------
+     SCRATCH CARDS
+  ------------------------------------------------------- */
 
   .engagement-scratch-wrapper {
     gap: 5px;
+
+    width: 100%;
   }
 
   .engagement-scratch-card {
-    min-height: 125px;
+    min-height: 132px;
+
+    width: 100%;
+
+    border-radius: 2px;
   }
 
   .engagement-scratch-label {
-    font-size: 7px;
+    margin-bottom: 5px;
 
-    letter-spacing: 2px;
+    font-size: 6.5px;
+
+    letter-spacing: 1.7px;
   }
 
   .engagement-scratch-value {
     font-size: 17px;
+
+    letter-spacing: 0.2px;
   }
 
   .engagement-scratch-day .engagement-scratch-value {
-    font-size: 32px;
+    font-size: 31px;
   }
 
   .engagement-scratch-year .engagement-scratch-value {
-    font-size: 23px;
+    font-size: 22px;
   }
 
-  .engagement-scratch-bottom {
+  .engagement-scratch-card-decoration {
+    top: 7px;
+    right: 7px;
+
     font-size: 9px;
   }
 
+  .engagement-scratch-bottom {
+    bottom: 6px;
+
+    font-size: 8px;
+  }
+
+  /* -------------------------------------------------------
+     REVEAL MESSAGE
+  ------------------------------------------------------- */
+
   .engagement-reveal-message.show {
-    padding: 15px 12px;
+    margin-top: 18px;
+
+    padding: 13px 10px;
+  }
+
+  .engagement-reveal-small {
+    font-size: 7px;
+
+    letter-spacing: 3px;
   }
 
   .engagement-reveal-message strong {
-    font-size: 27px;
+    font-size: 26px;
 
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
   }
 
+  .engagement-reveal-location {
+    font-size: 7px;
+
+    letter-spacing: 2.5px;
+  }
+
+  /* -------------------------------------------------------
+     LOVE MESSAGE
+  ------------------------------------------------------- */
+
   .engagement-love-message {
-    padding: 10px 24px;
+    margin-top: 22px;
+
+    padding: 9px 23px;
   }
 
   .engagement-love-message p {
     font-size: 16px;
+
+    line-height: 1.35;
+  }
+
+  .engagement-quote {
+    font-size: 40px;
+  }
+
+  .quote-left {
+    top: -1px;
+  }
+
+  .quote-right {
+    bottom: -11px;
   }
 
   .desktop-break {
     display: none;
   }
 
+  /* -------------------------------------------------------
+     DETAILS
+  ------------------------------------------------------- */
+
   .engagement-details {
-    padding: 15px 3px;
+    margin-top: 22px;
+
+    padding: 13px 2px;
+  }
+
+  .engagement-detail-icon {
+    font-size: 14px;
   }
 
   .engagement-detail-label {
     font-size: 6px;
 
-    letter-spacing: 2px;
+    letter-spacing: 1.7px;
   }
 
   .engagement-detail-value {
+    font-size: 7px;
+
+    letter-spacing: 0.5px;
+  }
+
+  .engagement-detail-line {
+    height: 40px;
+  }
+
+  /* -------------------------------------------------------
+     COUNTDOWN
+  ------------------------------------------------------- */
+
+  .engagement-countdown-section {
+    margin-top: 24px;
+  }
+
+  .engagement-countdown-heading {
+    font-size: 7px;
+
+    letter-spacing: 3px;
+  }
+
+  .engagement-countdown-divider {
+    margin: 7px auto 12px;
+
     font-size: 7px;
   }
 
@@ -1889,58 +2080,103 @@
   }
 
   .engagement-countdown-item {
-    padding: 10px 2px;
+    padding: 9px 2px;
   }
 
   .engagement-countdown-number {
-    font-size: 23px;
+    font-size: 22px;
   }
 
   .engagement-countdown-label {
-    font-size: 6px;
+    margin-top: 4px;
 
-    letter-spacing: 0.7px;
+    font-size: 5.5px;
+
+    letter-spacing: 0.5px;
+  }
+
+  /* -------------------------------------------------------
+     GOOGLE CALENDAR
+  ------------------------------------------------------- */
+
+  .engagement-calendar-wrapper {
+    margin-top: 22px;
   }
 
   .engagement-calendar-button {
-    gap: 9px;
+    gap: 8px;
 
-    padding: 12px 11px;
+    padding: 11px 10px;
   }
 
   .engagement-calendar-icon {
-    width: 30px;
-    height: 30px;
-  }
+    width: 29px;
+    height: 29px;
 
-  .engagement-calendar-main {
-    font-size: 9px;
+    font-size: 16px;
   }
 
   .engagement-calendar-small {
-    font-size: 6px;
+    font-size: 5.5px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .engagement-calendar-main {
+    font-size: 8.5px;
+
+    letter-spacing: 0.2px;
   }
 
   .engagement-calendar-arrow {
     font-size: 17px;
   }
+
+  /* -------------------------------------------------------
+     BOTTOM
+  ------------------------------------------------------- */
+
+  .engagement-bottom-ornament {
+    margin-top: 22px;
+  }
+
+  .engagement-bottom-text {
+    margin-top: 10px;
+
+    font-size: 5.5px;
+
+    letter-spacing: 3px;
+  }
 }
 
 /* =========================================================
-   VERY SMALL SCREENS
+   SMALL MOBILE
+   360px - 400px
 ========================================================= */
 
-@media (max-width: 350px) {
+@media (max-width: 400px) {
   .engagement-section {
-    padding: 18px 5px;
+    padding: 14px 6px;
   }
 
   .engagement-card {
-    padding: 30px 10px 25px;
+    padding: 29px 9px 25px;
+  }
+
+  .engagement-card::before {
+    inset: 6px;
+  }
+
+  .engagement-card-inner {
+    inset: 10px;
   }
 
   .engagement-title {
     font-size: 41px;
+  }
+
+  .engagement-subtitle {
+    font-size: 14px;
   }
 
   .engagement-scratch-wrapper {
@@ -1948,28 +2184,190 @@
   }
 
   .engagement-scratch-card {
-    min-height: 110px;
+    min-height: 121px;
+  }
+
+  .engagement-scratch-label {
+    font-size: 6px;
+
+    letter-spacing: 1.3px;
   }
 
   .engagement-scratch-value {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .engagement-scratch-day .engagement-scratch-value {
-    font-size: 28px;
+    font-size: 29px;
   }
 
   .engagement-scratch-year .engagement-scratch-value {
     font-size: 20px;
   }
 
+  .engagement-detail-value {
+    font-size: 6.5px;
+  }
+
   .engagement-countdown-number {
     font-size: 20px;
   }
 
+  .engagement-countdown-label {
+    font-size: 5px;
+  }
+
+  .engagement-calendar-main {
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   320px - 350px
+========================================================= */
+
+@media (max-width: 350px) {
+  .engagement-section {
+    padding: 10px 4px;
+  }
+
+  .engagement-card {
+    padding: 25px 7px 22px;
+  }
+
+  .engagement-card::before {
+    inset: 5px;
+  }
+
+  .engagement-card-inner {
+    inset: 8px;
+  }
+
+  .engagement-top-ornament i,
+  .engagement-bottom-ornament i {
+    width: 22px;
+  }
+
+  .engagement-title {
+    font-size: 37px;
+  }
+
+  .engagement-subtitle {
+    font-size: 13px;
+  }
+
+  .engagement-divider {
+    margin: 17px auto 18px;
+  }
+
+  .engagement-divider i {
+    width: 25px;
+  }
+
+  .engagement-scratch-wrapper {
+    gap: 3px;
+  }
+
+  .engagement-scratch-card {
+    min-height: 112px;
+  }
+
   .engagement-scratch-label {
-    font-size: 6px;
-    letter-spacing: 1.5px;
+    font-size: 5.5px;
+
+    letter-spacing: 1px;
+  }
+
+  .engagement-scratch-value {
+    font-size: 13px;
+  }
+
+  .engagement-scratch-day .engagement-scratch-value {
+    font-size: 27px;
+  }
+
+  .engagement-scratch-year .engagement-scratch-value {
+    font-size: 18px;
+  }
+
+  .engagement-love-message {
+    padding: 8px 19px;
+  }
+
+  .engagement-love-message p {
+    font-size: 14px;
+  }
+
+  .engagement-detail-label {
+    font-size: 5px;
+
+    letter-spacing: 1.2px;
+  }
+
+  .engagement-detail-value {
+    font-size: 5.8px;
+  }
+
+  .engagement-countdown {
+    gap: 3px;
+  }
+
+  .engagement-countdown-item {
+    padding: 8px 1px;
+  }
+
+  .engagement-countdown-number {
+    font-size: 18px;
+  }
+
+  .engagement-countdown-label {
+    font-size: 4.5px;
+  }
+
+  .engagement-calendar-button {
+    padding: 10px 8px;
+  }
+
+  .engagement-calendar-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .engagement-calendar-main {
+    font-size: 7px;
+  }
+
+  .engagement-calendar-small {
+    font-size: 5px;
+  }
+
+  .engagement-calendar-arrow {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+  .engagement-scratch-card {
+    cursor: default;
+  }
+
+  .engagement-scratch-card:hover {
+    transform: none;
+
+    border-color: rgba(179, 138, 84, 0.48);
+
+    box-shadow:
+      inset 0 0 35px rgba(230, 181, 89, 0.06),
+      0 15px 30px rgba(91, 54, 35, 0.12);
+  }
+
+  .engagement-calendar-button:hover {
+    transform: none;
   }
 }
 
@@ -2001,29 +2399,5 @@
   .engagement-countdown-item,
   .engagement-reveal-message {
     transition: none !important;
-  }
-}
-
-/* =========================================================
-   TOUCH DEVICES
-========================================================= */
-
-@media (hover: none) and (pointer: coarse) {
-  .engagement-scratch-card {
-    cursor: default;
-  }
-
-  .engagement-scratch-card:hover {
-    transform: none;
-
-    border-color: rgba(179, 138, 84, 0.48);
-
-    box-shadow:
-      inset 0 0 35px rgba(230, 181, 89, 0.06),
-      0 15px 30px rgba(91, 54, 35, 0.12);
-  }
-
-  .engagement-calendar-button:hover {
-    transform: none;
   }
 }

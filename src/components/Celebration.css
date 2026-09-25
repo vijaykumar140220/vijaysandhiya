@@ -5,7 +5,6 @@
 
 .celebration-section {
   position: relative;
-
   width: 100%;
   min-height: 100vh;
 
@@ -14,10 +13,11 @@
   overflow: hidden;
 
   background:
-    radial-gradient(circle at 50% 0%, rgba(126, 35, 58, 0.28), transparent 35%),
+    radial-gradient(circle at 50% 0%, rgba(126, 35, 58, 0.3), transparent 35%),
+    radial-gradient(circle at 0% 55%, rgba(193, 142, 63, 0.1), transparent 30%),
     radial-gradient(
-      circle at 0% 55%,
-      rgba(193, 142, 63, 0.09),
+      circle at 100% 85%,
+      rgba(183, 91, 104, 0.12),
       transparent 30%
     ),
     linear-gradient(145deg, #3d0717 0%, #57091f 38%, #430716 70%, #2a0410 100%);
@@ -26,7 +26,7 @@
 }
 
 /* =========================================================
-   BACKGROUND PATTERN
+   BACKGROUND DIAMOND PATTERN
 ========================================================= */
 
 .celebration-section::before {
@@ -56,6 +56,18 @@
     black 88%,
     transparent
   );
+
+  animation: patternDrift 22s linear infinite;
+}
+
+@keyframes patternDrift {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 90px 90px;
+  }
 }
 
 /* =========================================================
@@ -74,7 +86,7 @@
 
   background-image: radial-gradient(
     circle,
-    rgba(255, 222, 155, 0.55) 1px,
+    rgba(255, 222, 155, 0.6) 1px,
     transparent 1.5px
   );
 
@@ -455,7 +467,9 @@
 @keyframes headingLuxuryReveal {
   0% {
     opacity: 0;
+
     transform: translateY(35px) scale(0.96);
+
     filter: blur(8px);
   }
 
@@ -524,6 +538,18 @@
   animation: letterReveal 1.5s ease 0.2s both;
 }
 
+@keyframes letterReveal {
+  from {
+    opacity: 0;
+    letter-spacing: 12px;
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: 4px;
+  }
+}
+
 .celebration-title {
   margin: 0;
 
@@ -549,17 +575,21 @@
 @keyframes titleReveal {
   0% {
     opacity: 0;
+
     transform: scale(0.75) translateY(25px);
+
     letter-spacing: 8px;
   }
 
   70% {
     opacity: 1;
+
     transform: scale(1.03) translateY(-2px);
   }
 
   100% {
     transform: scale(1);
+
     letter-spacing: normal;
   }
 }
@@ -596,11 +626,13 @@
 @keyframes introFade {
   from {
     opacity: 0;
+
     transform: translateY(15px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
   }
 }
@@ -728,7 +760,7 @@
 }
 
 /* =========================================================
-   CARD LIGHT SWEEP
+   CARD SHINE
 ========================================================= */
 
 .card-shine {
@@ -747,7 +779,7 @@
   background: linear-gradient(
     100deg,
     transparent,
-    rgba(255, 255, 255, 0.32),
+    rgba(255, 255, 255, 0.42),
     transparent
   );
 
@@ -908,7 +940,7 @@
 
   width: 80px;
 
-  margin: 8px 0 8px;
+  margin: 8px 0;
 }
 
 .mini-line span {
@@ -968,11 +1000,13 @@
 @keyframes eventTitleReveal {
   from {
     opacity: 0;
+
     transform: translateX(-25px) scale(0.9);
   }
 
   to {
     opacity: 1;
+
     transform: translateX(0) scale(1);
   }
 }
@@ -994,8 +1028,7 @@
 }
 
 /* =========================================================
-   DATE
-   IMPORTANT — ALWAYS ONE LINE
+   DATE — ALWAYS ONE LINE
 ========================================================= */
 
 .event-date {
@@ -1025,13 +1058,17 @@
 @keyframes dateReveal {
   0% {
     opacity: 0;
+
     transform: translateY(12px);
+
     filter: blur(5px);
   }
 
   100% {
     opacity: 1;
+
     transform: translateY(0);
+
     filter: blur(0);
   }
 }
@@ -1103,9 +1140,20 @@
 
 /* =========================================================
    DESCRIPTION
+   EXACTLY TWO LINES
 ========================================================= */
 
 .event-description {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  gap: 0;
+
   margin: 0;
 
   color: #795a5c;
@@ -1115,6 +1163,54 @@
   font-size: 15px;
 
   line-height: 1.5;
+
+  animation: descriptionReveal 1.3s ease 0.3s both;
+}
+
+.event-description span {
+  display: block;
+
+  white-space: nowrap;
+}
+
+@keyframes descriptionReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(12px);
+
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    filter: blur(0);
+  }
+}
+
+/* =========================================================
+   DESCRIPTION SECOND LINE
+========================================================= */
+
+.event-description span:nth-child(2) {
+  animation: secondLineReveal 1s ease 0.15s both;
+}
+
+@keyframes secondLineReveal {
+  from {
+    opacity: 0;
+
+    transform: translateX(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
 }
 
 /* =========================================================
@@ -1127,7 +1223,6 @@
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   min-height: 370px;
@@ -1212,11 +1307,13 @@
   0%,
   100% {
     transform: scale(0.88);
+
     opacity: 0.3;
   }
 
   50% {
     transform: scale(1.03);
+
     opacity: 0.7;
   }
 }
@@ -1259,11 +1356,13 @@
   0%,
   100% {
     transform: scale(0.85);
+
     opacity: 0.5;
   }
 
   50% {
     transform: scale(1.18);
+
     opacity: 1;
   }
 }
@@ -1397,6 +1496,8 @@
 }
 
 .between-events .line {
+  position: relative;
+
   flex: 1;
 
   max-width: 160px;
@@ -1409,8 +1510,6 @@
     rgba(222, 178, 100, 0.8),
     transparent
   );
-
-  position: relative;
 }
 
 .between-events .line::after {
@@ -1422,7 +1521,6 @@
   top: 0;
 
   width: 30%;
-
   height: 1px;
 
   background: #f0ce88;
@@ -1521,11 +1619,13 @@
 @keyframes footerReveal {
   from {
     opacity: 0;
+
     transform: translateY(25px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
   }
 }
@@ -1655,7 +1755,15 @@
   }
 
   .event-description {
+    align-items: center;
+
     text-align: center;
+
+    width: 100%;
+  }
+
+  .event-description span {
+    white-space: nowrap;
   }
 
   .event-date {
@@ -1745,7 +1853,7 @@
   }
 
   .event-content {
-    padding: 28px 14px 32px;
+    padding: 28px 10px 32px;
   }
 
   .event-day {
@@ -1762,10 +1870,9 @@
     font-size: 15px;
   }
 
-  /* ===============================================
-     IMPORTANT:
-     DATE ALWAYS STAYS ON ONE LINE
-  =============================================== */
+  /* =====================================================
+     DATE — ONE LINE
+  ===================================================== */
 
   .event-date {
     width: 100%;
@@ -1777,16 +1884,35 @@
     white-space: nowrap;
 
     letter-spacing: 0;
-
-    transform-origin: center;
   }
 
   .event-time {
     font-size: 14px;
   }
 
+  /* =====================================================
+     DESCRIPTION — EXACTLY TWO LINES
+  ===================================================== */
+
   .event-description {
-    font-size: 14px;
+    width: 100%;
+
+    align-items: center;
+
+    font-size: 13.5px;
+
+    line-height: 1.5;
+
+    text-align: center;
+  }
+
+  .event-description span {
+    display: block;
+
+    width: max-content;
+    max-width: 100%;
+
+    white-space: nowrap;
   }
 
   .between-events {
@@ -1818,6 +1944,7 @@
   .glow-three {
     width: 230px;
     height: 230px;
+
     filter: blur(55px);
   }
 }
@@ -1829,7 +1956,6 @@
 @media (max-width: 360px) {
   .celebration-section {
     padding-left: 7px;
-
     padding-right: 7px;
   }
 
@@ -1843,7 +1969,6 @@
 
   .event-image-wrapper {
     height: 215px;
-
     min-height: 215px;
   }
 
@@ -1856,11 +1981,11 @@
   }
 
   .event-content {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
   }
 
-  /* Keep entire date on one line even on very small phones */
+  /* DATE ALWAYS ONE LINE */
 
   .event-date {
     font-size: 12.5px;
@@ -1872,6 +1997,18 @@
 
   .event-time {
     font-size: 13px;
+  }
+
+  /* TWO DESCRIPTION LINES */
+
+  .event-description {
+    font-size: 12px;
+
+    line-height: 1.55;
+  }
+
+  .event-description span {
+    white-space: nowrap;
   }
 
   .celebration-footer p {
@@ -1898,6 +2035,14 @@
 
   .celebration-title {
     font-size: 38px;
+  }
+
+  .event-description {
+    font-size: 11.2px;
+  }
+
+  .event-description span {
+    white-space: nowrap;
   }
 }
 

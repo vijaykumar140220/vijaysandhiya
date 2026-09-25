@@ -64,8 +64,7 @@ function SaveTheDateButton() {
 }
 
 /* =========================================================
-   SCRATCH CARD
-   Smooth Pointer Events Version
+   SCRATCH BOX
 ========================================================= */
 
 function ScratchBox({ value, label, onReveal, type }) {
@@ -83,7 +82,7 @@ function ScratchBox({ value, label, onReveal, type }) {
   const [scratched, setScratched] = useState(false);
 
   /* =======================================================
-     DRAW GOLD SCRATCH SURFACE
+     DRAW SCRATCH SURFACE
   ======================================================= */
 
   const drawScratchSurface = (canvas, width, height, dpr) => {
@@ -99,31 +98,32 @@ function ScratchBox({ value, label, onReveal, type }) {
 
     ctx.clearRect(0, 0, width, height);
 
-    /* -----------------------------------------------
-       Luxury gold gradient
-    ------------------------------------------------ */
+    /* -----------------------------------------------------
+       GOLD BASE
+    ----------------------------------------------------- */
 
     const gradient = ctx.createLinearGradient(0, 0, width, height);
 
-    gradient.addColorStop(0, "#f8e7b8");
-    gradient.addColorStop(0.18, "#c99b4e");
-    gradient.addColorStop(0.35, "#f7e3ac");
-    gradient.addColorStop(0.52, "#d4ad63");
+    gradient.addColorStop(0, "#f9e9bd");
+    gradient.addColorStop(0.18, "#c89a4e");
+    gradient.addColorStop(0.36, "#f8e6b2");
+    gradient.addColorStop(0.52, "#d5ae65");
     gradient.addColorStop(0.7, "#f4dda5");
     gradient.addColorStop(0.86, "#bd8b40");
     gradient.addColorStop(1, "#efd294");
 
     ctx.globalCompositeOperation = "source-over";
+
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
-    /* -----------------------------------------------
-       Metallic diagonal shine
-    ------------------------------------------------ */
+    /* -----------------------------------------------------
+       METALLIC SHINE
+    ----------------------------------------------------- */
 
     const shine = ctx.createLinearGradient(0, 0, width, height);
 
-    shine.addColorStop(0, "rgba(255,255,255,0.45)");
+    shine.addColorStop(0, "rgba(255,255,255,0.48)");
 
     shine.addColorStop(0.3, "rgba(255,255,255,0.08)");
 
@@ -134,64 +134,105 @@ function ScratchBox({ value, label, onReveal, type }) {
     shine.addColorStop(1, "rgba(79,39,13,0.16)");
 
     ctx.fillStyle = shine;
+
     ctx.fillRect(0, 0, width, height);
 
-    /* -----------------------------------------------
-       Fine luxury texture
-    ------------------------------------------------ */
+    /* -----------------------------------------------------
+       FINE TEXTURE
+    ----------------------------------------------------- */
 
-    ctx.globalAlpha = 0.12;
+    ctx.globalAlpha = 0.1;
 
-    for (let x = -height; x < width + height; x += 12) {
+    const textureGap = width < 140 ? 9 : 12;
+
+    for (let x = -height; x < width + height; x += textureGap) {
       ctx.beginPath();
+
       ctx.moveTo(x, 0);
+
       ctx.lineTo(x + height, height);
+
       ctx.strokeStyle = "#fff6d9";
+
       ctx.lineWidth = 1;
+
       ctx.stroke();
     }
 
     ctx.globalAlpha = 1;
 
-    /* -----------------------------------------------
-       Inner border
-    ------------------------------------------------ */
+    /* -----------------------------------------------------
+       INNER BORDER
+    ----------------------------------------------------- */
+
+    const borderInset = width < 140 ? 7 : 9;
 
     ctx.strokeStyle = "rgba(92,43,24,0.5)";
+
     ctx.lineWidth = 1;
 
-    ctx.strokeRect(9, 9, width - 18, height - 18);
+    ctx.strokeRect(
+      borderInset,
+      borderInset,
+      width - borderInset * 2,
+      height - borderInset * 2,
+    );
 
-    /* -----------------------------------------------
-       Corner ornaments
-    ------------------------------------------------ */
+    /* -----------------------------------------------------
+       CORNER ORNAMENTS
+    ----------------------------------------------------- */
+
+    const ornamentSize = width < 140 ? 11 : 14;
+
+    const ornamentOffset = width < 140 ? 14 : 19;
 
     ctx.fillStyle = "rgba(94,42,24,0.7)";
-    ctx.font = "14px Georgia, serif";
+
+    ctx.font = `${ornamentSize}px Georgia, serif`;
 
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    ctx.fillText("✦", 19, 19);
-    ctx.fillText("✦", width - 19, 19);
-    ctx.fillText("✦", 19, height - 19);
-    ctx.fillText("✦", width - 19, height - 19);
+    ctx.fillText("✦", ornamentOffset, ornamentOffset);
 
-    /* -----------------------------------------------
-       Scratch text
-    ------------------------------------------------ */
+    ctx.fillText("✦", width - ornamentOffset, ornamentOffset);
+
+    ctx.fillText("✦", ornamentOffset, height - ornamentOffset);
+
+    ctx.fillText("✦", width - ornamentOffset, height - ornamentOffset);
+
+    /* -----------------------------------------------------
+       SCRATCH INSTRUCTION
+       MOBILE = TWO LINES
+    ----------------------------------------------------- */
 
     ctx.fillStyle = "#62371f";
 
-    ctx.font = "600 11px Montserrat, Arial, sans-serif";
+    const isSmall = width < 155;
 
-    ctx.fillText("SCRATCH TO REVEAL", width / 2, height / 2 - 8);
+    if (isSmall) {
+      ctx.font = "700 8px Montserrat, Arial, sans-serif";
 
-    ctx.fillStyle = "#80552b";
+      ctx.fillText("SCRATCH", width / 2, height / 2 - 7);
 
-    ctx.font = "10px Montserrat, Arial, sans-serif";
+      ctx.fillText("TO REVEAL", width / 2, height / 2 + 6);
 
-    ctx.fillText("✦  ❋  ✦", width / 2, height / 2 + 14);
+      ctx.fillStyle = "#80552b";
+
+      ctx.font = "9px Montserrat, Arial, sans-serif";
+
+      ctx.fillText("✦  ❋  ✦", width / 2, height / 2 + 22);
+    } else {
+      ctx.font = "600 11px Montserrat, Arial, sans-serif";
+
+      ctx.fillText("SCRATCH TO REVEAL", width / 2, height / 2 - 8);
+
+      ctx.fillStyle = "#80552b";
+
+      ctx.font = "10px Montserrat, Arial, sans-serif";
+
+      ctx.fillText("✦  ❋  ✦", width / 2, height / 2 + 14);
+    }
   };
 
   /* =======================================================
@@ -202,14 +243,18 @@ function ScratchBox({ value, label, onReveal, type }) {
     const canvas = canvasRef.current;
     const parent = containerRef.current;
 
-    if (!canvas || !parent) return;
+    if (!canvas || !parent) {
+      return;
+    }
 
     let resizeTimer;
 
     const setupCanvas = () => {
       const rect = parent.getBoundingClientRect();
 
-      if (!rect.width || !rect.height) return;
+      if (!rect.width || !rect.height) {
+        return;
+      }
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
@@ -218,6 +263,7 @@ function ScratchBox({ value, label, onReveal, type }) {
       canvas.height = Math.round(rect.height * dpr);
 
       canvas.style.width = `${rect.width}px`;
+
       canvas.style.height = `${rect.height}px`;
 
       drawScratchSurface(canvas, rect.width, rect.height, dpr);
@@ -251,23 +297,26 @@ function ScratchBox({ value, label, onReveal, type }) {
   const getPoint = (event) => {
     const canvas = canvasRef.current;
 
-    if (!canvas) return null;
+    if (!canvas) {
+      return null;
+    }
 
     const rect = canvas.getBoundingClientRect();
 
     return {
       x: event.clientX - rect.left,
+
       y: event.clientY - rect.top,
     };
   };
 
   /* =======================================================
      REVEAL CHECK
-     Only run every few strokes for mobile performance.
   ======================================================= */
 
   const checkRevealPercentage = () => {
     const canvas = canvasRef.current;
+
     const ctx = ctxRef.current;
 
     if (!canvas || !ctx || revealLockedRef.current) {
@@ -277,21 +326,15 @@ function ScratchBox({ value, label, onReveal, type }) {
     checkCounterRef.current += 1;
 
     /*
-      Avoid expensive getImageData on every pointer move.
-      Check every 12 scratch strokes.
+      Do not perform expensive
+      image reading on every move.
     */
 
-    if (checkCounterRef.current % 12 !== 0) {
+    if (checkCounterRef.current % 10 !== 0) {
       return;
     }
 
     try {
-      const sampleSize = 70;
-
-      const scaleX = canvas.width / sampleSize;
-
-      const scaleY = canvas.height / sampleSize;
-
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
       const pixels = imageData.data;
@@ -299,9 +342,12 @@ function ScratchBox({ value, label, onReveal, type }) {
       let transparentPixels = 0;
       let totalSamples = 0;
 
-      const stepX = Math.max(1, Math.floor(scaleX));
+      const sampleWidth = 70;
+      const sampleHeight = 70;
 
-      const stepY = Math.max(1, Math.floor(scaleY));
+      const stepX = Math.max(1, Math.floor(canvas.width / sampleWidth));
+
+      const stepY = Math.max(1, Math.floor(canvas.height / sampleHeight));
 
       for (let y = 0; y < canvas.height; y += stepY) {
         for (let x = 0; x < canvas.width; x += stepX) {
@@ -320,6 +366,7 @@ function ScratchBox({ value, label, onReveal, type }) {
 
       if (percentage > 38) {
         revealLockedRef.current = true;
+
         scratchedRef.current = true;
 
         setScratched(true);
@@ -334,24 +381,29 @@ function ScratchBox({ value, label, onReveal, type }) {
   };
 
   /* =======================================================
-     SMOOTH SCRATCH DRAWING
+     SCRATCH DRAWING
   ======================================================= */
 
   const drawScratch = (point) => {
     const ctx = ctxRef.current;
 
-    if (!ctx || !point) return;
+    if (!ctx || !point) {
+      return;
+    }
 
     const previous = lastPointRef.current || point;
 
     const distance = Math.hypot(point.x - previous.x, point.y - previous.y);
 
-    /*
-      More points for fast finger movement.
-      This prevents gaps when the finger moves quickly.
-    */
+    const canvas = canvasRef.current;
 
-    const step = type === "year" ? 7 : 6;
+    const width = canvas?.clientWidth || 200;
+
+    const brushSize = width < 140 ? 47 : width < 180 ? 52 : 56;
+
+    const brushRadius = brushSize / 2;
+
+    const step = width < 140 ? 5 : 6;
 
     const steps = Math.max(1, Math.ceil(distance / step));
 
@@ -362,9 +414,7 @@ function ScratchBox({ value, label, onReveal, type }) {
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
-    ctx.strokeStyle = "rgba(0,0,0,1)";
-
-    ctx.lineWidth = type === "year" ? 62 : 56;
+    ctx.lineWidth = brushSize;
 
     ctx.beginPath();
 
@@ -382,13 +432,11 @@ function ScratchBox({ value, label, onReveal, type }) {
 
     ctx.stroke();
 
-    /*
-      Round brush head.
-    */
+    /* Round brush head */
 
     ctx.beginPath();
 
-    ctx.arc(point.x, point.y, type === "year" ? 31 : 28, 0, Math.PI * 2);
+    ctx.arc(point.x, point.y, brushRadius, 0, Math.PI * 2);
 
     ctx.fill();
 
@@ -413,7 +461,7 @@ function ScratchBox({ value, label, onReveal, type }) {
     try {
       event.currentTarget.setPointerCapture(event.pointerId);
     } catch {
-      // Some older browsers may not support this.
+      // Ignore unsupported browsers.
     }
 
     drawingRef.current = true;
@@ -421,11 +469,6 @@ function ScratchBox({ value, label, onReveal, type }) {
     const point = getPoint(event);
 
     lastPointRef.current = point;
-
-    /*
-      Immediately scratch under finger.
-      This removes the first-touch delay.
-    */
 
     drawScratch(point);
   };
@@ -456,19 +499,20 @@ function ScratchBox({ value, label, onReveal, type }) {
 
   const handlePointerUp = (event) => {
     drawingRef.current = false;
+
     lastPointRef.current = null;
 
     try {
       event.currentTarget.releasePointerCapture(event.pointerId);
     } catch {
-      // Ignore unsupported pointer capture.
+      // Ignore unsupported browsers.
     }
 
     /*
-      Final reveal check.
+      Force a final reveal check.
     */
 
-    checkCounterRef.current = 12;
+    checkCounterRef.current = 10;
 
     checkRevealPercentage();
   };
@@ -479,11 +523,12 @@ function ScratchBox({ value, label, onReveal, type }) {
 
   const handlePointerCancel = () => {
     drawingRef.current = false;
+
     lastPointRef.current = null;
   };
 
   /* =======================================================
-     DOUBLE TAP / CLICK AFTER REVEAL
+     CONTEXT MENU
   ======================================================= */
 
   const handleContextMenu = (event) => {
@@ -493,19 +538,33 @@ function ScratchBox({ value, label, onReveal, type }) {
   return (
     <div
       ref={containerRef}
-      className={`engagement-scratch-card engagement-scratch-${type} ${
-        scratched ? "is-revealed" : ""
-      }`}
+      className={`
+        engagement-scratch-card
+        engagement-scratch-${type}
+        ${scratched ? "is-revealed" : ""}
+      `}
     >
+      {/* CARD DECORATION */}
+
       <div className="engagement-scratch-card-decoration" aria-hidden="true">
         ✦
       </div>
 
+      {/* LABEL */}
+
       <div className="engagement-scratch-label">{label}</div>
+
+      {/* ACTUAL VALUE */}
 
       <div className="engagement-scratch-value">{value}</div>
 
-      <div className="engagement-scratch-bottom">❋</div>
+      {/* BOTTOM SYMBOL */}
+
+      <div className="engagement-scratch-bottom" aria-hidden="true">
+        ❋
+      </div>
+
+      {/* SCRATCH CANVAS */}
 
       {!scratched && (
         <canvas
@@ -521,9 +580,15 @@ function ScratchBox({ value, label, onReveal, type }) {
         />
       )}
 
+      {/* GLOW */}
+
       <div className="engagement-scratch-glow" aria-hidden="true" />
 
+      {/* SHINE */}
+
       <div className="engagement-scratch-shine" aria-hidden="true" />
+
+      {/* REVEAL PARTICLES */}
 
       {scratched && (
         <div className="engagement-reveal-burst" aria-hidden="true">
@@ -633,7 +698,9 @@ export default function Engagement() {
 
   return (
     <section className="engagement-section">
-      {/* BACKGROUND GLOWS */}
+      {/* ===================================================
+          BACKGROUND GLOWS
+      =================================================== */}
 
       <div className="engagement-glow engagement-glow-one" aria-hidden="true" />
 
@@ -644,7 +711,9 @@ export default function Engagement() {
         aria-hidden="true"
       />
 
-      {/* GOLD PARTICLES */}
+      {/* ===================================================
+          GOLD PARTICLES
+      =================================================== */}
 
       <div className="engagement-particle particle-1" aria-hidden="true">
         ✦
@@ -674,7 +743,9 @@ export default function Engagement() {
         ✦
       </div>
 
-      {/* FLOATING PETALS */}
+      {/* ===================================================
+          FLOATING PETALS
+      =================================================== */}
 
       <div className="engagement-petal petal-1" aria-hidden="true">
         ❀
@@ -696,7 +767,9 @@ export default function Engagement() {
         ❀
       </div>
 
-      {/* MAIN CONTAINER */}
+      {/* ===================================================
+          MAIN CONTAINER
+      =================================================== */}
 
       <div className="engagement-container">
         <div className="engagement-card">
@@ -720,6 +793,8 @@ export default function Engagement() {
 
           <h2 className="engagement-title">Save the Date</h2>
 
+          {/* SUBTITLE */}
+
           <p className="engagement-subtitle">
             Scratch below to reveal
             <br />
@@ -736,7 +811,9 @@ export default function Engagement() {
             <span>✦</span>
           </div>
 
-          {/* SCRATCH CARDS */}
+          {/* =================================================
+              SCRATCH CARDS
+          ================================================= */}
 
           <div className="engagement-scratch-wrapper">
             <ScratchBox
@@ -761,7 +838,9 @@ export default function Engagement() {
             />
           </div>
 
-          {/* REVEAL MESSAGE */}
+          {/* =================================================
+              REVEAL MESSAGE
+          ================================================= */}
 
           <div
             className={`engagement-reveal-message ${allRevealed ? "show" : ""}`}
@@ -773,7 +852,9 @@ export default function Engagement() {
             <span className="engagement-reveal-location">WALAJABAD</span>
           </div>
 
-          {/* LOVE MESSAGE */}
+          {/* =================================================
+              LOVE MESSAGE
+          ================================================= */}
 
           <div className="engagement-love-message">
             <span className="engagement-quote quote-left">“</span>
@@ -787,7 +868,9 @@ export default function Engagement() {
             <span className="engagement-quote quote-right">”</span>
           </div>
 
-          {/* WEDDING DETAILS */}
+          {/* =================================================
+              WEDDING DETAILS
+          ================================================= */}
 
           <div className="engagement-details">
             <div className="engagement-detail-item">
@@ -809,7 +892,9 @@ export default function Engagement() {
             </div>
           </div>
 
-          {/* COUNTDOWN */}
+          {/* =================================================
+              COUNTDOWN
+          ================================================= */}
 
           <div className="engagement-countdown-section">
             <div className="engagement-countdown-heading">
@@ -823,13 +908,17 @@ export default function Engagement() {
             <Countdown />
           </div>
 
-          {/* GOOGLE CALENDAR */}
+          {/* =================================================
+              GOOGLE CALENDAR
+          ================================================= */}
 
           <div className="engagement-calendar-wrapper">
             <SaveTheDateButton />
           </div>
 
-          {/* BOTTOM ORNAMENT */}
+          {/* =================================================
+              BOTTOM ORNAMENT
+          ================================================= */}
 
           <div className="engagement-bottom-ornament" aria-hidden="true">
             <span>✦</span>
