@@ -1,54 +1,29 @@
 import React from "react";
 import "./Venue.css";
 
+const MAP_URL = "https://maps.app.goo.gl/HujH1WFA1ppdn5PX9";
+
 function Venue() {
-  const mapUrl = "https://maps.app.goo.gl/HujH1WFA1ppdn5PX9";
-
   return (
-    <section className="venue-section">
-      {/* =====================================================
-          BACKGROUND GLOWS
-      ====================================================== */}
-
+    <section className="venue-section" aria-labelledby="venue-title">
+      {/* Lightweight decorative background */}
       <div className="venue-glow venue-glow-one" aria-hidden="true" />
-
       <div className="venue-glow venue-glow-two" aria-hidden="true" />
 
-      <div className="venue-glow venue-glow-three" aria-hidden="true" />
-
-      {/* =====================================================
-          FLOATING GOLD PARTICLES
-      ====================================================== */}
-
-      <div className="venue-particle venue-particle-1">✦</div>
-
-      <div className="venue-particle venue-particle-2">✧</div>
-
-      <div className="venue-particle venue-particle-3">❋</div>
-
-      <div className="venue-particle venue-particle-4">✦</div>
-
-      <div className="venue-particle venue-particle-5">❀</div>
-
-      <div className="venue-particle venue-particle-6">✧</div>
-
-      <div className="venue-particle venue-particle-7">✦</div>
-
-      {/* =====================================================
-          MAIN CONTAINER
-      ====================================================== */}
+      <div className="venue-particles" aria-hidden="true">
+        <span>✦</span>
+        <span>✧</span>
+        <span>❋</span>
+        <span>✦</span>
+        <span>❀</span>
+      </div>
 
       <div className="venue-container">
-        <div className="venue-card">
-          {/* Decorative inner border */}
+        <article className="venue-card">
+          <div className="venue-card-border" aria-hidden="true" />
 
-          <div className="venue-card-inner" aria-hidden="true" />
-
-          {/* =================================================
-              TOP ORNAMENT
-          ================================================= */}
-
-          <div className="venue-top-ornament" aria-hidden="true">
+          {/* Top ornament */}
+          <div className="venue-ornament" aria-hidden="true">
             <span>✦</span>
             <i />
             <span>❋</span>
@@ -56,27 +31,18 @@ function Venue() {
             <span>✦</span>
           </div>
 
-          {/* =================================================
-              SECTION LABEL
-          ================================================= */}
-
+          {/* Heading */}
           <p className="venue-eyebrow">THE VENUE</p>
 
-          {/* =================================================
-              TITLE
-          ================================================= */}
-
-          <h2 className="venue-title">Adam Mahal</h2>
+          <h2 id="venue-title" className="venue-title">
+            Adam Mahal
+          </h2>
 
           <p className="venue-intro">
             A beautiful place to celebrate
             <br />
             the beginning of our forever.
           </p>
-
-          {/* =================================================
-              DIVIDER
-          ================================================= */}
 
           <div className="venue-divider" aria-hidden="true">
             <span>✦</span>
@@ -86,13 +52,10 @@ function Venue() {
             <span>✦</span>
           </div>
 
-          {/* =================================================
-              LOCATION CARD
-          ================================================= */}
-
+          {/* Address */}
           <div className="venue-location-card">
-            <div className="venue-location-icon">
-              <span className="venue-pin">♡</span>
+            <div className="venue-location-icon" aria-hidden="true">
+              <span>♡</span>
             </div>
 
             <div className="venue-location-content">
@@ -100,39 +63,34 @@ function Venue() {
 
               <h3>Adam Mahal</h3>
 
-              <p>
+              <address>
                 Adam Mahal Thirumana Mandapam
                 <br />
                 Eswaran Koil Street
                 <br />
                 Walajabad
-              </p>
+              </address>
             </div>
           </div>
 
-          {/* =================================================
-              MAP VISUAL
-          ================================================= */}
-
+          {/* Map preview */}
           <a
-            href={mapUrl}
+            href={MAP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="venue-map"
-            aria-label="Open Adam Mahal location in Google Maps"
+            aria-label="Open Adam Mahal in Google Maps"
           >
-            <div className="venue-map-background">
+            <div className="venue-map-background" aria-hidden="true">
               <div className="venue-map-grid" />
 
-              <div className="venue-map-road venue-road-one" />
-              <div className="venue-map-road venue-road-two" />
-              <div className="venue-map-road venue-road-three" />
+              <span className="venue-map-road venue-road-one" />
+              <span className="venue-map-road venue-road-two" />
+              <span className="venue-map-road venue-road-three" />
 
-              <div className="venue-map-ring">
-                <span className="venue-map-pin">♥</span>
+              <div className="venue-map-location">
+                <span>♥</span>
               </div>
-
-              <div className="venue-map-pulse" />
             </div>
 
             <div className="venue-map-overlay">
@@ -144,35 +102,34 @@ function Venue() {
             </div>
           </a>
 
-          {/* =================================================
-              DIRECTIONS BUTTON
-          ================================================= */}
-
+          {/* Directions */}
           <div className="venue-button-wrapper">
             <a
-              href={mapUrl}
+              href={MAP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="venue-directions-button"
             >
-              <span className="venue-button-icon">♧</span>
+              <span className="venue-button-icon" aria-hidden="true">
+                ♧
+              </span>
 
               <span className="venue-button-text">
                 <small>FIND YOUR WAY</small>
-
                 <strong>GET DIRECTIONS</strong>
               </span>
 
-              <span className="venue-button-arrow">→</span>
+              <span className="venue-button-arrow" aria-hidden="true">
+                →
+              </span>
             </a>
           </div>
 
-          {/* =================================================
-              TRAVEL MESSAGE
-          ================================================= */}
-
+          {/* Message */}
           <div className="venue-travel-message">
-            <span className="venue-quote quote-left">“</span>
+            <span className="venue-quote quote-left" aria-hidden="true">
+              “
+            </span>
 
             <p>
               We can't wait to celebrate
@@ -180,14 +137,16 @@ function Venue() {
               this beautiful day with you.
             </p>
 
-            <span className="venue-quote quote-right">”</span>
+            <span className="venue-quote quote-right" aria-hidden="true">
+              ”
+            </span>
           </div>
 
-          {/* =================================================
-              BOTTOM ORNAMENT
-          ================================================= */}
-
-          <div className="venue-bottom-ornament" aria-hidden="true">
+          {/* Bottom ornament */}
+          <div
+            className="venue-ornament venue-ornament-bottom"
+            aria-hidden="true"
+          >
             <span>✦</span>
             <i />
             <span>❋</span>
@@ -196,7 +155,7 @@ function Venue() {
           </div>
 
           <div className="venue-bottom-text">WITH LOVE &amp; BLESSINGS</div>
-        </div>
+        </article>
       </div>
     </section>
   );

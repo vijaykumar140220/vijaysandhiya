@@ -4,67 +4,70 @@ import "./FinalMessage.css";
 function FinalMessage() {
   return (
     <section className="final-section">
-      {/* Background glow */}
-      <div className="final-glow final-glow-one"></div>
-      <div className="final-glow final-glow-two"></div>
-      <div className="final-glow final-glow-three"></div>
+      {/* Lightweight decorative background */}
+      <div className="final-glow final-glow-one" aria-hidden="true" />
+      <div className="final-glow final-glow-two" aria-hidden="true" />
 
-      {/* Floating particles */}
+      {/* Lightweight particles */}
       <div className="final-particles" aria-hidden="true">
         <span>✦</span>
         <span>✧</span>
         <span>•</span>
-        <span>✦</span>
         <span>❋</span>
+        <span>✦</span>
         <span>•</span>
         <span>✧</span>
         <span>✦</span>
-        <span>•</span>
-        <span>❋</span>
-        <span>✦</span>
-        <span>✧</span>
       </div>
 
       <div className="final-container">
-        <div className="final-card">
+        <article className="final-card">
           <div className="final-card-inner">
             {/* Decorative corners */}
-            <span className="final-corner final-corner-tl"></span>
-            <span className="final-corner final-corner-tr"></span>
-            <span className="final-corner final-corner-bl"></span>
-            <span className="final-corner final-corner-br"></span>
+            <span className="final-corner final-corner-tl" />
+            <span className="final-corner final-corner-tr" />
+            <span className="final-corner final-corner-bl" />
+            <span className="final-corner final-corner-br" />
 
             {/* Top ornament */}
-            <div className="final-top-ornament">
-              <span className="final-line"></span>
-              <span className="final-diamond">✦</span>
-              <span className="final-flower">❀</span>
-              <span className="final-diamond">✦</span>
-              <span className="final-line"></span>
+            <div className="final-top-ornament" aria-hidden="true">
+              <span className="final-line" />
+              <span>✦</span>
+              <span>❀</span>
+              <span>✦</span>
+              <span className="final-line" />
             </div>
 
+            {/* Eyebrow */}
             <p className="final-eyebrow">WITH LOVE &amp; GRATITUDE</p>
 
+            {/* Heading */}
             <div className="final-title-wrap">
-              <span className="title-side-star">✦</span>
+              <span className="title-side-star" aria-hidden="true">
+                ✦
+              </span>
 
               <h2 className="final-heading">
                 Your presence
                 <span>is our greatest gift</span>
               </h2>
 
-              <span className="title-side-star">✦</span>
+              <span className="title-side-star" aria-hidden="true">
+                ✦
+              </span>
             </div>
 
-            <div className="final-divider">
-              <span></span>
+            {/* Divider */}
+            <div className="final-divider" aria-hidden="true">
+              <span />
               <i>❦</i>
-              <span></span>
+              <span />
             </div>
 
+            {/* Message */}
             <p className="final-text">
               We look forward to celebrating
-              <br />
+              <br className="final-desktop-break" />
               this beautiful beginning with you.
             </p>
 
@@ -72,34 +75,40 @@ function FinalMessage() {
             <div className="final-names">
               <span className="final-name">Vijay Kumar</span>
 
-              <span className="final-heart">♥</span>
+              <span className="final-heart" aria-hidden="true">
+                ♥
+              </span>
 
               <span className="final-name">Sandhiya</span>
             </div>
 
-            <div className="final-name-line">
-              <span></span>
-              <span></span>
+            {/* Name decoration */}
+            <div className="final-name-line" aria-hidden="true">
+              <span />
+              <span>✦</span>
+              <span />
             </div>
 
             {/* Bottom ornament */}
-            <div className="final-ornament">
+            <div className="final-ornament" aria-hidden="true">
               <span>✦</span>
               <span className="ornament-flower">❀</span>
               <span>✦</span>
             </div>
 
+            {/* Closing message */}
             <p className="thank-you">With love, joy &amp; gratitude</p>
 
-            <div className="final-bottom-line">
-              <span></span>
+            {/* Signature */}
+            <div className="final-bottom-line" aria-hidden="true">
+              <span />
               <b>V &amp; S</b>
-              <span></span>
+              <span />
             </div>
           </div>
-        </div>
+        </article>
 
-        {/* Bottom floating hearts */}
+        {/* Floating hearts */}
         <div className="final-floating-hearts" aria-hidden="true">
           <span>♥</span>
           <span>♡</span>

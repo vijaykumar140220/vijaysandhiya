@@ -1,269 +1,117 @@
-import React, { useEffect, useState } from "react";
-import "./Celebration.css";
+import React from "react";
+import "./CoupleSection.css";
+import coupleImage from "../images/sandhiya.jpeg";
 
-import receptionImage from "../images/reception.svg.webp";
-import weddingImage from "../images/wedding.svg.webp";
-
-function Celebration() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisible(true);
-    }, 150);
-
-    return () => clearTimeout(timer);
-  }, []);
-
+function CoupleSection() {
   return (
-    <section className="celebration-section">
-      {/* =====================================================
-          BACKGROUND GLOW
-      ====================================================== */}
-
-      <div className="celebration-glow glow-one"></div>
-      <div className="celebration-glow glow-two"></div>
-      <div className="celebration-glow glow-three"></div>
-
-      <div className="celebration-light-beam beam-one"></div>
-      <div className="celebration-light-beam beam-two"></div>
-
-      {/* =====================================================
-          GOLD PARTICLES
-      ====================================================== */}
-
-      <div className="gold-particle particle-1">✦</div>
-      <div className="gold-particle particle-2">✧</div>
-      <div className="gold-particle particle-3">✦</div>
-      <div className="gold-particle particle-4">❋</div>
-      <div className="gold-particle particle-5">✦</div>
-      <div className="gold-particle particle-6">✧</div>
-      <div className="gold-particle particle-7">✦</div>
-      <div className="gold-particle particle-8">✧</div>
-      <div className="gold-particle particle-9">✦</div>
-
-      {/* =====================================================
-          FLOATING PETALS
-      ====================================================== */}
-
-      <div className="floating-petal petal-1">❀</div>
-      <div className="floating-petal petal-2">✿</div>
-      <div className="floating-petal petal-3">❀</div>
-      <div className="floating-petal petal-4">✦</div>
-      <div className="floating-petal petal-5">❀</div>
-      <div className="floating-petal petal-6">✿</div>
-
-      {/* =====================================================
-          MAIN CONTENT
-      ====================================================== */}
-
-      <div
-        className={`celebration-container ${
-          visible ? "celebration-visible" : ""
-        }`}
-      >
-        {/* =================================================
-            SECTION HEADING
-        ================================================== */}
-
-        <div className="celebration-heading">
-          <div className="top-ornament">
-            <span>✦</span>
-            <i></i>
-            <span>❋</span>
-            <i></i>
-            <span>✦</span>
-          </div>
-
-          <p className="celebration-small-title">OUR SPECIAL CELEBRATIONS</p>
-
-          <h2 className="celebration-title">Two Beautiful Moments</h2>
-
-          <p className="celebration-intro">
-            Two days, two celebrations,
-            <br />
-            one beautiful beginning.
-          </p>
-
-          <div className="heading-bottom-ornament">
-            <span></span>
-            <b>♡</b>
-            <span></span>
-          </div>
+    <section className="couple-section" aria-labelledby="couple-title">
+      <div className="couple-container">
+        {/* Traditional ornament */}
+        <div className="couple-ornament" aria-hidden="true">
+          <span>✦</span>
+          <i />
+          <b>❀</b>
+          <i />
+          <span>✦</span>
         </div>
 
-        {/* =================================================
-            DAY 1 — RECEPTION
-        ================================================== */}
+        {/* Heading */}
+        <header className="couple-heading">
+          <p className="couple-subtitle">TOGETHER WITH OUR FAMILIES</p>
+          <h2 id="couple-title" className="couple-title">
+            Two Hearts, One Beautiful Beginning
+          </h2>
+          <p className="couple-intro">
+            With love in our hearts and blessings from our families, we begin
+            this beautiful journey together.
+          </p>
+        </header>
 
-        <article className="event-card reception-card">
-          <div className="card-shine"></div>
+        {/* Main invitation card */}
+        <article className="couple-card">
+          <span className="card-corner top-left" aria-hidden="true">
+            ❈
+          </span>
+          <span className="card-corner top-right" aria-hidden="true">
+            ❈
+          </span>
+          <span className="card-corner bottom-left" aria-hidden="true">
+            ❈
+          </span>
+          <span className="card-corner bottom-right" aria-hidden="true">
+            ❈
+          </span>
 
-          <span className="card-corner corner-top-left">❋</span>
-          <span className="card-corner corner-top-right">❋</span>
-          <span className="card-corner corner-bottom-left">❋</span>
-          <span className="card-corner corner-bottom-right">❋</span>
+          <div className="card-inner">
+            {/* Couple photo */}
+            <div className="couple-photo-area">
+              <div className="photo-frame">
+                <div className="photo-inner">
+                  <img
+                    src={coupleImage}
+                    alt="Vijay Kumar and Sandhiya"
+                    className="couple-photo"
+                    width="620"
+                    height="760"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
 
-          {/* IMAGE */}
-
-          <div className="event-image-wrapper reception-image">
-            <div className="image-aura"></div>
-            <div className="image-ring ring-one"></div>
-            <div className="image-ring ring-two"></div>
-
-            <div className="image-glow"></div>
-
-            <img
-              src={receptionImage}
-              alt="Reception celebration"
-              className="event-image"
-            />
-
-            <div className="image-sparkle sparkle-a">✦</div>
-            <div className="image-sparkle sparkle-b">✧</div>
-            <div className="image-sparkle sparkle-c">✦</div>
-            <div className="image-sparkle sparkle-d">✧</div>
-          </div>
-
-          {/* CONTENT */}
-
-          <div className="event-content">
-            <span className="event-day">DAY 1</span>
-
-            <div className="mini-line">
-              <span></span>
-              <b>❋</b>
-              <span></span>
+              <div className="photo-badge" aria-hidden="true">
+                ♥
+              </div>
             </div>
 
-            <h3 className="event-title">Reception</h3>
+            {/* Names */}
+            <div className="couple-names">
+              <h3 className="couple-name vijay-name">Vijay Kumar</h3>
 
-            <div className="event-tamil">வரவேற்பு</div>
+              <div className="couple-heart" aria-label="and">
+                <span>♥</span>
+                <small>&amp;</small>
+              </div>
 
-            <div className="event-date">Saturday, 31 October 2026</div>
-
-            <div className="event-time">6:30 PM onwards</div>
-
-            <div className="content-ornament">
-              <span>────</span>
-              <b>♡</b>
-              <span>────</span>
+              <h3 className="couple-name sandhiya-name">Sandhiya</h3>
             </div>
 
-            {/* EXACTLY TWO LINES */}
-
-            <p className="event-description reception-description">
-              <span>An evening filled with joy, love, laughter</span>
-
-              <span>and beautiful memories.</span>
+            <p className="couple-caption">
+              Two souls, two families,
+              <br />
+              one beautiful journey.
             </p>
+
+            <div className="couple-divider" aria-hidden="true">
+              <i />
+              <span>❀</span>
+              <i />
+            </div>
+
+            <div className="family-blessing">
+              <span className="quote-mark" aria-hidden="true">
+                “
+              </span>
+              <p>
+                Surrounded by the love and blessings of our beloved families.
+              </p>
+              <span className="quote-mark closing" aria-hidden="true">
+                ”
+              </span>
+            </div>
           </div>
         </article>
 
-        {/* =================================================
-            CONNECTING ORNAMENT
-        ================================================== */}
-
-        <div className="between-events">
-          <span className="line"></span>
-
-          <div className="heart-orbit">
-            <span>✦</span>
-            <b>♡</b>
-            <span>✦</span>
-          </div>
-
-          <span className="line"></span>
-        </div>
-
-        {/* =================================================
-            DAY 2 — WEDDING
-        ================================================== */}
-
-        <article className="event-card wedding-card">
-          <div className="card-shine"></div>
-
-          <span className="card-corner corner-top-left">❋</span>
-          <span className="card-corner corner-top-right">❋</span>
-          <span className="card-corner corner-bottom-left">❋</span>
-          <span className="card-corner corner-bottom-right">❋</span>
-
-          {/* CONTENT */}
-
-          <div className="event-content">
-            <span className="event-day">DAY 2</span>
-
-            <div className="mini-line">
-              <span></span>
-              <b>❋</b>
-              <span></span>
-            </div>
-
-            <h3 className="event-title">Wedding</h3>
-
-            <div className="event-tamil">திருமணம்</div>
-
-            <div className="event-date">Sunday, 01 November 2026</div>
-
-            <div className="event-time">7:30 AM — 9:00 AM</div>
-
-            <div className="content-ornament">
-              <span>────</span>
-              <b>♡</b>
-              <span>────</span>
-            </div>
-
-            {/* EXACTLY TWO LINES */}
-
-            <p className="event-description wedding-description">
-              <span>With the blessings of our families, we begin</span>
-
-              <span>a beautiful new chapter.</span>
-            </p>
-          </div>
-
-          {/* IMAGE */}
-
-          <div className="event-image-wrapper wedding-image">
-            <div className="image-aura"></div>
-            <div className="image-ring ring-one"></div>
-            <div className="image-ring ring-two"></div>
-
-            <div className="image-glow"></div>
-
-            <img
-              src={weddingImage}
-              alt="Wedding ceremony"
-              className="event-image"
-            />
-
-            <div className="image-sparkle sparkle-a">✦</div>
-            <div className="image-sparkle sparkle-b">✧</div>
-            <div className="image-sparkle sparkle-c">✦</div>
-            <div className="image-sparkle sparkle-d">✧</div>
-          </div>
-        </article>
-
-        {/* =================================================
-            FOOTER
-        ================================================== */}
-
-        <div className="celebration-footer">
-          <div className="footer-ornament">✦ ───────── ❋ ───────── ✦</div>
-
-          <p>
-            TWO DAYS
-            <span> · </span>
-            TWO MEMORIES
-            <span> · </span>
-            ONE LOVE
-          </p>
-
-          <div className="footer-heart">♡</div>
+        <div className="couple-ornament bottom-ornament" aria-hidden="true">
+          <span>✦</span>
+          <i />
+          <b>❀</b>
+          <i />
+          <span>✦</span>
         </div>
       </div>
     </section>
   );
 }
 
-export default Celebration;
+export default CoupleSection;

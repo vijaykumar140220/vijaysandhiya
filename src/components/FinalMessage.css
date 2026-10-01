@@ -1,154 +1,155 @@
 /* =========================================================
-   FINAL MESSAGE SECTION
-   Luxury Ivory + Burgundy + Antique Gold
-   GrandReveal / Venue Matching Theme
-========================================================= */
-
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap");
-
-/* =========================================================
-   FINAL SECTION
+   FINAL MESSAGE
+   Luxury Wedding Theme
+   Optimized for Mobile Performance
 ========================================================= */
 
 .final-section {
+  --burgundy: #65091b;
+  --burgundy-soft: #8b2638;
+  --gold: #b08a54;
+  --gold-light: #d8b777;
+  --cream: #fffaf1;
+  --ivory: #f8eee3;
+  --text: #6b5847;
+
   position: relative;
-
   width: 100%;
-
-  min-height: 100vh;
   min-height: 100svh;
 
-  padding: 100px 24px;
+  display: grid;
+  place-items: center;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 80px 20px;
 
   overflow: hidden;
-
   isolation: isolate;
 
-  background: var(--invitation-background);
-
-  color: #6b5847;
+  background: var(--invitation-background, #f7efe5);
+  color: var(--text);
 }
 
 /* =========================================================
    BACKGROUND GLOWS
+   Only 2 lightweight glows instead of 3 large blur layers
 ========================================================= */
 
 .final-glow {
   position: absolute;
-
-  border-radius: 50%;
-
-  pointer-events: none;
-
-  filter: blur(80px);
-
   z-index: -2;
 
-  opacity: 0.55;
-}
-
-.final-glow-one {
-  width: 430px;
-  height: 430px;
-
-  top: -180px;
-  left: -160px;
-
-  background: rgba(194, 133, 54, 0.2);
-
-  animation: finalGlowOne 10s ease-in-out infinite;
-}
-
-.final-glow-two {
-  width: 380px;
-  height: 380px;
-
-  right: -160px;
-  bottom: -120px;
-
-  background: rgba(221, 171, 79, 0.14);
-
-  animation: finalGlowTwo 12s ease-in-out infinite;
-}
-
-.final-glow-three {
   width: 300px;
   height: 300px;
 
-  top: 50%;
-  left: 50%;
+  border-radius: 50%;
+  pointer-events: none;
 
-  transform: translate(-50%, -50%);
+  opacity: 0.35;
 
-  background: rgba(101, 9, 27, 0.1);
+  background: rgba(194, 133, 54, 0.18);
 
-  animation: finalGlowThree 7s ease-in-out infinite;
+  filter: blur(45px);
+
+  will-change: transform;
+}
+
+.final-glow-one {
+  top: -140px;
+  left: -100px;
+
+  animation: finalGlowOne 12s ease-in-out infinite;
+}
+
+.final-glow-two {
+  right: -120px;
+  bottom: -120px;
+
+  width: 260px;
+  height: 260px;
+
+  background: rgba(221, 171, 79, 0.14);
+
+  animation: finalGlowTwo 14s ease-in-out infinite;
 }
 
 /* =========================================================
-   FLOATING PARTICLES
+   PARTICLES
 ========================================================= */
 
 .final-particles {
   position: absolute;
-
   inset: 0;
 
-  overflow: hidden;
-
-  pointer-events: none;
-
   z-index: -1;
+
+  overflow: hidden;
+  pointer-events: none;
 }
 
-.final-particle {
+.final-particles span {
   position: absolute;
 
-  left: calc((var(--i) * 17.5%) - 5%);
+  bottom: -20px;
 
-  bottom: -50px;
+  color: rgba(176, 138, 84, 0.45);
 
-  color: rgba(196, 148, 78, 0.42);
-
-  font-size: 10px;
+  font-size: 11px;
 
   opacity: 0;
 
-  animation: finalParticleFloat calc(9s + (var(--i) * 0.7s)) linear infinite;
+  animation: finalParticleFloat 10s linear infinite;
 
-  animation-delay: calc(var(--i) * -1.2s);
+  will-change: transform, opacity;
 }
 
-.final-particle:nth-child(2n) {
-  color: rgba(255, 240, 210, 0.25);
+.final-particles span:nth-child(1) {
+  left: 8%;
+  animation-delay: -1s;
 }
 
-.final-particle:nth-child(3n) {
-  font-size: 7px;
+.final-particles span:nth-child(2) {
+  left: 22%;
+  animation-delay: -5s;
 }
 
-.final-particle:nth-child(4n) {
-  font-size: 13px;
+.final-particles span:nth-child(3) {
+  left: 38%;
+  animation-delay: -3s;
 }
 
-.final-particle:nth-child(5n) {
-  color: rgba(190, 139, 76, 0.3);
+.final-particles span:nth-child(4) {
+  left: 53%;
+  animation-delay: -8s;
+}
+
+.final-particles span:nth-child(5) {
+  left: 68%;
+  animation-delay: -4s;
+}
+
+.final-particles span:nth-child(6) {
+  left: 78%;
+  animation-delay: -7s;
+}
+
+.final-particles span:nth-child(7) {
+  left: 88%;
+  animation-delay: -2s;
+}
+
+.final-particles span:nth-child(8) {
+  left: 95%;
+  animation-delay: -6s;
 }
 
 /* =========================================================
-   MAIN CONTAINER
+   CONTAINER
 ========================================================= */
 
 .final-container {
   position: relative;
 
-  width: 100%;
-
-  max-width: 900px;
+  width: min(100%, 850px);
 
   margin: 0 auto;
 
@@ -156,8 +157,7 @@
 }
 
 /* =========================================================
-   MAIN CARD
-   GrandReveal Style
+   CARD
 ========================================================= */
 
 .final-card {
@@ -165,35 +165,21 @@
 
   padding: 1px;
 
-  border-radius: 32px;
+  border-radius: 26px;
 
   background: linear-gradient(
     135deg,
-    rgba(206, 162, 86, 0.9),
-    rgba(159, 119, 70, 0.2) 30%,
-    rgba(206, 162, 86, 0.65) 65%,
-    rgba(159, 119, 70, 0.18)
+    rgba(206, 162, 86, 0.85),
+    rgba(159, 119, 70, 0.2) 35%,
+    rgba(206, 162, 86, 0.7) 70%,
+    rgba(159, 119, 70, 0.2)
   );
 
   box-shadow:
-    0 30px 90px rgba(0, 0, 0, 0.32),
-    0 0 60px rgba(174, 113, 62, 0.08);
+    0 24px 65px rgba(67, 45, 25, 0.2),
+    0 0 30px rgba(174, 113, 62, 0.05);
 
-  animation: finalCardReveal 1.2s ease both;
-}
-
-.final-card::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 7px;
-
-  border: 1px solid rgba(159, 119, 70, 0.22);
-
-  border-radius: 26px;
-
-  pointer-events: none;
+  animation: finalCardReveal 0.8s ease both;
 }
 
 /* =========================================================
@@ -203,72 +189,81 @@
 .final-card-inner {
   position: relative;
 
-  width: 100%;
-
-  padding: 82px 70px 70px;
-
-  border-radius: 31px;
+  padding: 70px 60px 55px;
 
   overflow: hidden;
+
+  border-radius: 25px;
 
   text-align: center;
 
   background:
     radial-gradient(
       circle at 20% 15%,
-      rgba(255, 255, 255, 0.92),
+      rgba(255, 255, 255, 0.9),
       transparent 30%
     ),
-    radial-gradient(
-      circle at 85% 85%,
-      rgba(255, 235, 205, 0.65),
-      transparent 32%
-    ),
-    linear-gradient(145deg, #fffaf1, #f8eee3, #fffaf3);
+    linear-gradient(145deg, var(--cream), var(--ivory), #fffaf3);
 }
 
-/* =========================================================
-   INNER BORDER
-========================================================= */
+/* Inner border */
 
 .final-card-inner::before {
   content: "";
 
   position: absolute;
 
-  inset: 20px;
+  inset: 18px;
 
   border: 1px solid rgba(159, 119, 70, 0.13);
 
-  border-radius: 20px;
+  border-radius: 17px;
 
   pointer-events: none;
 }
 
 /* =========================================================
-   SOFT CENTER GLOW
+   DECORATIVE CORNERS
 ========================================================= */
 
-.final-card-inner::after {
-  content: "";
-
+.final-corner {
   position: absolute;
 
-  width: 350px;
-  height: 350px;
+  width: 32px;
+  height: 32px;
 
-  top: 50%;
-  left: 50%;
+  border-color: rgba(176, 138, 84, 0.5);
+  border-style: solid;
 
-  transform: translate(-50%, -50%);
+  z-index: 2;
+}
 
-  border-radius: 50%;
+.final-corner-tl {
+  top: 29px;
+  left: 29px;
 
-  background: rgba(195, 148, 78, 0.045);
+  border-width: 1px 0 0 1px;
+}
 
-  filter: blur(25px);
+.final-corner-tr {
+  top: 29px;
+  right: 29px;
 
-  pointer-events: none;
+  border-width: 1px 1px 0 0;
+}
+
+.final-corner-bl {
+  bottom: 29px;
+  left: 29px;
+
+  border-width: 0 0 1px 1px;
+}
+
+.final-corner-br {
+  right: 29px;
+  bottom: 29px;
+
+  border-width: 0 1px 1px 0;
 }
 
 /* =========================================================
@@ -277,71 +272,122 @@
 
 .final-top-ornament {
   position: relative;
-
-  z-index: 2;
+  z-index: 3;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  gap: 14px;
+  gap: 12px;
 
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 
-  color: #b08a54;
+  color: var(--gold);
 
-  animation: finalOrnamentReveal 1.1s ease 0.15s both;
+  animation: finalFadeUp 0.8s 0.1s both;
 }
 
-.final-top-ornament span {
-  font-family: "Cormorant Garamond", serif;
+.final-top-ornament > span:not(.final-line) {
+  font-family: Georgia, serif;
 
-  font-size: 16px;
+  font-size: 15px;
 
-  color: #b08a54;
-
-  text-shadow: 0 0 10px rgba(176, 138, 84, 0.25);
+  color: var(--gold);
 }
 
-.final-top-ornament i {
+.final-top-ornament .final-line {
   display: block;
 
-  width: 70px;
+  width: 60px;
   height: 1px;
 
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(176, 138, 84, 0.65),
+    rgba(176, 138, 84, 0.6),
     transparent
   );
 }
 
 /* =========================================================
-   SUBTITLE
+   EYEBROW
 ========================================================= */
 
 .final-eyebrow {
   position: relative;
+  z-index: 3;
 
-  z-index: 2;
-
-  margin: 0 0 20px;
-
-  font-family: "Montserrat", sans-serif;
-
-  font-size: 11px;
-
-  font-weight: 500;
-
-  letter-spacing: 4px;
-
-  text-transform: uppercase;
+  margin: 0 0 16px;
 
   color: #a6783b;
 
-  animation: finalFadeUp 1s ease 0.25s both;
+  font-family: Montserrat, Arial, sans-serif;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 4px;
+
+  animation: finalFadeUp 0.8s 0.15s both;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.final-title-wrap {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+}
+
+.title-side-star {
+  flex: 0 0 auto;
+
+  color: rgba(176, 138, 84, 0.6);
+
+  font-size: 13px;
+
+  animation: finalStarPulse 3s ease-in-out infinite;
+}
+
+.final-heading {
+  margin: 0;
+
+  color: var(--burgundy);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: clamp(48px, 6vw, 70px);
+
+  font-weight: 500;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.5px;
+
+  text-shadow: 0 2px 14px rgba(101, 9, 27, 0.08);
+
+  animation: finalHeadingReveal 0.9s 0.25s both;
+}
+
+.final-heading span {
+  display: block;
+
+  margin-top: 8px;
+
+  color: var(--gold);
+
+  font-size: 0.78em;
+
+  font-style: italic;
 }
 
 /* =========================================================
@@ -350,21 +396,20 @@
 
 .final-divider {
   position: relative;
-
-  z-index: 2;
+  z-index: 3;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  gap: 15px;
+  gap: 12px;
 
-  max-width: 360px;
+  width: min(100%, 330px);
 
-  margin: 0 auto 26px;
+  margin: 25px auto 25px;
 
-  animation: finalFadeUp 1s ease 0.35s both;
+  animation: finalFadeUp 0.8s 0.35s both;
 }
 
 .final-divider span {
@@ -379,66 +424,14 @@
   background: linear-gradient(90deg, rgba(176, 138, 84, 0.55), transparent);
 }
 
-.final-divider b {
-  font-family: "Cormorant Garamond", serif;
+.final-divider i {
+  color: var(--gold);
 
-  font-size: 21px;
+  font-family: Georgia, serif;
 
-  font-weight: 400;
+  font-size: 18px;
 
-  color: #b08a54;
-
-  text-shadow: 0 0 15px rgba(176, 138, 84, 0.25);
-}
-
-/* =========================================================
-   MAIN HEADING
-========================================================= */
-
-.final-heading {
-  position: relative;
-
-  z-index: 2;
-
-  margin: 0;
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: clamp(44px, 6vw, 70px);
-
-  line-height: 0.98;
-
-  font-weight: 500;
-
-  letter-spacing: -0.5px;
-
-  color: #65091b;
-
-  text-shadow: 0 2px 15px rgba(101, 9, 27, 0.1);
-
-  animation: finalHeadingReveal 1.2s ease 0.45s both;
-}
-
-.final-heading em {
-  display: inline-block;
-
-  margin-top: 7px;
-
-  font-weight: 400;
-
-  font-style: italic;
-
-  background: linear-gradient(90deg, #a6783b, #e7c27c, #a6783b);
-
-  background-size: 200% auto;
-
-  background-clip: text;
-
-  -webkit-background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-
-  animation: finalGoldShimmer 5s ease-in-out infinite;
+  font-style: normal;
 }
 
 /* =========================================================
@@ -447,24 +440,23 @@
 
 .final-text {
   position: relative;
+  z-index: 3;
 
-  z-index: 2;
+  margin: 0 auto 32px;
 
-  margin: 30px 0 35px;
+  color: rgba(107, 88, 71, 0.78);
 
-  font-family: "Montserrat", sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
 
-  font-size: 14px;
+  font-size: 13px;
 
-  line-height: 2;
+  font-weight: 400;
 
-  font-weight: 300;
+  line-height: 1.9;
 
-  letter-spacing: 0.6px;
+  letter-spacing: 0.3px;
 
-  color: rgba(107, 88, 71, 0.76);
-
-  animation: finalFadeUp 1s ease 0.6s both;
+  animation: finalFadeUp 0.8s 0.45s both;
 }
 
 /* =========================================================
@@ -473,35 +465,30 @@
 
 .final-names {
   position: relative;
-
-  z-index: 2;
+  z-index: 3;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  gap: 20px;
+  gap: 18px;
 
-  margin-top: 20px;
-
-  animation: finalNamesReveal 1.1s ease 0.75s both;
+  animation: finalNamesReveal 0.9s 0.55s both;
 }
 
 .final-name {
-  font-family: "Cormorant Garamond", serif;
+  color: var(--burgundy);
 
-  font-size: clamp(30px, 5vw, 43px);
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: clamp(32px, 4.5vw, 45px);
 
   font-weight: 500;
 
-  letter-spacing: 0.5px;
-
-  color: #65091b;
+  line-height: 1;
 
   white-space: nowrap;
-
-  text-shadow: 0 2px 12px rgba(101, 9, 27, 0.08);
 }
 
 /* =========================================================
@@ -509,56 +496,49 @@
 ========================================================= */
 
 .final-heart {
-  display: inline-flex;
+  width: 42px;
+  height: 42px;
 
-  align-items: center;
-  justify-content: center;
+  flex: 0 0 auto;
 
-  width: 44px;
-  height: 44px;
+  display: grid;
+  place-items: center;
 
   border: 1px solid rgba(195, 148, 78, 0.45);
 
   border-radius: 50%;
 
-  background: radial-gradient(
-    circle,
-    rgba(195, 148, 78, 0.12),
-    rgba(101, 9, 27, 0.025)
-  );
+  background: rgba(195, 148, 78, 0.07);
 
   color: #8c3029;
 
-  font-size: 17px;
+  font-size: 15px;
 
-  box-shadow: 0 0 20px rgba(184, 111, 83, 0.12);
-
-  animation: finalHeartBeat 2.3s ease-in-out infinite;
+  animation: finalHeartBeat 2.5s ease-in-out infinite;
 }
 
 /* =========================================================
-   NAME DIVIDER
+   NAME LINE
 ========================================================= */
 
-.final-name-divider {
+.final-name-line {
   position: relative;
-
-  z-index: 2;
+  z-index: 3;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  gap: 12px;
+  gap: 10px;
 
-  max-width: 290px;
+  width: min(100%, 260px);
 
-  margin: 27px auto 30px;
+  margin: 22px auto 25px;
 }
 
-.final-name-divider > span:first-child,
-.final-name-divider > span:last-child {
+.final-name-line span:first-child,
+.final-name-line span:last-child {
   flex: 1;
 
   height: 1px;
@@ -566,100 +546,23 @@
   background: linear-gradient(90deg, transparent, rgba(176, 138, 84, 0.45));
 }
 
-.final-name-divider > span:last-child {
+.final-name-line span:last-child {
   background: linear-gradient(90deg, rgba(176, 138, 84, 0.45), transparent);
 }
 
-.final-diamond {
-  font-size: 7px;
+.final-name-line span:nth-child(2) {
+  color: var(--gold);
 
-  color: #b08a54;
-
-  transform: rotate(45deg);
-}
-
-/* =========================================================
-   SPECIAL MESSAGE
-========================================================= */
-
-.final-message {
-  position: relative;
-
-  z-index: 2;
-
-  max-width: 540px;
-
-  margin: 0 auto 34px;
-
-  padding: 25px 38px;
-
-  border-top: 1px solid rgba(176, 138, 84, 0.22);
-
-  border-bottom: 1px solid rgba(176, 138, 84, 0.22);
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(195, 148, 78, 0.035),
-    transparent
-  );
-
-  animation: finalFadeUp 1s ease 0.9s both;
-}
-
-.final-message p {
-  margin: 0;
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: 20px;
-
-  line-height: 1.65;
-
-  font-weight: 400;
-
-  font-style: italic;
-
-  color: rgba(107, 88, 71, 0.8);
-}
-
-/* =========================================================
-   QUOTATION MARKS
-========================================================= */
-
-.final-quote-mark {
-  position: absolute;
-
-  top: 5px;
-  left: 4px;
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: 50px;
-
-  line-height: 1;
-
-  color: rgba(176, 138, 84, 0.32);
-}
-
-.final-quote-right {
-  top: auto;
-
-  left: auto;
-
-  right: 4px;
-
-  bottom: -13px;
+  font-size: 8px;
 }
 
 /* =========================================================
    BOTTOM ORNAMENT
 ========================================================= */
 
-.final-bottom-ornament {
+.final-ornament {
   position: relative;
-
-  z-index: 2;
+  z-index: 3;
 
   display: flex;
 
@@ -668,190 +571,183 @@
 
   gap: 13px;
 
-  margin-top: 10px;
+  margin-top: 4px;
 
-  color: #b08a54;
+  color: var(--gold);
 
-  animation: finalOrnamentReveal 1s ease 1s both;
+  font-size: 14px;
 }
 
-.final-bottom-ornament span {
-  font-size: 13px;
-}
+.final-ornament .ornament-flower {
+  font-size: 18px;
 
-.final-bottom-ornament i {
-  display: block;
-
-  width: 52px;
-  height: 1px;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(176, 138, 84, 0.5),
-    transparent
-  );
+  animation: finalStarPulse 3s ease-in-out infinite;
 }
 
 /* =========================================================
    THANK YOU
 ========================================================= */
 
-.final-thank-you {
+.thank-you {
   position: relative;
+  z-index: 3;
 
-  z-index: 2;
+  margin: 15px 0 0;
 
-  margin: 19px 0 0;
+  color: rgba(166, 120, 59, 0.72);
 
-  font-family: "Montserrat", sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
 
-  font-size: 10px;
+  font-size: 9px;
 
-  font-weight: 400;
+  font-weight: 600;
 
   letter-spacing: 3px;
 
   text-transform: uppercase;
-
-  color: rgba(166, 120, 59, 0.72);
-
-  animation: finalFadeUp 1s ease 1.1s both;
 }
 
 /* =========================================================
-   FINAL STAR
+   FINAL BOTTOM LINE
 ========================================================= */
 
-.final-small-star {
+.final-bottom-line {
   position: relative;
+  z-index: 3;
 
-  z-index: 2;
+  display: flex;
 
-  margin-top: 25px;
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  width: min(100%, 280px);
+
+  margin: 22px auto 0;
+}
+
+.final-bottom-line span {
+  flex: 1;
+
+  height: 1px;
+
+  background: linear-gradient(90deg, transparent, rgba(176, 138, 84, 0.42));
+}
+
+.final-bottom-line span:last-child {
+  background: linear-gradient(90deg, rgba(176, 138, 84, 0.42), transparent);
+}
+
+.final-bottom-line b {
+  color: rgba(166, 120, 59, 0.7);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
 
   font-size: 12px;
 
-  color: rgba(166, 120, 59, 0.5);
+  font-weight: 600;
 
-  animation: finalStarPulse 3s ease-in-out infinite;
+  letter-spacing: 2px;
 }
 
 /* =========================================================
-   CARD ANIMATION
+   FLOATING HEARTS
+========================================================= */
+
+.final-floating-hearts {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -8px;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 65px;
+
+  pointer-events: none;
+
+  opacity: 0.6;
+}
+
+.final-floating-hearts span {
+  color: rgba(176, 138, 84, 0.5);
+
+  font-size: 10px;
+
+  animation: finalHeartFloat 5s ease-in-out infinite;
+}
+
+.final-floating-hearts span:nth-child(2) {
+  animation-delay: -1s;
+}
+
+.final-floating-hearts span:nth-child(3) {
+  animation-delay: -2s;
+}
+
+.final-floating-hearts span:nth-child(4) {
+  animation-delay: -3s;
+}
+
+.final-floating-hearts span:nth-child(5) {
+  animation-delay: -4s;
+}
+
+/* =========================================================
+   ANIMATIONS
 ========================================================= */
 
 @keyframes finalCardReveal {
-  0% {
+  from {
     opacity: 0;
-
-    transform: translateY(45px) scale(0.97);
+    transform: translateY(25px);
   }
 
-  100% {
+  to {
     opacity: 1;
-
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
-
-/* =========================================================
-   FADE UP
-========================================================= */
 
 @keyframes finalFadeUp {
-  0% {
+  from {
     opacity: 0;
-
-    transform: translateY(22px);
+    transform: translateY(14px);
   }
 
-  100% {
+  to {
     opacity: 1;
-
     transform: translateY(0);
   }
 }
-
-/* =========================================================
-   HEADING REVEAL
-========================================================= */
 
 @keyframes finalHeadingReveal {
-  0% {
+  from {
     opacity: 0;
-
-    transform: translateY(28px);
-
-    filter: blur(5px);
+    transform: translateY(20px);
   }
 
-  100% {
+  to {
     opacity: 1;
-
     transform: translateY(0);
-
-    filter: blur(0);
   }
 }
 
-/* =========================================================
-   NAMES REVEAL
-========================================================= */
-
 @keyframes finalNamesReveal {
-  0% {
+  from {
     opacity: 0;
-
-    transform: scale(0.94);
+    transform: scale(0.97);
   }
 
-  100% {
+  to {
     opacity: 1;
-
     transform: scale(1);
   }
 }
-
-/* =========================================================
-   ORNAMENT REVEAL
-========================================================= */
-
-@keyframes finalOrnamentReveal {
-  0% {
-    opacity: 0;
-
-    transform: scaleX(0.5);
-  }
-
-  100% {
-    opacity: 1;
-
-    transform: scaleX(1);
-  }
-}
-
-/* =========================================================
-   GOLD SHIMMER
-========================================================= */
-
-@keyframes finalGoldShimmer {
-  0% {
-    background-position: 200% center;
-  }
-
-  50% {
-    background-position: 0% center;
-  }
-
-  100% {
-    background-position: -200% center;
-  }
-}
-
-/* =========================================================
-   HEART BEAT
-========================================================= */
 
 @keyframes finalHeartBeat {
   0%,
@@ -859,114 +755,88 @@
     transform: scale(1);
   }
 
-  8% {
-    transform: scale(1.09);
+  10% {
+    transform: scale(1.08);
   }
 
-  16% {
+  20% {
     transform: scale(1);
   }
 
-  24% {
-    transform: scale(1.09);
+  30% {
+    transform: scale(1.08);
   }
 
-  32% {
+  40% {
     transform: scale(1);
   }
 }
-
-/* =========================================================
-   STAR PULSE
-========================================================= */
 
 @keyframes finalStarPulse {
   0%,
   100% {
-    opacity: 0.35;
-
+    opacity: 0.45;
     transform: scale(1);
   }
 
   50% {
-    opacity: 0.85;
-
-    transform: scale(1.25);
+    opacity: 0.9;
+    transform: scale(1.15);
   }
 }
-
-/* =========================================================
-   GLOW ONE
-========================================================= */
 
 @keyframes finalGlowOne {
   0%,
   100% {
-    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   50% {
-    transform: translate(50px, 35px);
+    transform: translate3d(25px, 20px, 0);
   }
 }
-
-/* =========================================================
-   GLOW TWO
-========================================================= */
 
 @keyframes finalGlowTwo {
   0%,
   100% {
-    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   50% {
-    transform: translate(-45px, -35px);
+    transform: translate3d(-25px, -20px, 0);
   }
 }
-
-/* =========================================================
-   GLOW THREE
-========================================================= */
-
-@keyframes finalGlowThree {
-  0%,
-  100% {
-    opacity: 0.3;
-
-    transform: translate(-50%, -50%) scale(0.9);
-  }
-
-  50% {
-    opacity: 0.7;
-
-    transform: translate(-50%, -50%) scale(1.15);
-  }
-}
-
-/* =========================================================
-   PARTICLE ANIMATION
-========================================================= */
 
 @keyframes finalParticleFloat {
   0% {
     opacity: 0;
-
-    transform: translateY(0) rotate(0deg);
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
 
-  10% {
-    opacity: 0.55;
+  15% {
+    opacity: 0.45;
   }
 
-  50% {
-    opacity: 0.25;
+  80% {
+    opacity: 0.2;
   }
 
   100% {
     opacity: 0;
+    transform: translate3d(0, -100vh, 0) rotate(90deg);
+  }
+}
 
-    transform: translateY(-110vh) rotate(180deg);
+@keyframes finalHeartFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.7;
   }
 }
 
@@ -978,31 +848,19 @@
   .final-section {
     min-height: auto;
 
-    padding: 75px 18px;
+    padding: 65px 16px;
   }
 
   .final-card-inner {
-    padding: 68px 35px 58px;
-  }
-
-  .final-card-inner::before {
-    inset: 15px;
+    padding: 60px 38px 48px;
   }
 
   .final-heading {
-    font-size: clamp(40px, 9vw, 57px);
-  }
-
-  .final-text {
-    font-size: 13px;
+    font-size: clamp(42px, 8vw, 58px);
   }
 
   .final-name {
-    font-size: 35px;
-  }
-
-  .final-message {
-    padding: 23px 28px;
+    font-size: 34px;
   }
 }
 
@@ -1012,133 +870,187 @@
 
 @media (max-width: 520px) {
   .final-section {
-    padding: 55px 12px;
+    padding: 48px 10px;
   }
 
   .final-card {
-    border-radius: 25px;
+    border-radius: 22px;
   }
 
   .final-card-inner {
-    padding: 58px 20px 48px;
+    padding: 48px 18px 40px;
 
-    border-radius: 24px;
+    border-radius: 21px;
   }
 
   .final-card-inner::before {
     inset: 11px;
 
-    border-radius: 17px;
+    border-radius: 14px;
   }
+
+  /* Corners */
+
+  .final-corner {
+    width: 23px;
+    height: 23px;
+  }
+
+  .final-corner-tl {
+    top: 20px;
+    left: 20px;
+  }
+
+  .final-corner-tr {
+    top: 20px;
+    right: 20px;
+  }
+
+  .final-corner-bl {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .final-corner-br {
+    right: 20px;
+    bottom: 20px;
+  }
+
+  /* Ornament */
 
   .final-top-ornament {
-    gap: 9px;
+    gap: 8px;
 
-    margin-bottom: 23px;
+    margin-bottom: 20px;
   }
 
-  .final-top-ornament span {
+  .final-top-ornament > span:not(.final-line) {
     font-size: 12px;
   }
 
-  .final-top-ornament i {
-    width: 42px;
+  .final-top-ornament .final-line {
+    width: 38px;
   }
+
+  /* Eyebrow */
 
   .final-eyebrow {
+    margin-bottom: 14px;
+
+    font-size: 8px;
+
+    letter-spacing: 2.8px;
+  }
+
+  /* Title */
+
+  .final-title-wrap {
+    gap: 8px;
+  }
+
+  .title-side-star {
     font-size: 9px;
-
-    letter-spacing: 3px;
-  }
-
-  .final-divider {
-    max-width: 270px;
-
-    gap: 10px;
-  }
-
-  .final-divider b {
-    font-size: 18px;
   }
 
   .final-heading {
-    font-size: 40px;
+    font-size: clamp(35px, 10vw, 43px);
 
     line-height: 1;
   }
 
-  .final-text {
-    margin: 25px 0 30px;
+  .final-heading span {
+    margin-top: 6px;
 
-    font-size: 12px;
-
-    line-height: 1.9;
+    font-size: 0.78em;
   }
 
+  /* Divider */
+
+  .final-divider {
+    width: 90%;
+
+    gap: 8px;
+
+    margin: 21px auto;
+  }
+
+  .final-divider i {
+    font-size: 15px;
+  }
+
+  /* Text */
+
+  .final-text {
+    margin-bottom: 27px;
+
+    font-size: 11px;
+
+    line-height: 1.8;
+  }
+
+  /* Names */
+
   .final-names {
-    gap: 11px;
+    gap: 8px;
   }
 
   .final-name {
-    font-size: 27px;
+    font-size: clamp(24px, 7.2vw, 31px);
   }
 
   .final-heart {
-    width: 34px;
-    height: 34px;
+    width: 31px;
+    height: 31px;
 
-    font-size: 14px;
+    font-size: 12px;
   }
 
-  .final-name-divider {
-    max-width: 220px;
+  /* Name line */
 
-    margin: 21px auto 24px;
+  .final-name-line {
+    width: 80%;
+
+    margin: 19px auto 22px;
   }
 
-  .final-message {
-    padding: 20px 22px;
+  /* Ornament */
 
-    margin-bottom: 28px;
+  .final-ornament {
+    gap: 10px;
+
+    font-size: 11px;
   }
 
-  .final-message p {
-    font-size: 16px;
-
-    line-height: 1.55;
+  .final-ornament .ornament-flower {
+    font-size: 15px;
   }
 
-  .final-quote-mark {
-    font-size: 38px;
+  /* Thank you */
+
+  .thank-you {
+    font-size: 7px;
+
+    letter-spacing: 2px;
   }
 
-  .final-bottom-ornament {
+  /* Bottom */
+
+  .final-bottom-line {
+    width: 80%;
+
     gap: 9px;
+
+    margin-top: 18px;
   }
 
-  .final-bottom-ornament i {
-    width: 38px;
+  .final-bottom-line b {
+    font-size: 10px;
   }
 
-  .final-thank-you {
-    font-size: 8px;
+  /* Hearts */
 
-    letter-spacing: 2.2px;
-  }
-
-  .final-glow-one {
-    width: 280px;
-    height: 280px;
-  }
-
-  .final-glow-two {
-    width: 240px;
-    height: 240px;
-  }
-
-  .final-glow-three {
-    width: 200px;
-    height: 200px;
+  .final-floating-hearts {
+    gap: 35px;
   }
 }
 
@@ -1148,59 +1060,93 @@
 
 @media (max-width: 380px) {
   .final-section {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 38px 7px;
   }
 
   .final-card-inner {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 43px 13px 35px;
   }
 
   .final-heading {
-    font-size: 34px;
+    font-size: 32px;
+  }
+
+  .final-text {
+    font-size: 10px;
   }
 
   .final-name {
-    font-size: 24px;
+    font-size: 23px;
   }
 
   .final-heart {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
 
-    font-size: 12px;
+    font-size: 11px;
   }
 
-  .final-message p {
-    font-size: 15px;
-  }
-
-  .final-thank-you {
-    font-size: 7px;
+  .final-floating-hearts {
+    gap: 24px;
   }
 }
 
 /* =========================================================
-   ACCESSIBILITY
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 330px) {
+  .final-card-inner {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .final-heading {
+    font-size: 29px;
+  }
+
+  .title-side-star {
+    display: none;
+  }
+
+  .final-name {
+    font-size: 21px;
+  }
+
+  .final-heart {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .final-card,
+  .final-glow,
+  .final-particles span,
   .final-top-ornament,
   .final-eyebrow,
-  .final-divider,
   .final-heading,
+  .final-divider,
   .final-text,
   .final-names,
-  .final-message,
-  .final-bottom-ornament,
-  .final-thank-you,
-  .final-heading em,
-  .final-particle,
-  .final-glow,
   .final-heart,
-  .final-small-star {
+  .final-ornament,
+  .final-floating-hearts span,
+  .title-side-star {
     animation: none !important;
+  }
+}
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) {
+  .final-floating-hearts {
+    opacity: 0.35;
   }
 }

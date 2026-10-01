@@ -1,3 +1,10 @@
+/* =========================================================
+   GOOGLE FONTS
+   ---------------------------------------------------------
+   Ideally move this @import to index.css or index.html
+   so fonts are loaded only once for the entire application.
+========================================================= */
+
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap");
 
 /* =========================================================
@@ -18,55 +25,95 @@
 
   --red: #8b2f24;
 
-  /* One shared backdrop keeps each invitation screen visually continuous. */
+  /*
+    Main wedding background.
+    Kept exactly in the same burgundy/gold family.
+  */
   --invitation-background:
     radial-gradient(circle at 50% 0%, rgba(145, 35, 54, 0.55), transparent 38%),
     radial-gradient(circle at 0% 50%, rgba(100, 15, 32, 0.65), transparent 35%),
-    radial-gradient(circle at 100% 75%, rgba(118, 22, 42, 0.55), transparent 38%),
+    radial-gradient(
+      circle at 100% 75%,
+      rgba(118, 22, 42, 0.55),
+      transparent 38%
+    ),
     #570717;
 
   --shadow: rgba(73, 53, 22, 0.18);
+
+  --content-width: 1200px;
 }
 
 /* =========================================================
    RESET
 ========================================================= */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
 
-  font-family: "Cormorant Garamond", serif;
+  min-width: 320px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
 
   background: var(--ivory);
 
   color: var(--brown);
 
   overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+body,
 button,
 a,
 input,
 textarea,
 select {
-  font-family: inherit;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
   outline: none;
 }
 
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
 img {
+  display: block;
   max-width: 100%;
+  height: auto;
+}
+
+main {
+  width: 100%;
+}
+
+section {
+  position: relative;
+  width: 100%;
 }
 
 /* =========================================================
@@ -74,11 +121,14 @@ img {
 ========================================================= */
 
 .invitation-app {
-  min-height: 100vh;
+  position: relative;
 
   width: 100%;
+  min-height: 100vh;
 
-  overflow-x: hidden;
+  overflow-x: clip;
+
+  background: var(--ivory);
 }
 
 /* =========================================================
@@ -86,29 +136,21 @@ img {
 ========================================================= */
 
 .section-padding {
-  padding: 110px 20px;
-}
+  width: 100%;
 
-.ornament {
-  margin-bottom: 28px;
-
-  color: var(--gold);
-
-  font-size: 18px;
-
-  letter-spacing: 5px;
+  padding: clamp(70px, 9vw, 110px) 20px;
 }
 
 .section-subtitle {
-  margin-bottom: 15px;
+  margin: 0 0 15px;
 
   color: #9c7530;
 
-  font-size: 18px;
-
+  font-size: clamp(14px, 1.8vw, 18px);
   font-weight: 600;
 
   letter-spacing: 4px;
+  line-height: 1.4;
 
   text-transform: uppercase;
 }
@@ -118,11 +160,20 @@ img {
 
   color: var(--brown);
 
-  font-size: 46px;
+  font-size: clamp(34px, 4vw, 46px);
+  font-weight: 600;
 
   line-height: 1.2;
+}
 
-  font-weight: 600;
+.ornament {
+  margin: 0 0 28px;
+
+  color: var(--gold);
+
+  font-size: 18px;
+
+  letter-spacing: 5px;
 }
 
 /* =========================================================
@@ -137,10 +188,11 @@ img {
 
   gap: 8px;
 
-  padding: 15px 38px;
+  min-height: 50px;
+
+  padding: 14px 36px;
 
   border: 1px solid #b98a28;
-
   border-radius: 50px;
 
   background: linear-gradient(135deg, #c8942d, #edca6a, #bd8b27);
@@ -148,7 +200,6 @@ img {
   color: #4b3825;
 
   font-size: 18px;
-
   font-weight: 700;
 
   letter-spacing: 1px;
@@ -156,21 +207,23 @@ img {
   text-decoration: none;
 
   box-shadow:
-    0 8px 25px rgba(110, 78, 20, 0.22),
+    0 7px 20px rgba(110, 78, 20, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.55);
 
+  transform: translateZ(0);
+
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .gold-button:hover {
   color: #3e2d1c;
 
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 
   box-shadow:
-    0 14px 35px rgba(110, 78, 20, 0.3),
+    0 11px 26px rgba(110, 78, 20, 0.24),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
@@ -185,8 +238,8 @@ img {
 .music-button {
   position: fixed;
 
-  top: 24px;
-  right: 24px;
+  top: 22px;
+  right: 22px;
 
   z-index: 9999;
 
@@ -197,20 +250,24 @@ img {
 
   gap: 9px;
 
-  min-width: 140px;
+  min-width: 138px;
+  min-height: 48px;
 
-  padding: 11px 18px;
+  padding: 9px 16px;
 
   border: 1px solid rgba(212, 175, 55, 0.8);
-
   border-radius: 50px;
 
-  background: linear-gradient(135deg, #fffaf0, #f2dfad, #fffaf0);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 250, 240, 0.98),
+    rgba(242, 223, 173, 0.98),
+    rgba(255, 250, 240, 0.98)
+  );
 
   color: #76521f;
 
-  font-size: 17px;
-
+  font-size: 16px;
   font-weight: 600;
 
   letter-spacing: 1px;
@@ -218,21 +275,26 @@ img {
   cursor: pointer;
 
   box-shadow:
-    0 8px 25px rgba(73, 53, 22, 0.18),
+    0 6px 18px rgba(73, 53, 22, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 
-  backdrop-filter: blur(8px);
+  /*
+    Removed backdrop-filter.
+    It looks nice but can be expensive on mobile GPUs.
+  */
+
+  transform: translateZ(0);
 
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .music-button:hover {
   transform: translateY(-2px);
 
   box-shadow:
-    0 12px 30px rgba(73, 53, 22, 0.25),
+    0 9px 23px rgba(73, 53, 22, 0.21),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
@@ -257,31 +319,28 @@ img {
 
   color: #f5d98a;
 
-  font-size: 19px;
+  font-size: 18px;
 
   line-height: 1;
 }
 
 .music-playing .music-icon {
-  animation: musicPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes musicPulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.12);
-  }
-
-  100% {
-    transform: scale(1);
-  }
+  animation: musicPulse 1.8s ease-in-out infinite;
 }
 
 .music-text {
   white-space: nowrap;
+}
+
+@keyframes musicPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 /* =========================================================
@@ -291,10 +350,9 @@ img {
 .grand-reveal {
   position: relative;
 
-  min-height: 100vh;
+  min-height: 100svh;
 
   display: flex;
-
   align-items: center;
 
   background: radial-gradient(
@@ -305,6 +363,8 @@ img {
   );
 
   overflow: hidden;
+
+  isolation: isolate;
 }
 
 .grand-reveal::before {
@@ -312,11 +372,13 @@ img {
 
   position: absolute;
 
-  inset: 35px;
+  inset: clamp(15px, 3vw, 35px);
 
   border: 1px solid rgba(190, 147, 51, 0.18);
 
   pointer-events: none;
+
+  z-index: 0;
 }
 
 .invite-text {
@@ -324,7 +386,7 @@ img {
 
   color: #6b5540;
 
-  font-size: 25px;
+  font-size: clamp(20px, 3vw, 25px);
 }
 
 .engagement-label {
@@ -332,25 +394,29 @@ img {
 
   color: #9c7530;
 
-  font-size: 17px;
+  font-size: clamp(13px, 2vw, 17px);
 
   letter-spacing: 3px;
 }
 
 .couple-names {
-  margin: 55px 0;
+  margin: clamp(35px, 5vw, 55px) 0;
 
   color: #b98929;
 
   font-family: "Great Vibes", cursive;
 
-  font-size: clamp(65px, 8vw, 105px);
+  font-size: clamp(58px, 8vw, 105px);
 
   font-weight: 400;
 
   line-height: 1.15;
 
   text-shadow: 0 2px 2px rgba(113, 79, 23, 0.08);
+
+  position: relative;
+
+  animation: nameReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .couple-names span {
@@ -362,11 +428,11 @@ img {
 }
 
 .blessing-text {
-  margin-top: 60px;
+  margin-top: clamp(40px, 6vw, 60px);
 
   color: #6f5a45;
 
-  font-size: 25px;
+  font-size: clamp(19px, 2.5vw, 25px);
 
   font-style: italic;
 
@@ -382,69 +448,64 @@ img {
 }
 
 .photo-caption {
-  margin-bottom: 40px;
+  margin: 0 0 40px;
 
   color: #75604b;
 
-  font-size: 23px;
+  font-size: clamp(19px, 2.5vw, 23px);
 
   font-style: italic;
 }
 
 .couple-photo-wrapper {
-  width: min(600px, 92%);
+  width: min(600px, 94%);
 
   margin: auto;
 
-  padding: 15px;
+  padding: 12px;
 
   background: #fffdf7;
 
   border: 1px solid #d5ad4d;
 
-  border-radius: 22px;
+  border-radius: 20px;
 
   box-shadow:
-    0 25px 55px rgba(90, 70, 30, 0.18),
-    0 5px 15px rgba(90, 70, 30, 0.08);
+    0 18px 42px rgba(90, 70, 30, 0.15),
+    0 4px 12px rgba(90, 70, 30, 0.06);
 
   transition:
-    transform 0.5s ease,
-    box-shadow 0.5s ease;
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+
+  transform: translateZ(0);
 }
 
 .couple-photo-wrapper:hover {
-  transform: translateY(-8px) scale(1.015);
+  transform: translateY(-5px);
 
-  box-shadow: 0 35px 75px rgba(90, 70, 30, 0.25);
+  box-shadow: 0 25px 52px rgba(90, 70, 30, 0.2);
 }
 
 .couple-photo {
   width: 100%;
+  height: min(650px, 75vw);
 
-  height: 650px;
-
-  display: block;
+  min-height: 400px;
 
   object-fit: cover;
 
-  border-radius: 12px;
-
-  transition: transform 0.8s ease;
-}
-
-.couple-photo-wrapper:hover .couple-photo {
-  transform: scale(1.04);
+  border-radius: 11px;
 }
 
 .couple-photo-names {
-  margin: 35px 0;
+  margin: 30px 0;
 
   color: #bd8e2d;
 
   font-family: "Great Vibes", cursive;
 
-  font-size: 48px;
+  font-size: clamp(38px, 5vw, 48px);
 
   font-weight: 400;
 }
@@ -471,11 +532,11 @@ img {
 .event-card {
   position: relative;
 
-  max-width: 850px;
+  width: min(850px, 100%);
 
   margin: auto;
 
-  padding: 75px 35px;
+  padding: clamp(55px, 7vw, 75px) 30px;
 
   text-align: center;
 
@@ -487,13 +548,13 @@ img {
 
   border: 1px solid #d5ad4d;
 
-  border-radius: 25px;
+  border-radius: 23px;
 
-  box-shadow: 0 30px 65px rgba(80, 60, 25, 0.16);
+  box-shadow: 0 22px 48px rgba(80, 60, 25, 0.13);
 
   overflow: hidden;
 
-  animation: eventCardReveal 1.2s ease-out both;
+  animation: eventCardReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .event-card::before {
@@ -501,11 +562,11 @@ img {
 
   position: absolute;
 
-  inset: 14px;
+  inset: 13px;
 
   border: 1px solid rgba(198, 155, 60, 0.22);
 
-  border-radius: 17px;
+  border-radius: 16px;
 
   pointer-events: none;
 }
@@ -515,17 +576,17 @@ img {
 
   color: #a67c2d;
 
-  font-size: 18px;
+  font-size: clamp(13px, 2vw, 18px);
 
-  letter-spacing: 5px;
+  letter-spacing: 4px;
 }
 
 .event-day {
-  margin-top: 30px;
+  margin-top: 28px;
 
   color: #67513c;
 
-  font-size: 35px;
+  font-size: clamp(28px, 4vw, 35px);
 }
 
 .event-date {
@@ -535,7 +596,7 @@ img {
 
   font-family: Georgia, "Times New Roman", serif;
 
-  font-size: 100px;
+  font-size: clamp(70px, 10vw, 100px);
 
   font-weight: 500;
 
@@ -547,27 +608,27 @@ img {
 .event-month {
   color: #806541;
 
-  font-size: 22px;
+  font-size: clamp(17px, 2.5vw, 22px);
 
-  letter-spacing: 6px;
+  letter-spacing: 5px;
 
   text-transform: uppercase;
 }
 
 .event-time {
-  margin: 30px 0;
+  margin: 28px 0;
 
   color: #5f4b37;
 
-  font-size: 25px;
+  font-size: clamp(20px, 3vw, 25px);
 }
 
 .event-location-text {
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 
   color: #66513e;
 
-  font-size: 22px;
+  font-size: clamp(18px, 2.5vw, 22px);
 
   line-height: 1.7;
 }
@@ -583,19 +644,13 @@ img {
 }
 
 @keyframes eventCardReveal {
-  0% {
+  from {
     opacity: 0;
 
-    transform: translateY(100px) scale(0.92);
+    transform: translateY(45px) scale(0.97);
   }
 
-  70% {
-    opacity: 1;
-
-    transform: translateY(-8px) scale(1.02);
-  }
-
-  100% {
+  to {
     opacity: 1;
 
     transform: translateY(0) scale(1);
@@ -611,9 +666,9 @@ img {
 }
 
 .timeline {
-  max-width: 750px;
+  width: min(750px, 100%);
 
-  margin: 70px auto 0;
+  margin: 60px auto 0;
 }
 
 .timeline-item {
@@ -621,11 +676,11 @@ img {
 
   align-items: center;
 
-  gap: 30px;
+  gap: 25px;
 
   text-align: left;
 
-  animation-duration: 1s;
+  animation-duration: 0.8s;
 
   animation-timing-function: ease-out;
 
@@ -641,16 +696,13 @@ img {
 }
 
 .timeline-date {
-  min-width: 100px;
-
-  width: 100px;
-
-  height: 100px;
+  min-width: 96px;
+  width: 96px;
+  height: 96px;
 
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   border: 2px solid #c99b35;
@@ -661,9 +713,9 @@ img {
 
   color: #b98a2d;
 
-  font-size: 40px;
+  font-size: 38px;
 
-  box-shadow: 0 5px 15px rgba(100, 70, 20, 0.08);
+  box-shadow: 0 4px 12px rgba(100, 70, 20, 0.07);
 }
 
 .timeline-item h3 {
@@ -671,7 +723,7 @@ img {
 
   color: #66503b;
 
-  font-size: 32px;
+  font-size: clamp(23px, 3vw, 32px);
 }
 
 .timeline-item span {
@@ -681,17 +733,18 @@ img {
 }
 
 .timeline-item p {
+  margin: 8px 0;
+
   color: #675440;
 
-  font-size: 21px;
+  font-size: clamp(17px, 2.5vw, 21px);
 }
 
 .timeline-line {
   width: 2px;
+  height: 55px;
 
-  height: 60px;
-
-  margin-left: 49px;
+  margin-left: 47px;
 
   background: linear-gradient(180deg, #c99b35, rgba(201, 155, 53, 0.2));
 }
@@ -700,7 +753,7 @@ img {
   from {
     opacity: 0;
 
-    transform: translateX(-70px);
+    transform: translateX(-45px);
   }
 
   to {
@@ -714,7 +767,7 @@ img {
   from {
     opacity: 0;
 
-    transform: translateX(70px);
+    transform: translateX(45px);
   }
 
   to {
@@ -738,25 +791,25 @@ img {
 }
 
 .reception-date {
-  margin: 40px 0;
+  margin: 35px 0;
 
   color: #67513d;
 
-  font-size: 50px;
+  font-size: clamp(35px, 5vw, 50px);
 }
 
 .reception-date span {
   color: #bd902f;
 
-  font-size: 35px;
+  font-size: 70%;
 }
 
 .reception-time {
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 
   color: #66513d;
 
-  font-size: 25px;
+  font-size: clamp(20px, 3vw, 25px);
 }
 
 .dj-box {
@@ -764,31 +817,31 @@ img {
 
   align-items: center;
 
-  gap: 20px;
+  gap: 18px;
 
-  padding: 20px 35px;
+  padding: 18px 30px;
 
   background: linear-gradient(135deg, #fffaf0, #f5ead3);
 
   border: 1px solid #d3aa4d;
 
-  border-radius: 20px;
+  border-radius: 18px;
 
-  font-size: 20px;
+  font-size: clamp(17px, 2.5vw, 20px);
 
-  box-shadow: 0 10px 25px rgba(90, 70, 30, 0.08);
+  box-shadow: 0 8px 20px rgba(90, 70, 30, 0.07);
 }
 
 .dj-box i {
   color: #bd8e2d;
 
-  font-size: 35px;
+  font-size: 32px;
 }
 
 .reception-venue {
-  margin-top: 35px;
+  margin-top: 30px;
 
-  font-size: 21px;
+  font-size: clamp(18px, 2.5vw, 21px);
 
   line-height: 1.6;
 }
@@ -802,11 +855,11 @@ img {
 }
 
 .venue-card {
-  max-width: 850px;
+  width: min(850px, 100%);
 
   margin: auto;
 
-  padding: 70px 30px;
+  padding: clamp(50px, 7vw, 70px) 30px;
 
   text-align: center;
 
@@ -814,15 +867,17 @@ img {
 
   border: 1px solid #d4ae54;
 
-  border-radius: 25px;
+  border-radius: 23px;
 
-  box-shadow: 0 25px 55px rgba(90, 70, 30, 0.15);
+  box-shadow: 0 20px 45px rgba(90, 70, 30, 0.12);
 }
 
 .venue-title {
+  margin: 0 0 20px;
+
   color: #bd902f;
 
-  font-size: 55px;
+  font-size: clamp(40px, 6vw, 55px);
 
   font-weight: 500;
 }
@@ -830,29 +885,27 @@ img {
 .venue-address {
   color: #66513d;
 
-  font-size: 22px;
+  font-size: clamp(18px, 2.5vw, 22px);
 
   line-height: 1.7;
 }
 
 .map-placeholder {
-  max-width: 600px;
-
+  width: min(600px, 100%);
   height: 220px;
 
-  margin: 35px auto;
+  margin: 32px auto;
 
   display: flex;
 
   flex-direction: column;
 
   align-items: center;
-
   justify-content: center;
 
   border: 1px solid #d8bb77;
 
-  border-radius: 18px;
+  border-radius: 17px;
 
   background: linear-gradient(135deg, #eee3ca, #f9f3e4);
 
@@ -860,27 +913,27 @@ img {
 
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
 
-  animation: mapReveal 1s ease-out;
+  animation: mapReveal 0.8s ease-out both;
 }
 
 .map-placeholder i {
-  font-size: 50px;
+  font-size: 46px;
 }
 
 .map-placeholder p {
   margin: 10px 0 0;
 
-  font-size: 22px;
+  font-size: 21px;
 }
 
 @keyframes mapReveal {
-  0% {
+  from {
     opacity: 0;
 
-    transform: translateY(40px) scale(0.9);
+    transform: translateY(25px) scale(0.97);
   }
 
-  100% {
+  to {
     opacity: 1;
 
     transform: translateY(0) scale(1);
@@ -906,20 +959,26 @@ img {
     #f4e8d0 60%,
     #eee1c4 100%
   );
+
+  overflow: hidden;
+
+  isolation: isolate;
 }
 
 .final-heading {
-  margin: 50px 0 25px;
+  margin: 45px 0 25px;
 
   color: #715a42;
 
-  font-size: 45px;
+  font-size: clamp(34px, 5vw, 45px);
+
+  line-height: 1.2;
 }
 
 .final-text {
   color: #6d5843;
 
-  font-size: 25px;
+  font-size: clamp(19px, 3vw, 25px);
 
   line-height: 1.8;
 
@@ -927,59 +986,53 @@ img {
 }
 
 .final-names {
-  margin-top: 60px;
+  margin-top: 55px;
 
   color: #c49632;
 
   font-family: "Great Vibes", cursive;
 
-  font-size: 65px;
+  font-size: clamp(44px, 6vw, 65px);
 
   font-weight: 400;
 
-  animation: finalNameReveal 1.5s ease-out;
+  animation: finalNameReveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .final-names span {
   font-family: "Cormorant Garamond", serif;
 
-  font-size: 40px;
+  font-size: clamp(28px, 4vw, 40px);
 }
 
 .final-ornament {
-  margin-top: 50px;
+  margin-top: 45px;
 
   color: #c99b35;
 
-  font-size: 35px;
+  font-size: clamp(27px, 4vw, 35px);
 
-  animation: ornamentReveal 1.5s ease-in-out infinite alternate;
+  animation: ornamentReveal 3s ease-in-out infinite alternate;
 }
 
 .thank-you {
-  margin-top: 15px;
+  margin-top: 14px;
 
   color: #79644f;
 
-  font-size: 20px;
+  font-size: clamp(16px, 2.5vw, 20px);
 
   font-style: italic;
 }
 
 @keyframes finalNameReveal {
-  0% {
+  from {
     opacity: 0;
 
-    transform: translateY(60px) scale(0.75);
+    transform: translateY(35px) scale(0.92);
   }
 
-  70% {
-    opacity: 1;
-
-    transform: translateY(-5px) scale(1.05);
-  }
-
-  100% {
+  to {
     opacity: 1;
 
     transform: translateY(0) scale(1);
@@ -988,118 +1041,115 @@ img {
 
 @keyframes ornamentReveal {
   from {
-    transform: scale(0.9) rotate(-3deg);
+    transform: translateY(0) scale(0.96);
   }
 
   to {
-    transform: scale(1.1) rotate(3deg);
+    transform: translateY(-5px) scale(1.04);
   }
 }
 
 /* =========================================================
    GENERAL ANIMATIONS
+   ---------------------------------------------------------
+   Only transform + opacity.
+   These are GPU-friendly properties.
 ========================================================= */
 
 .animate-left {
   opacity: 0;
 
-  animation: slideFromLeft 1s ease-out forwards;
+  animation: slideFromLeft 0.8s ease-out forwards;
 }
 
 @keyframes slideFromLeft {
   from {
     opacity: 0;
 
-    transform: translateX(-100px);
+    transform: translate3d(-55px, 0, 0);
   }
 
   to {
     opacity: 1;
 
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .animate-right {
   opacity: 0;
 
-  animation: slideFromRight 1s ease-out forwards;
+  animation: slideFromRight 0.8s ease-out forwards;
 }
 
 @keyframes slideFromRight {
   from {
     opacity: 0;
 
-    transform: translateX(100px);
+    transform: translate3d(55px, 0, 0);
   }
 
   to {
     opacity: 1;
 
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .animate-top {
   opacity: 0;
 
-  animation: slideFromTop 1s ease-out forwards;
+  animation: slideFromTop 0.8s ease-out forwards;
 }
 
 @keyframes slideFromTop {
   from {
     opacity: 0;
 
-    transform: translateY(-80px);
+    transform: translate3d(0, -45px, 0);
   }
 
   to {
     opacity: 1;
 
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .animate-bottom {
   opacity: 0;
 
-  animation: slideFromBottom 1s ease-out forwards;
+  animation: slideFromBottom 0.8s ease-out forwards;
 }
 
 @keyframes slideFromBottom {
   from {
     opacity: 0;
 
-    transform: translateY(80px);
+    transform: translate3d(0, 45px, 0);
   }
 
   to {
     opacity: 1;
 
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .animate-zoom {
   opacity: 0;
 
-  animation: zoomReveal 1.2s ease-out forwards;
+  animation: zoomReveal 0.9s ease-out forwards;
 }
 
 @keyframes zoomReveal {
-  0% {
+  from {
     opacity: 0;
 
-    transform: scale(0.65);
+    transform: scale(0.9);
   }
 
-  70% {
-    opacity: 1;
-
-    transform: scale(1.05);
-  }
-
-  100% {
+  to {
     opacity: 1;
 
     transform: scale(1);
@@ -1109,7 +1159,7 @@ img {
 .animate-fade {
   opacity: 0;
 
-  animation: softFade 1.5s ease forwards;
+  animation: softFade 1s ease forwards;
 }
 
 @keyframes softFade {
@@ -1125,23 +1175,17 @@ img {
 .animate-rotate {
   opacity: 0;
 
-  animation: rotateReveal 1s ease-out forwards;
+  animation: rotateReveal 0.8s ease-out forwards;
 }
 
 @keyframes rotateReveal {
-  0% {
+  from {
     opacity: 0;
 
-    transform: rotate(-8deg) scale(0.8);
+    transform: rotate(-5deg) scale(0.95);
   }
 
-  70% {
-    opacity: 1;
-
-    transform: rotate(2deg) scale(1.04);
-  }
-
-  100% {
+  to {
     opacity: 1;
 
     transform: rotate(0) scale(1);
@@ -1153,35 +1197,37 @@ img {
 ========================================================= */
 
 .delay-1 {
-  animation-delay: 0.15s;
+  animation-delay: 0.1s;
 }
 
 .delay-2 {
-  animation-delay: 0.35s;
+  animation-delay: 0.2s;
 }
 
 .delay-3 {
-  animation-delay: 0.55s;
+  animation-delay: 0.3s;
 }
 
 .delay-4 {
-  animation-delay: 0.75s;
+  animation-delay: 0.4s;
 }
 
 .delay-5 {
-  animation-delay: 0.95s;
+  animation-delay: 0.5s;
 }
 
 .delay-6 {
-  animation-delay: 1.15s;
+  animation-delay: 0.6s;
 }
 
 .delay-7 {
-  animation-delay: 1.35s;
+  animation-delay: 0.7s;
 }
 
 /* =========================================================
    GOLD SHIMMER
+   ---------------------------------------------------------
+   Kept for existing components, but slower.
 ========================================================= */
 
 .gold-shimmer {
@@ -1194,23 +1240,23 @@ img {
     #8f641b
   );
 
-  background-size: 250% auto;
+  background-size: 200% auto;
 
   -webkit-background-clip: text;
   background-clip: text;
 
   -webkit-text-fill-color: transparent;
 
-  animation: goldShimmer 4s linear infinite;
+  animation: goldShimmer 7s linear infinite;
 }
 
 @keyframes goldShimmer {
-  0% {
-    background-position: 250% center;
+  from {
+    background-position: 200% center;
   }
 
-  100% {
-    background-position: -250% center;
+  to {
+    background-position: -200% center;
   }
 }
 
@@ -1219,20 +1265,17 @@ img {
 ========================================================= */
 
 .floating-ornament {
-  animation: floatingOrnament 3s ease-in-out infinite;
+  animation: floatingOrnament 4s ease-in-out infinite;
 }
 
 @keyframes floatingOrnament {
-  0% {
-    transform: translateY(0) rotate(0);
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
   }
 
   50% {
-    transform: translateY(-12px) rotate(4deg);
-  }
-
-  100% {
-    transform: translateY(0) rotate(0);
+    transform: translate3d(0, -8px, 0);
   }
 }
 
@@ -1241,20 +1284,17 @@ img {
 ========================================================= */
 
 .heart-float {
-  animation: heartFloat 2.5s ease-in-out infinite;
+  animation: heartFloat 3.2s ease-in-out infinite;
 }
 
 @keyframes heartFloat {
-  0% {
-    transform: translateY(0) scale(1);
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   50% {
-    transform: translateY(-8px) scale(1.1);
-  }
-
-  100% {
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, -6px, 0) scale(1.06);
   }
 }
 
@@ -1265,26 +1305,20 @@ img {
 .photo-reveal {
   opacity: 0;
 
-  animation: photoReveal 1.4s ease-out forwards;
+  animation: photoReveal 1s ease-out forwards;
 }
 
 @keyframes photoReveal {
-  0% {
+  from {
     opacity: 0;
 
-    transform: scale(0.8) translateY(50px);
+    transform: scale(0.94) translate3d(0, 25px, 0);
   }
 
-  70% {
+  to {
     opacity: 1;
 
-    transform: scale(1.03) translateY(-5px);
-  }
-
-  100% {
-    opacity: 1;
-
-    transform: scale(1) translateY(0);
+    transform: scale(1) translate3d(0, 0, 0);
   }
 }
 
@@ -1332,33 +1366,17 @@ img {
    COUPLE NAME ANIMATION
 ========================================================= */
 
-.couple-names {
-  position: relative;
-
-  animation: nameReveal 1.5s ease-out forwards;
-}
-
 @keyframes nameReveal {
   0% {
     opacity: 0;
 
-    transform: scale(0.7) translateY(30px);
-
-    letter-spacing: 10px;
-  }
-
-  70% {
-    opacity: 1;
-
-    transform: scale(1.05) translateY(-3px);
+    transform: scale(0.9) translate3d(0, 25px, 0);
   }
 
   100% {
     opacity: 1;
 
-    transform: scale(1) translateY(0);
-
-    letter-spacing: normal;
+    transform: scale(1) translate3d(0, 0, 0);
   }
 }
 
@@ -1368,55 +1386,47 @@ img {
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 75px 15px;
+    padding: clamp(60px, 10vw, 75px) 15px;
   }
 
-  .section-title {
-    font-size: 34px;
-  }
-
-  .section-subtitle {
-    font-size: 14px;
-
-    letter-spacing: 3px;
-  }
-
-  /* MUSIC */
+  /* -------------------------
+     MUSIC
+  ------------------------- */
 
   .music-button {
-    top: 14px;
+    top: 13px;
+    right: 13px;
 
-    right: 14px;
+    width: 46px;
+    min-width: 46px;
 
-    min-width: 48px;
-
-    width: 48px;
-
-    height: 48px;
+    height: 46px;
+    min-height: 46px;
 
     padding: 0;
   }
 
   .music-icon {
-    width: 30px;
+    width: 28px;
+    height: 28px;
 
-    height: 30px;
-
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .music-text {
     display: none;
   }
 
-  /* GRAND REVEAL */
+  /* -------------------------
+     GRAND REVEAL
+  ------------------------- */
 
   .grand-reveal {
-    min-height: 100vh;
+    min-height: 100svh;
   }
 
   .grand-reveal::before {
-    inset: 15px;
+    inset: 14px;
   }
 
   .invite-text {
@@ -1424,24 +1434,28 @@ img {
   }
 
   .engagement-label {
-    font-size: 14px;
+    font-size: 13px;
+
+    letter-spacing: 2.5px;
   }
 
   .couple-names {
-    margin: 40px 0;
+    margin: 38px 0;
 
-    font-size: 58px;
+    font-size: clamp(52px, 15vw, 68px);
 
-    line-height: 1.25;
+    line-height: 1.2;
   }
 
   .blessing-text {
-    margin-top: 45px;
+    margin-top: 42px;
 
     font-size: 20px;
   }
 
-  /* COUPLE PHOTO */
+  /* -------------------------
+     COUPLE
+  ------------------------- */
 
   .photo-caption {
     font-size: 19px;
@@ -1450,13 +1464,15 @@ img {
   .couple-photo-wrapper {
     width: 94%;
 
-    padding: 10px;
+    padding: 9px;
 
     border-radius: 17px;
   }
 
   .couple-photo {
     height: 480px;
+
+    min-height: 0;
 
     border-radius: 10px;
   }
@@ -1467,10 +1483,12 @@ img {
     font-size: 39px;
   }
 
-  /* ENGAGEMENT */
+  /* -------------------------
+     ENGAGEMENT
+  ------------------------- */
 
   .event-card {
-    padding: 60px 20px;
+    padding: 52px 18px;
 
     border-radius: 20px;
   }
@@ -1482,58 +1500,58 @@ img {
   }
 
   .event-small-title {
-    font-size: 14px;
+    font-size: 13px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .event-day {
+    font-size: 27px;
+  }
+
+  .event-date {
+    font-size: 75px;
+  }
+
+  .event-month {
+    font-size: 16px;
 
     letter-spacing: 3px;
   }
 
-  .event-day {
-    font-size: 28px;
-  }
-
-  .event-date {
-    font-size: 78px;
-  }
-
-  .event-month {
-    font-size: 17px;
-
-    letter-spacing: 4px;
-  }
-
   .event-time {
-    font-size: 21px;
+    font-size: 20px;
   }
 
   .event-location-text {
     font-size: 18px;
 
-    line-height: 1.6;
+    line-height: 1.55;
   }
 
   .gold-button {
     width: 100%;
-
     max-width: 300px;
 
-    padding: 14px 22px;
+    padding: 13px 20px;
 
     font-size: 16px;
   }
 
-  /* TIMELINE */
+  /* -------------------------
+     TIMELINE
+  ------------------------- */
 
   .timeline {
-    margin-top: 50px;
+    margin-top: 45px;
   }
 
   .timeline-item {
-    gap: 15px;
+    gap: 14px;
   }
 
   .timeline-date {
     min-width: 70px;
-
     width: 70px;
 
     height: 70px;
@@ -1542,7 +1560,7 @@ img {
   }
 
   .timeline-line {
-    height: 45px;
+    height: 42px;
 
     margin-left: 34px;
   }
@@ -1561,40 +1579,40 @@ img {
     font-size: 17px;
   }
 
-  /* RECEPTION */
+  /* -------------------------
+     RECEPTION
+  ------------------------- */
 
   .reception-date {
     font-size: 38px;
   }
 
-  .reception-date span {
-    font-size: 27px;
-  }
-
   .reception-time {
-    font-size: 21px;
+    font-size: 20px;
   }
 
   .dj-box {
-    gap: 12px;
+    gap: 11px;
 
-    padding: 15px 22px;
+    padding: 14px 20px;
 
     font-size: 17px;
   }
 
   .dj-box i {
-    font-size: 28px;
+    font-size: 27px;
   }
 
   .reception-venue {
     font-size: 18px;
   }
 
-  /* VENUE */
+  /* -------------------------
+     VENUE
+  ------------------------- */
 
   .venue-card {
-    padding: 55px 20px;
+    padding: 48px 18px;
 
     border-radius: 20px;
   }
@@ -1608,24 +1626,30 @@ img {
   }
 
   .map-placeholder {
-    height: 190px;
+    height: 185px;
+
+    margin: 28px auto;
   }
 
   .map-placeholder i {
-    font-size: 42px;
+    font-size: 40px;
   }
 
   .map-placeholder p {
-    font-size: 19px;
+    font-size: 18px;
   }
 
-  /* FINAL */
+  /* -------------------------
+     FINAL
+  ------------------------- */
 
   .final-section {
     min-height: 70vh;
   }
 
   .final-heading {
+    margin-top: 35px;
+
     font-size: 34px;
   }
 
@@ -1634,6 +1658,8 @@ img {
   }
 
   .final-names {
+    margin-top: 45px;
+
     font-size: 47px;
   }
 
@@ -1642,6 +1668,8 @@ img {
   }
 
   .final-ornament {
+    margin-top: 40px;
+
     font-size: 28px;
   }
 
@@ -1649,7 +1677,9 @@ img {
     font-size: 17px;
   }
 
-  /* MOBILE ANIMATIONS */
+  /* -------------------------
+     MOBILE ANIMATIONS
+  ------------------------- */
 
   .animate-left {
     animation-name: mobileLeft;
@@ -1668,17 +1698,21 @@ img {
   }
 }
 
+/* =========================================================
+   MOBILE ANIMATION KEYFRAMES
+========================================================= */
+
 @keyframes mobileLeft {
   from {
     opacity: 0;
 
-    transform: translateX(-45px);
+    transform: translate3d(-30px, 0, 0);
   }
 
   to {
     opacity: 1;
 
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -1686,13 +1720,13 @@ img {
   from {
     opacity: 0;
 
-    transform: translateX(45px);
+    transform: translate3d(30px, 0, 0);
   }
 
   to {
     opacity: 1;
 
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -1700,13 +1734,13 @@ img {
   from {
     opacity: 0;
 
-    transform: translateY(-40px);
+    transform: translate3d(0, -30px, 0);
   }
 
   to {
     opacity: 1;
 
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -1714,13 +1748,13 @@ img {
   from {
     opacity: 0;
 
-    transform: translateY(40px);
+    transform: translate3d(0, 30px, 0);
   }
 
   to {
     opacity: 1;
 
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -1730,20 +1764,28 @@ img {
 
 @media (max-width: 390px) {
   .section-padding {
-    padding: 60px 12px;
+    padding: 55px 12px;
   }
 
   .couple-names {
     font-size: 50px;
   }
 
+  .event-card {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
   .event-date {
-    font-size: 68px;
+    font-size: 66px;
+  }
+
+  .event-month {
+    letter-spacing: 2px;
   }
 
   .timeline-date {
     min-width: 62px;
-
     width: 62px;
 
     height: 62px;
@@ -1759,8 +1801,64 @@ img {
     font-size: 20px;
   }
 
+  .timeline-item p {
+    font-size: 16px;
+  }
+
   .final-names {
     font-size: 40px;
+  }
+
+  .final-names span {
+    font-size: 27px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 350px) {
+  .section-padding {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .couple-names {
+    font-size: 45px;
+  }
+
+  .event-date {
+    font-size: 60px;
+  }
+
+  .timeline-item {
+    gap: 10px;
+  }
+
+  .timeline-date {
+    min-width: 56px;
+    width: 56px;
+
+    height: 56px;
+
+    font-size: 21px;
+  }
+
+  .timeline-line {
+    margin-left: 27px;
+  }
+
+  .final-heading {
+    font-size: 30px;
+  }
+
+  .final-text {
+    font-size: 18px;
+  }
+
+  .final-names {
+    font-size: 36px;
   }
 }
 
@@ -1768,11 +1866,14 @@ img {
    SHORT SCREENS
 ========================================================= */
 
-@media (max-height: 650px) {
+@media (max-height: 650px) and (min-width: 769px) {
   .section-padding {
     padding-top: 70px;
-
     padding-bottom: 70px;
+  }
+
+  .grand-reveal {
+    min-height: 100svh;
   }
 }
 
@@ -1788,10 +1889,10 @@ img {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation: none !important;
 
-    animation-iteration-count: 1 !important;
+    transition: none !important;
 
-    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

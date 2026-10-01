@@ -1,1724 +1,642 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Tamil:wght@400;500;600&display=swap");
+/* GrandReveal.css
+   Traditional Tamil wedding invitation style.
+   Performance-focused: no CSS @import, no large blur filters,
+   fewer animated layers, and responsive layout without JS.
+*/
 
-/* =========================================================
-   ROOT
-========================================================= */
-
-.grand-reveal {
-  position: relative;
-
-  width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 80px 20px;
-
-  overflow: hidden;
-  isolation: isolate;
-
-  color: #f8ead8;
-
-  background:
-    radial-gradient(circle at 50% 0%, rgba(158, 42, 60, 0.48), transparent 38%),
-    radial-gradient(circle at 0% 50%, rgba(92, 8, 27, 0.9), transparent 42%),
-    radial-gradient(
-      circle at 100% 75%,
-      rgba(118, 20, 42, 0.65),
-      transparent 42%
-    ),
-    #570717;
+:root {
+  --maroon: #8f1632;
+  --maroon-dark: #65091b;
+  --ink: #5b4031;
+  --muted: #806d5b;
+  --gold: #b48a4f;
+  --gold-light: #d6b06b;
+  --paper: #fffdf8;
+  --paper-warm: #f8efe3;
 }
 
-.grand-reveal *,
-.grand-reveal *::before,
-.grand-reveal *::after {
+.grand-reveal,
+.grand-reveal * {
   box-sizing: border-box;
 }
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-.grand-reveal::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  pointer-events: none;
-
-  opacity: 0.11;
-
-  background-image: radial-gradient(
-    circle,
-    rgba(255, 226, 174, 0.65) 1px,
-    transparent 1px
-  );
-
-  background-size: 34px 34px;
-
-  animation: grandBackgroundMove 20s linear infinite;
-
-  z-index: -5;
-}
-
-@keyframes grandBackgroundMove {
-  from {
-    background-position: 0 0;
-  }
-
-  to {
-    background-position: 68px 68px;
-  }
-}
-
-.grand-reveal::after {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  pointer-events: none;
-
-  background: radial-gradient(
-    ellipse at center,
-    transparent 35%,
-    rgba(20, 0, 7, 0.25) 100%
-  );
-
-  z-index: -4;
-}
-
-/* =========================================================
-   FLOATING PETALS
-========================================================= */
-
-.grand-petal {
-  position: absolute;
-
-  pointer-events: none;
-  user-select: none;
-
-  color: rgba(234, 196, 122, 0.65);
-
-  text-shadow:
-    0 0 8px rgba(238, 195, 112, 0.45),
-    0 0 25px rgba(238, 195, 112, 0.2);
-
-  z-index: -1;
-
-  animation: grandPetalFloat 9s ease-in-out infinite;
-}
-
-.petal-1 {
-  top: 9%;
-  left: 8%;
-  font-size: 24px;
-}
-
-.petal-2 {
-  top: 18%;
-  right: 9%;
-  font-size: 30px;
-  animation-delay: 1.4s;
-}
-
-.petal-3 {
-  top: 48%;
-  left: 4%;
-  font-size: 17px;
-  animation-delay: 2.4s;
-}
-
-.petal-4 {
-  bottom: 20%;
-  right: 6%;
-  font-size: 27px;
-  animation-delay: 3.3s;
-}
-
-.petal-5 {
-  bottom: 9%;
-  left: 13%;
-  font-size: 21px;
-  animation-delay: 4.2s;
-}
-
-@keyframes grandPetalFloat {
-  0%,
-  100% {
-    opacity: 0.25;
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.85);
-  }
-
-  25% {
-    opacity: 0.85;
-    transform: translate3d(18px, -22px, 0) rotate(15deg) scale(1.05);
-  }
-
-  50% {
-    opacity: 0.4;
-    transform: translate3d(-12px, -40px, 0) rotate(-15deg) scale(0.9);
-  }
-
-  75% {
-    opacity: 0.8;
-    transform: translate3d(22px, -20px, 0) rotate(25deg) scale(1.1);
-  }
-}
-
-/* =========================================================
-   GLOWS
-========================================================= */
-
-.grand-glow {
-  position: absolute;
-
-  border-radius: 50%;
-
-  pointer-events: none;
-
-  filter: blur(80px);
-
-  z-index: -3;
-}
-
-.glow-1 {
-  width: 480px;
-  height: 480px;
-
-  top: -220px;
-  left: -180px;
-
-  background: rgba(224, 170, 75, 0.16);
-
-  animation: grandGlowOne 10s ease-in-out infinite;
-}
-
-.glow-2 {
-  width: 500px;
-  height: 500px;
-
-  right: -230px;
-  bottom: -240px;
-
-  background: rgba(213, 119, 61, 0.16);
-
-  animation: grandGlowTwo 12s ease-in-out infinite;
-}
-
-.glow-3 {
-  width: 280px;
-  height: 280px;
-
-  top: 48%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  background: rgba(255, 207, 120, 0.08);
-
-  filter: blur(100px);
-
-  animation: grandGlowThree 7s ease-in-out infinite;
-}
-
-@keyframes grandGlowOne {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate(45px, 35px) scale(1.15);
-  }
-}
-
-@keyframes grandGlowTwo {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate(-40px, -35px) scale(1.12);
-  }
-}
-
-@keyframes grandGlowThree {
-  0%,
-  100% {
-    opacity: 0.25;
-
-    transform: translate(-50%, -50%) scale(0.8);
-  }
-
-  50% {
-    opacity: 0.65;
-
-    transform: translate(-50%, -50%) scale(1.25);
-  }
-}
-
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-.grand-reveal-container {
+.grand-reveal {
   position: relative;
-
-  width: min(100%, 900px);
-
-  z-index: 2;
-
-  animation: grandContainerReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes grandContainerReveal {
-  from {
-    opacity: 0;
-
-    transform: translateY(45px) scale(0.96);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* =========================================================
-   TOP ORNAMENT
-========================================================= */
-
-.grand-top-ornament {
+  min-height: 100svh;
+  width: 100%;
   display: flex;
-
-  align-items: center;
   justify-content: center;
-
-  gap: 12px;
-
-  margin-bottom: 22px;
-
-  color: #d2aa65;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 17px;
-}
-
-.grand-top-ornament i {
-  width: 80px;
-  height: 1px;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(211, 171, 99, 0.85),
-    transparent
-  );
-}
-
-.grand-top-ornament span {
-  animation: grandOrnamentGlow 3s ease-in-out infinite;
-}
-
-.grand-top-ornament span:nth-child(3) {
-  animation-delay: 1.5s;
-}
-
-@keyframes grandOrnamentGlow {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(0.85);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-
-    text-shadow:
-      0 0 10px rgba(240, 202, 130, 0.8),
-      0 0 25px rgba(240, 202, 130, 0.35);
-  }
-}
-
-/* =========================================================
-   MAIN CARD
-========================================================= */
-
-.grand-reveal-card {
-  position: relative;
-
-  padding: 60px 65px 45px;
-
+  padding: clamp(20px, 4vw, 56px) 12px;
   overflow: hidden;
-
-  text-align: center;
-
+  isolation: isolate;
+  color: var(--ink);
   background:
     radial-gradient(
-      circle at 20% 10%,
-      rgba(255, 255, 255, 0.96),
-      transparent 30%
+      circle at 15% 10%,
+      rgba(197, 146, 66, 0.18),
+      transparent 24rem
     ),
     radial-gradient(
       circle at 85% 90%,
-      rgba(244, 213, 174, 0.7),
-      transparent 35%
+      rgba(143, 22, 50, 0.18),
+      transparent 26rem
     ),
-    linear-gradient(145deg, #fffaf1, #f7ecdf, #fffaf4);
-
-  border: 1px solid rgba(203, 158, 81, 0.9);
-
-  box-shadow:
-    0 45px 110px rgba(0, 0, 0, 0.42),
-    0 0 55px rgba(223, 176, 92, 0.1),
-    inset 0 0 80px rgba(205, 155, 70, 0.035);
-
-  color: #5c3c2a;
-
-  animation: grandCardFloat 8s ease-in-out infinite;
+    #5f071c;
 }
 
-@keyframes grandCardFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-.grand-reveal-card::before {
+.grand-reveal::before {
   content: "";
-
   position: absolute;
-  inset: 13px;
-
-  border: 1px solid rgba(157, 115, 59, 0.3);
-
+  inset: 0;
+  z-index: -2;
   pointer-events: none;
-
-  z-index: 1;
-}
-
-.grand-reveal-card::after {
-  content: "";
-
-  position: absolute;
-
-  top: -100%;
-  left: -40%;
-
-  width: 45%;
-  height: 300%;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
+  opacity: 0.15;
+  background-image: radial-gradient(
+    rgba(255, 221, 164, 0.7) 0.7px,
+    transparent 0.7px
   );
+  background-size: 28px 28px;
+}
 
-  transform: rotate(20deg);
+.paper-shadow {
+  position: absolute;
+  width: min(92vw, 920px);
+  height: 96%;
+  top: 2%;
+  border-radius: 4px;
+  background: rgba(20, 0, 5, 0.25);
+  filter: blur(24px);
+  z-index: -1;
+}
 
+.grand-reveal-container {
+  width: min(100%, 900px);
+}
+
+.grand-reveal-card {
+  position: relative;
+  width: 100%;
+  padding: clamp(42px, 6vw, 70px) clamp(18px, 6vw, 64px) 40px;
+  overflow: hidden;
+  text-align: center;
+  background:
+    radial-gradient(
+      circle at 15% 12%,
+      rgba(214, 176, 107, 0.12),
+      transparent 16rem
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(143, 22, 50, 0.06),
+      transparent 18rem
+    ),
+    linear-gradient(135deg, var(--paper), var(--paper-warm) 52%, #fffdfa);
+  border: 1px solid rgba(180, 138, 79, 0.9);
+  box-shadow: 0 28px 70px rgba(20, 0, 5, 0.32);
+}
+
+.paper-border {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(101, 9, 27, 0.26);
   pointer-events: none;
-
-  animation: grandCardShine 9s ease-in-out infinite;
 }
 
-@keyframes grandCardShine {
-  0%,
-  65% {
-    left: -50%;
-  }
-
-  82%,
-  100% {
-    left: 125%;
-  }
-}
-
-/* =========================================================
-   CARD CORNERS
-========================================================= */
-
-.card-corner {
-  position: absolute !important;
-
+.paper-border::before,
+.paper-border::after {
+  content: "";
+  position: absolute;
   width: 42px;
   height: 42px;
+  border-color: rgba(180, 138, 79, 0.7);
+}
 
-  border-color: rgba(171, 127, 63, 0.55);
+.paper-border::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
 
+.paper-border::after {
+  right: -1px;
+  bottom: -1px;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+}
+
+.top-corner-art {
+  position: absolute;
+  color: rgba(143, 22, 50, 0.26);
+  font-size: 44px;
+  line-height: 1;
   pointer-events: none;
-
-  z-index: 5;
 }
 
-.corner-top-left {
-  top: 27px;
-  left: 27px;
-
-  border-top: 1px solid;
-  border-left: 1px solid;
+.top-left {
+  top: 20px;
+  left: 22px;
+  transform: rotate(-25deg);
 }
 
-.corner-top-right {
-  top: 27px;
-  right: 27px;
-
-  border-top: 1px solid;
-  border-right: 1px solid;
+.top-right {
+  top: 20px;
+  right: 22px;
+  transform: rotate(25deg) scaleX(-1);
 }
-
-.corner-bottom-left {
-  bottom: 27px;
-  left: 27px;
-
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-}
-
-.corner-bottom-right {
-  bottom: 27px;
-  right: 27px;
-
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-}
-
-/* =========================================================
-   GANESHA
-========================================================= */
 
 .ganesha-wrapper {
   position: relative;
+  width: 142px;
+  height: 142px;
+  margin: 0 auto 14px;
+  display: grid;
+  place-items: center;
+}
 
-  width: 170px;
-  height: 170px;
+.ganesha-wrapper::before,
+.ganesha-wrapper::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(180, 138, 79, 0.5);
+  border-radius: 50%;
+}
 
-  margin: 0 auto 22px;
+.ganesha-wrapper::before {
+  inset: 5px;
+}
 
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
+.ganesha-wrapper::after {
+  inset: 14px;
+  border-style: dotted;
 }
 
 .ganesha-circle {
-  position: relative;
-
-  width: 118px;
-  height: 118px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
+  width: 108px;
+  height: 108px;
+  display: grid;
+  place-items: center;
   border-radius: 50%;
-
   overflow: hidden;
-
-  background: radial-gradient(
-    circle at 35% 25%,
-    #fff7d9,
-    #e6c67e 45%,
-    #a97a35 100%
-  );
-
-  border: 2px solid rgba(170, 128, 59, 0.7);
-
-  box-shadow:
-    0 0 0 7px rgba(183, 139, 68, 0.08),
-    0 0 35px rgba(187, 139, 61, 0.22),
-    inset 0 0 30px rgba(255, 255, 255, 0.35);
-
-  animation: ganeshaFloat 5s ease-in-out infinite;
+  background: radial-gradient(circle at 35% 25%, #fff9df, #e6c67e 52%, #a97a35);
+  border: 2px solid rgba(170, 128, 59, 0.65);
+  box-shadow: 0 7px 24px rgba(110, 60, 20, 0.12);
 }
 
 .ganesha-circle img {
   width: 78%;
   height: 78%;
-
   object-fit: contain;
-
-  filter: drop-shadow(0 5px 10px rgba(100, 52, 19, 0.18));
-
-  animation: ganeshaImageGlow 3.5s ease-in-out infinite;
 }
-
-.ganesha-ring {
-  position: absolute;
-
-  border-radius: 50%;
-
-  border: 1px solid rgba(181, 139, 72, 0.42);
-
-  pointer-events: none;
-}
-
-.ring-one {
-  width: 135px;
-  height: 135px;
-
-  animation: ringRotate 13s linear infinite;
-}
-
-.ring-two {
-  width: 153px;
-  height: 153px;
-
-  border-style: dashed;
-
-  animation: ringRotateReverse 18s linear infinite;
-}
-
-.ring-three {
-  width: 170px;
-  height: 170px;
-
-  border-color: rgba(181, 139, 72, 0.18);
-
-  animation: ringPulse 4s ease-in-out infinite;
-}
-
-@keyframes ganeshaFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-7px);
-  }
-}
-
-@keyframes ganeshaImageGlow {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.04);
-  }
-}
-
-@keyframes ringRotate {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes ringRotateReverse {
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes ringPulse {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: scale(0.96);
-  }
-
-  50% {
-    opacity: 0.8;
-    transform: scale(1.04);
-  }
-}
-
-/* =========================================================
-   GANESHA SPARKS
-========================================================= */
-
-.ganesha-spark {
-  position: absolute;
-
-  color: #b28a4f;
-
-  font-size: 13px;
-
-  text-shadow: 0 0 8px rgba(205, 161, 80, 0.8);
-
-  animation: ganeshaSpark 3s ease-in-out infinite;
-}
-
-.spark-one {
-  top: 16px;
-  left: 13px;
-}
-
-.spark-two {
-  top: 32px;
-  right: 8px;
-
-  animation-delay: 0.8s;
-}
-
-.spark-three {
-  bottom: 28px;
-  left: 5px;
-
-  animation-delay: 1.5s;
-}
-
-.spark-four {
-  right: 4px;
-  bottom: 17px;
-
-  animation-delay: 2.2s;
-}
-
-@keyframes ganeshaSpark {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scale(0.7) rotate(0deg);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.25) rotate(20deg);
-  }
-}
-
-/* =========================================================
-   HEADINGS
-========================================================= */
 
 .tamil-heading {
-  color: #65091b;
-
+  color: var(--maroon);
   font-family: "Noto Serif Tamil", serif;
-
-  font-size: 26px;
-
-  font-weight: 500;
-
-  animation: grandTextReveal 1s 0.4s ease both;
+  font-size: clamp(24px, 4vw, 39px);
+  font-weight: 600;
+  line-height: 1.25;
 }
 
 .invitation-label {
-  margin-top: 9px;
-
-  color: #a6783b;
-
-  font-family: "Montserrat", sans-serif;
-
-  font-size: 9px;
-
-  font-weight: 600;
-
+  margin-top: 7px;
+  color: var(--gold);
+  font:
+    600 9px/1.2 "Montserrat",
+    Arial,
+    sans-serif;
   letter-spacing: 5px;
 }
 
 .tamil-blessing {
-  margin-top: 18px;
-
-  color: #765b49;
-
+  margin-top: 17px;
+  color: #755946;
   font-family: "Noto Serif Tamil", serif;
-
-  font-size: 14px;
-
-  line-height: 1.8;
+  font-size: clamp(12px, 1.7vw, 16px);
+  line-height: 1.75;
 }
 
-/* =========================================================
-   DIVIDER
-========================================================= */
-
-.grand-divider,
-.bottom-ornament {
+.invitation-ornament {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
-  gap: 11px;
-
-  color: #b08a54;
+  gap: 10px;
+  margin: 23px auto 25px;
+  color: var(--gold);
 }
 
-.grand-divider {
-  margin: 25px auto 28px;
-
-  max-width: 310px;
-}
-
-.grand-divider i,
-.bottom-ornament i {
-  width: 60px;
+.invitation-ornament i {
+  display: block;
+  width: min(100px, 15vw);
   height: 1px;
-
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(176, 138, 84, 0.75),
+    rgba(180, 138, 79, 0.8),
     transparent
   );
 }
 
-.grand-divider span,
-.bottom-ornament span {
-  animation: dividerSpark 3s ease-in-out infinite;
+.invitation-ornament b {
+  font-size: 12px;
+  font-weight: 400;
 }
 
-@keyframes dividerSpark {
-  0%,
-  100% {
-    opacity: 0.55;
-    transform: scale(0.9);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-
-    text-shadow: 0 0 10px rgba(212, 169, 92, 0.7);
-  }
+.invitation-ornament span {
+  font-size: 18px;
 }
-
-/* =========================================================
-   INVITATION INTRO
-========================================================= */
 
 .invitation-intro {
-  width: 100%;
-  max-width: 700px;
-
+  max-width: 680px;
   margin: 0 auto;
-
-  color: #806d5b;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 20px;
-  line-height: 1.45;
-
-  text-align: center;
+  color: var(--muted);
+  font:
+    400 clamp(16px, 2.1vw, 21px)/1.4 "Cormorant Garamond",
+    Georgia,
+    serif;
 }
 
-.invitation-intro .intro-line {
+.invitation-intro p {
   margin: 0;
 }
 
-.invitation-intro .intro-line + .intro-line {
-  margin-top: 3px;
+.invitation-intro p + p {
+  margin-top: 2px;
 }
-
-/* =========================================================
-   MOBILE — EXACTLY TWO LINES
-========================================================= */
-
-@media (max-width: 600px) {
-  .invitation-intro {
-    width: 100%;
-
-    max-width: none;
-
-    padding: 0 3px;
-
-    font-size: 14px;
-
-    line-height: 1.45;
-  }
-
-  .invitation-intro .intro-line {
-    white-space: nowrap;
-  }
-
-  .invitation-intro .intro-line + .intro-line {
-    margin-top: 2px;
-  }
-}
-
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-
-@media (max-width: 380px) {
-  .invitation-intro {
-    font-size: 12.5px;
-
-    padding: 0 1px;
-  }
-
-  .invitation-intro .intro-line {
-    white-space: nowrap;
-  }
-}
-
-/* =========================================================
-   COUPLE
-   DESKTOP + MOBILE = 3 COLUMNS
-========================================================= */
 
 .couple-display {
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, 1fr)
-    75px
-    minmax(0, 1fr);
-
-  align-items: center;
-
-  gap: 15px;
-
-  margin-top: 30px;
-
   width: 100%;
+  max-width: 720px;
+  margin: 31px auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
 }
 
 .person-block {
   min-width: 0;
+}
 
-  text-align: center;
+.person-small-label,
+.parent-label {
+  color: var(--gold);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 600;
 }
 
 .person-small-label {
-  color: #a6783b;
-
-  font-family: "Montserrat", sans-serif;
-
   font-size: 8px;
-
-  font-weight: 600;
-
   letter-spacing: 3px;
 }
 
 .person-name {
-  margin: 8px 0;
-
-  color: #65091b;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: clamp(34px, 5vw, 50px);
-
-  font-weight: 500;
-
-  line-height: 1;
-
+  margin: 7px 0;
+  color: var(--maroon);
+  font:
+    600 clamp(30px, 5vw, 48px)/1 "Cormorant Garamond",
+    Georgia,
+    serif;
   white-space: nowrap;
 }
 
 .parent-label {
-  color: #b08a54;
-
   font-size: 9px;
-
-  font-weight: 600;
-
   letter-spacing: 2px;
 }
 
 .parent-names {
   margin: 5px 0 0;
-
-  color: #806d5b;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 14px;
-
-  line-height: 1.4;
+  color: var(--muted);
+  font:
+    400 clamp(12px, 1.7vw, 15px)/1.4 "Cormorant Garamond",
+    Georgia,
+    serif;
 }
 
 .couple-center {
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 5px;
 }
 
 .center-line {
   width: 1px;
-  height: 35px;
-
+  height: 32px;
   background: linear-gradient(
     transparent,
-    rgba(176, 138, 84, 0.65),
+    rgba(180, 138, 79, 0.75),
     transparent
   );
 }
 
 .heart-symbol {
-  color: #8a1730;
-
-  font-size: 23px;
-
-  animation: heartPulse 1.8s ease-in-out infinite;
-
-  text-shadow: 0 0 12px rgba(138, 23, 48, 0.25);
+  color: var(--maroon);
+  font-size: 20px;
 }
 
 .and-symbol {
-  color: #b08a54;
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: 21px;
-
-  font-style: italic;
+  color: var(--gold);
+  font:
+    italic 20px "Cormorant Garamond",
+    Georgia,
+    serif;
 }
-
-@keyframes heartPulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.22);
-  }
-}
-
-/* =========================================================
-   BOTTOM ORNAMENT
-========================================================= */
 
 .bottom-ornament {
-  margin-top: 34px;
+  margin-top: 30px;
+  margin-bottom: 27px;
 }
-
-.bottom-ornament i {
-  width: 70px;
-}
-
-/* =========================================================
-   SPECIAL DAYS
-========================================================= */
 
 .special-days {
-  position: relative;
-
-  margin-top: 30px;
-
   width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
 }
 
 .special-days-heading {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
-  gap: 10px;
-
-  margin-bottom: 20px;
-
-  color: #a6783b;
-
-  font-family: "Montserrat", sans-serif;
+  gap: 9px;
+  margin-bottom: 17px;
+  color: var(--gold);
 }
 
-.heading-line {
-  width: 55px;
+.special-days-heading span {
+  width: min(70px, 9vw);
   height: 1px;
-
-  background: linear-gradient(90deg, transparent, rgba(166, 120, 59, 0.6));
+  background: linear-gradient(90deg, transparent, rgba(180, 138, 79, 0.7));
 }
 
-.heading-line:last-child {
-  background: linear-gradient(90deg, rgba(166, 120, 59, 0.6), transparent);
+.special-days-heading span:last-child {
+  background: linear-gradient(90deg, rgba(180, 138, 79, 0.7), transparent);
 }
 
-.heading-text {
-  font-size: 9px;
-
-  font-weight: 600;
-
-  letter-spacing: 4px;
-
+.special-days-heading h2 {
+  margin: 0;
+  font:
+    600 9px/1 "Montserrat",
+    Arial,
+    sans-serif;
+  letter-spacing: 3px;
   white-space: nowrap;
 }
 
-.heading-star {
-  font-size: 10px;
-
-  animation: headingStarGlow 2.5s ease-in-out infinite;
+.special-days-heading b {
+  font-size: 9px;
+  font-weight: 400;
 }
-
-@keyframes headingStarGlow {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: scale(0.8);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.25);
-  }
-}
-
-/* =========================================================
-   SPECIAL DAY GRID
-   ALWAYS TWO COLUMNS
-========================================================= */
 
 .special-days-grid {
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 1fr)
-    minmax(0, 1fr);
-
-  gap: 18px;
-
-  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
 }
 
-/* =========================================================
-   DATE CARD
-========================================================= */
-
-.special-day-card {
+.date-card {
   position: relative;
-
-  min-width: 0;
-  min-height: 220px;
-
+  min-height: 205px;
+  padding: 27px 15px;
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
-  padding: 30px 20px;
-
   overflow: hidden;
-
   text-align: center;
-
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(255, 255, 255, 0.9),
-      transparent 55%
-    ),
-    linear-gradient(145deg, #fffaf3, #f6e9dc);
-
-  border: 1px solid rgba(179, 138, 84, 0.55);
-
-  box-shadow:
-    0 15px 35px rgba(91, 54, 35, 0.12),
-    inset 0 0 35px rgba(213, 164, 82, 0.06);
-
-  transition:
-    transform 0.5s ease,
-    box-shadow 0.5s ease,
-    border-color 0.5s ease;
-
-  animation: dateCardReveal 1s ease both;
+  background: linear-gradient(145deg, #fffdf8, #f6e9da);
+  border: 1px solid rgba(180, 138, 79, 0.55);
+  box-shadow: 0 12px 28px rgba(91, 54, 35, 0.1);
 }
 
-.reception-date-card {
-  animation-delay: 1.35s;
-}
-
-.wedding-date-card {
-  animation-delay: 1.55s;
-}
-
-@keyframes dateCardReveal {
-  from {
-    opacity: 0;
-
-    transform: translateY(35px) scale(0.94);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: translateY(0) scale(1);
-  }
-}
-
-.special-day-card:hover {
-  transform: translateY(-8px) scale(1.015);
-
-  border-color: rgba(179, 138, 84, 0.9);
-
-  box-shadow:
-    0 25px 50px rgba(91, 54, 35, 0.18),
-    0 0 35px rgba(201, 154, 77, 0.1);
-}
-
-/* =========================================================
-   CARD GLOW
-========================================================= */
-
-.date-card-glow {
+.date-card::before {
+  content: "";
   position: absolute;
-
-  width: 180px;
-  height: 180px;
-
-  top: -100px;
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  border-radius: 50%;
-
-  background: radial-gradient(
-    circle,
-    rgba(220, 174, 94, 0.18),
-    transparent 70%
-  );
-
+  inset: 8px;
+  border: 1px solid rgba(180, 138, 79, 0.18);
   pointer-events: none;
-
-  animation: dateGlowPulse 4s ease-in-out infinite;
 }
-
-@keyframes dateGlowPulse {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: translateX(-50%) scale(0.9);
-  }
-
-  50% {
-    opacity: 1;
-    transform: translateX(-50%) scale(1.2);
-  }
-}
-
-/* =========================================================
-   DATE CORNERS
-========================================================= */
 
 .date-card-corner {
   position: absolute;
-
-  color: rgba(166, 120, 59, 0.5);
-
-  font-size: 11px;
-
-  animation: cornerSpark 3s ease-in-out infinite;
+  color: rgba(166, 120, 59, 0.55);
+  font-size: 10px;
 }
 
-.date-corner-tl {
-  top: 10px;
-  left: 12px;
+.corner-tl {
+  top: 9px;
+  left: 10px;
+}
+.corner-tr {
+  top: 9px;
+  right: 10px;
+}
+.corner-bl {
+  bottom: 9px;
+  left: 10px;
+}
+.corner-br {
+  bottom: 9px;
+  right: 10px;
 }
 
-.date-corner-tr {
-  top: 10px;
-  right: 12px;
-
-  animation-delay: 0.7s;
-}
-
-.date-corner-bl {
-  bottom: 10px;
-  left: 12px;
-
-  animation-delay: 1.4s;
-}
-
-.date-corner-br {
-  right: 12px;
-  bottom: 10px;
-
-  animation-delay: 2.1s;
-}
-
-@keyframes cornerSpark {
-  0%,
-  100% {
-    opacity: 0.35;
-
-    transform: scale(0.8) rotate(0);
-  }
-
-  50% {
-    opacity: 1;
-
-    transform: scale(1.15) rotate(15deg);
-  }
-}
-
-/* =========================================================
-   DATE ICON
-========================================================= */
-
-.date-card-icon {
-  position: relative;
-
+.date-icon {
   width: 38px;
   height: 38px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 8px;
-
-  border: 1px solid rgba(179, 138, 84, 0.45);
-
+  display: grid;
+  place-items: center;
+  margin-bottom: 7px;
+  border: 1px solid rgba(180, 138, 79, 0.5);
   border-radius: 50%;
-
-  color: #a6783b;
-
-  font-size: 18px;
-
-  box-shadow: 0 0 18px rgba(179, 138, 84, 0.08);
-
-  animation: dateIconFloat 3s ease-in-out infinite;
+  color: var(--gold);
+  font-size: 17px;
 }
 
-.wedding-date-card .date-card-icon {
-  color: #8a1730;
+.wedding .date-icon {
+  color: var(--maroon);
 }
 
-@keyframes dateIconFloat {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-  }
-
-  50% {
-    transform: translateY(-4px) scale(1.08);
-  }
+.date-label,
+.date-place {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 600;
 }
 
-/* =========================================================
-   DATE LABEL
-========================================================= */
-
-.date-card-label {
-  color: #a6783b;
-
-  font-family: "Montserrat", sans-serif;
-
+.date-label {
+  color: var(--gold);
   font-size: 8px;
-
-  font-weight: 600;
-
-  letter-spacing: 4px;
-}
-
-/* =========================================================
-   DATE DIVIDER
-========================================================= */
-
-.date-card-divider {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 7px;
-
-  width: 100%;
-
-  margin: 10px 0;
-}
-
-.date-card-divider span {
-  width: 38px;
-  height: 1px;
-
-  background: linear-gradient(90deg, transparent, rgba(179, 138, 84, 0.55));
-}
-
-.date-card-divider span:last-child {
-  background: linear-gradient(90deg, rgba(179, 138, 84, 0.55), transparent);
-}
-
-.date-card-divider b {
-  color: #b08a54;
-
-  font-size: 9px;
-
-  animation: dividerMiniPulse 2s ease-in-out infinite;
-}
-
-@keyframes dividerMiniPulse {
-  0%,
-  100% {
-    transform: scale(0.8);
-    opacity: 0.5;
-  }
-
-  50% {
-    transform: scale(1.25);
-    opacity: 1;
-  }
-}
-
-/* =========================================================
-   DATE TEXT
-========================================================= */
-
-.date-card-date {
-  display: block;
-
-  color: #65091b;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: clamp(17px, 2.2vw, 23px);
-
-  font-weight: 600;
-
-  line-height: 1.2;
-
-  white-space: nowrap;
-
-  letter-spacing: 0.2px;
-}
-
-.date-card-time {
-  margin-top: 7px;
-
-  color: #806d5b;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 15px;
-
-  white-space: nowrap;
-}
-
-.date-card-location {
-  margin-top: 8px;
-
-  color: #a6783b;
-
-  font-family: "Montserrat", sans-serif;
-
-  font-size: 7px;
-
-  font-weight: 600;
-
   letter-spacing: 3px;
 }
 
-/* =========================================================
-   BOTTOM SPARKLES
-========================================================= */
-
-.date-card-bottom {
+.date-divider {
+  width: 100%;
+  margin: 9px 0;
   display: flex;
-
-  gap: 12px;
-
-  margin-top: 13px;
-
-  color: rgba(166, 120, 59, 0.5);
-
-  font-size: 9px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: var(--gold);
+  font-size: 8px;
 }
 
-.date-card-bottom span {
-  animation: bottomSpark 2.5s ease-in-out infinite;
+.date-divider span {
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(180, 138, 79, 0.55));
 }
 
-.date-card-bottom span:nth-child(2) {
-  animation-delay: 0.8s;
+.date-divider span:last-child {
+  background: linear-gradient(90deg, rgba(180, 138, 79, 0.55), transparent);
 }
 
-.date-card-bottom span:nth-child(3) {
-  animation-delay: 1.6s;
+.date-value {
+  display: block;
+  color: var(--maroon);
+  font:
+    600 clamp(16px, 2.2vw, 22px)/1.15 "Cormorant Garamond",
+    Georgia,
+    serif;
+  white-space: nowrap;
 }
 
-@keyframes bottomSpark {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(0.8);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
+.date-time {
+  margin-top: 7px;
+  color: var(--muted);
+  font:
+    400 15px/1.2 "Cormorant Garamond",
+    Georgia,
+    serif;
+  white-space: nowrap;
 }
 
-/* =========================================================
-   CONNECTION
-========================================================= */
+.date-place {
+  margin-top: 8px;
+  color: var(--gold);
+  font-size: 7px;
+  letter-spacing: 3px;
+}
 
 .date-connection {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
-  gap: 12px;
-
-  margin-top: 18px;
+  gap: 10px;
+  margin-top: 17px;
 }
 
-.connection-line {
-  width: 70px;
+.date-connection span {
+  width: 72px;
   height: 1px;
-
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(176, 138, 84, 0.5),
+    rgba(180, 138, 79, 0.55),
     transparent
   );
 }
 
-.connection-heart {
-  width: 35px;
-  height: 35px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
+.date-connection b {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: var(--maroon);
+  background: #fffaf1;
+  border: 1px solid rgba(180, 138, 79, 0.55);
   border-radius: 50%;
-
-  color: #8a1730;
-
-  background: #fff8ed;
-
-  border: 1px solid rgba(179, 138, 84, 0.55);
-
-  box-shadow: 0 5px 18px rgba(91, 54, 35, 0.1);
-
-  animation: connectionHeart 1.8s ease-in-out infinite;
+  font-size: 13px;
+  font-weight: 400;
 }
-
-@keyframes connectionHeart {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.15);
-  }
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
 
 .date-teaser-footer {
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
+  margin-top: 18px;
+}
 
-  margin-top: 22px;
+.date-teaser-footer span,
+.date-teaser-footer small {
+  color: var(--gold);
+  font-family: "Montserrat", Arial, sans-serif;
 }
 
 .date-teaser-footer span {
-  color: #a6783b;
-
-  font-family: "Montserrat", sans-serif;
-
-  font-size: 8px;
-
+  font-size: 7px;
   font-weight: 600;
-
-  letter-spacing: 3px;
+  letter-spacing: 2.5px;
 }
 
 .date-teaser-footer strong {
-  margin-top: 5px;
-
-  color: #65091b;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 23px;
-
-  font-weight: 600;
+  margin-top: 4px;
+  color: var(--maroon);
+  font:
+    600 22px "Cormorant Garamond",
+    Georgia,
+    serif;
 }
 
 .date-teaser-footer small {
-  margin-top: 4px;
-
+  margin-top: 3px;
   color: #927c68;
-
-  font-family: "Montserrat", sans-serif;
-
-  font-size: 7px;
-
-  letter-spacing: 3px;
+  font-size: 6px;
+  letter-spacing: 2.5px;
 }
 
-/* =========================================================
-   SCROLL
-========================================================= */
-
-.scroll-reveal {
+.bottom-art {
   display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  margin-top: 27px;
-
-  color: #a6783b;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 25px;
+  color: rgba(143, 22, 50, 0.65);
+  font-size: 17px;
 }
 
-.scroll-text {
-  font-family: "Montserrat", sans-serif;
-
-  font-size: 7px;
-
-  font-weight: 600;
-
-  letter-spacing: 3px;
-}
-
-.scroll-arrow {
-  margin-top: 7px;
-
-  font-size: 19px;
-
-  animation: scrollBounce 1.6s ease-in-out infinite;
-}
-
-@keyframes scrollBounce {
-  0%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.55;
+@media (hover: hover) and (pointer: fine) {
+  .date-card {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
   }
 
-  50% {
-    transform: translateY(8px);
-    opacity: 1;
+  .date-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(180, 138, 79, 0.9);
+    box-shadow: 0 18px 35px rgba(91, 54, 35, 0.15);
   }
 }
 
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 760px) {
+@media (max-width: 700px) {
   .grand-reveal {
-    padding: 50px 14px;
+    padding: 16px 7px 28px;
   }
 
   .grand-reveal-card {
-    padding: 50px 35px 38px;
+    padding: 34px 12px 30px;
   }
 
-  /*
-     IMPORTANT:
-     Groom / Heart / Bride remain LEFT-CENTER-RIGHT.
-  */
-
-  .couple-display {
-    grid-template-columns:
-      minmax(0, 1fr)
-      55px
-      minmax(0, 1fr);
-
-    gap: 8px;
-  }
-
-  .person-name {
-    font-size: clamp(29px, 5.5vw, 42px);
-  }
-
-  .parent-names {
-    font-size: 13px;
-  }
-
-  /*
-     IMPORTANT:
-     Reception / Wedding remain LEFT-RIGHT.
-  */
-
-  .special-days-grid {
-    grid-template-columns:
-      minmax(0, 1fr)
-      minmax(0, 1fr);
-
-    gap: 12px;
-  }
-
-  .special-day-card {
-    padding: 25px 12px;
-  }
-
-  .date-card-date {
-    font-size: clamp(15px, 3vw, 20px);
-  }
-
-  .date-card-time {
-    font-size: 13px;
-  }
-}
-
-/* =========================================================
-   MOBILE
-   IMPORTANT:
-   NEVER CHANGE THESE TO 1fr.
-========================================================= */
-
-@media (max-width: 600px) {
-  .grand-reveal {
-    padding: 30px 7px 40px;
-  }
-
-  .grand-top-ornament {
-    gap: 7px;
-
-    margin-bottom: 14px;
-  }
-
-  .grand-top-ornament i {
-    width: 35px;
-  }
-
-  .grand-reveal-card {
-    padding: 38px 10px 30px;
-  }
-
-  .grand-reveal-card::before {
+  .paper-border {
     inset: 8px;
   }
 
-  /* =======================================================
-     GANESHA
-  ======================================================== */
+  .top-corner-art {
+    font-size: 30px;
+    top: 13px;
+  }
+
+  .top-left {
+    left: 13px;
+  }
+  .top-right {
+    right: 13px;
+  }
 
   .ganesha-wrapper {
-    width: 125px;
-    height: 125px;
-
-    margin-bottom: 15px;
+    width: 116px;
+    height: 116px;
+    margin-bottom: 11px;
   }
 
   .ganesha-circle {
@@ -1726,147 +644,59 @@
     height: 88px;
   }
 
-  .ganesha-circle img {
-    width: 72%;
-    height: 72%;
-  }
-
-  .ring-one {
-    width: 105px;
-    height: 105px;
-  }
-
-  .ring-two {
-    width: 117px;
-    height: 117px;
-  }
-
-  .ring-three {
-    width: 125px;
-    height: 125px;
-  }
-
-  /* =======================================================
-     HEADING
-  ======================================================== */
-
   .tamil-heading {
-    font-size: 21px;
+    font-size: clamp(21px, 6.2vw, 31px);
   }
 
   .invitation-label {
     font-size: 7px;
-
     letter-spacing: 3px;
   }
 
   .tamil-blessing {
+    margin-top: 12px;
     font-size: 11px;
-
-    line-height: 1.7;
-
-    white-space: nowrap;
   }
 
-  /* =======================================================
-     INTRO
-  ======================================================== */
+  .invitation-ornament {
+    gap: 6px;
+    margin: 17px auto 19px;
+  }
+
+  .invitation-ornament i {
+    width: 35px;
+  }
 
   .invitation-intro {
-    font-size: 15px;
-
-    line-height: 1.35;
+    font-size: 14px;
   }
-
-  /* =======================================================
-     COUPLE
-     LEFT | HEART | RIGHT
-  ======================================================== */
 
   .couple-display {
-    display: grid;
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      38px
-      minmax(0, 1fr);
-
-    align-items: center;
-
+    grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr);
     gap: 3px;
-
-    width: 100%;
-
-    margin-top: 22px;
-  }
-
-  .person-block {
-    min-width: 0;
-
-    padding: 0 2px;
+    margin-top: 21px;
   }
 
   .person-small-label {
-    font-size: 7px;
-
-    letter-spacing: 2px;
-
-    white-space: nowrap;
+    font-size: 6.5px;
+    letter-spacing: 1.7px;
   }
 
   .person-name {
-    /*
-      IMPORTANT:
-      Vijay Kumar and Sandhiya stay
-      LEFT and RIGHT.
-    */
-
-    display: block;
-
-    width: 100%;
-
-    font-size: clamp(25px, 7.5vw, 36px);
-
-    line-height: 1;
-
-    white-space: nowrap;
-
-    letter-spacing: -0.5px;
+    font-size: clamp(24px, 7.6vw, 34px);
+    letter-spacing: -0.4px;
   }
 
   .parent-label {
-    margin-top: 7px;
-
-    font-size: 11px;
+    font-size: 9px;
   }
 
   .parent-names {
-    font-size: clamp(10px, 3.1vw, 12.5px);
-
-    line-height: 1.35;
-
-    white-space: normal;
-  }
-
-  /* =======================================================
-     CENTER HEART
-  ======================================================== */
-
-  .couple-center {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 3px;
+    font-size: clamp(9.5px, 3vw, 12px);
+    line-height: 1.3;
   }
 
   .center-line {
-    width: 1px;
-
     height: 22px;
   }
 
@@ -1875,370 +705,188 @@
   }
 
   .and-symbol {
-    font-size: 18px;
+    font-size: 17px;
   }
-
-  /* =======================================================
-     BOTTOM ORNAMENT
-  ======================================================== */
 
   .bottom-ornament {
-    margin-top: 23px;
-  }
-
-  .bottom-ornament i {
-    width: 38px;
-  }
-
-  /* =======================================================
-     SPECIAL DAYS HEADING
-  ======================================================== */
-
-  .special-days {
-    margin-top: 20px;
+    margin-top: 21px;
+    margin-bottom: 19px;
   }
 
   .special-days-heading {
     gap: 5px;
-
-    margin-bottom: 13px;
+    margin-bottom: 11px;
   }
 
-  .heading-line {
+  .special-days-heading span {
     width: 23px;
   }
 
-  .heading-text {
-    font-size: 7px;
-
+  .special-days-heading h2 {
+    font-size: 6.5px;
     letter-spacing: 2px;
   }
 
-  .heading-star {
+  .special-days-heading b {
     font-size: 7px;
   }
-
-  /* =======================================================
-     RECEPTION | WEDDING
-     LEFT | RIGHT
-  ======================================================== */
 
   .special-days-grid {
-    display: grid;
-
-    /*
-      THIS IS THE IMPORTANT FIX.
-      TWO COLUMNS ON MOBILE.
-    */
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      minmax(0, 1fr);
-
-    gap: 7px;
-
-    width: 100%;
+    gap: 6px;
   }
 
-  .special-day-card {
-    min-width: 0;
-
-    min-height: 190px;
-
-    padding: 18px 4px 15px;
-
-    border-radius: 0;
-
-    overflow: hidden;
+  .date-card {
+    min-height: 176px;
+    padding: 17px 4px 14px;
   }
 
-  /* =======================================================
-     DATE ICON
-  ======================================================== */
-
-  .date-card-icon {
-    width: 36px;
-    height: 36px;
-
-    margin-bottom: 8px;
-
-    font-size: 16px;
+  .date-card::before {
+    inset: 6px;
   }
 
-  /* =======================================================
-     LABEL
-  ======================================================== */
-
-  .date-card-label {
-    font-size: 6.5px;
-
-    letter-spacing: 2px;
-
-    white-space: nowrap;
+  .date-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
   }
 
-  /* =======================================================
-     DIVIDER
-  ======================================================== */
+  .date-label {
+    font-size: 6px;
+    letter-spacing: 1.7px;
+  }
 
-  .date-card-divider {
+  .date-divider {
     gap: 4px;
-
-    margin: 8px 0;
+    margin: 7px 0;
   }
 
-  .date-card-divider span {
-    width: 17px;
+  .date-divider span {
+    width: 14px;
   }
 
-  .date-card-divider b {
+  .date-divider {
     font-size: 6px;
   }
 
-  /* =======================================================
-     DATE
-  ======================================================== */
-
-  .date-card-date {
-    /*
-      Keep complete date on one line.
-    */
-
-    display: block;
-
-    width: max-content;
-
-    max-width: none;
-
-    font-size: clamp(12px, 3.4vw, 16px);
-
-    line-height: 1.1;
-
-    white-space: nowrap;
-
-    letter-spacing: -0.1px;
+  .date-value {
+    font-size: clamp(11px, 3.35vw, 15px);
   }
 
-  .date-card-time {
-    margin-top: 7px;
-
-    font-size: clamp(9px, 2.7vw, 12px);
-
-    white-space: nowrap;
+  .date-time {
+    font-size: clamp(8.5px, 2.7vw, 11px);
   }
 
-  .date-card-location {
+  .date-place {
     margin-top: 6px;
-
-    font-size: 5.5px;
-
-    letter-spacing: 2px;
-  }
-
-  .date-card-bottom {
-    gap: 7px;
-
-    margin-top: 10px;
-
-    font-size: 7px;
+    font-size: 5px;
+    letter-spacing: 1.6px;
   }
 
   .date-card-corner {
-    font-size: 8px;
+    font-size: 7px;
   }
 
-  .date-corner-tl {
-    top: 7px;
-    left: 7px;
+  .corner-tl {
+    top: 6px;
+    left: 6px;
   }
-
-  .date-corner-tr {
-    top: 7px;
-    right: 7px;
+  .corner-tr {
+    top: 6px;
+    right: 6px;
   }
-
-  .date-corner-bl {
-    bottom: 7px;
-    left: 7px;
+  .corner-bl {
+    bottom: 6px;
+    left: 6px;
   }
-
-  .date-corner-br {
-    right: 7px;
-    bottom: 7px;
+  .corner-br {
+    bottom: 6px;
+    right: 6px;
   }
-
-  /* =======================================================
-     CONNECTION
-  ======================================================== */
 
   .date-connection {
-    margin-top: 13px;
-
-    gap: 7px;
+    margin-top: 11px;
+    gap: 6px;
   }
 
-  .connection-line {
-    width: 35px;
+  .date-connection span {
+    width: 34px;
   }
 
-  .connection-heart {
-    width: 29px;
-    height: 29px;
-
-    font-size: 12px;
+  .date-connection b {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
   }
-
-  /* =======================================================
-     FOOTER
-  ======================================================== */
 
   .date-teaser-footer {
-    margin-top: 17px;
+    margin-top: 13px;
   }
 
   .date-teaser-footer span {
     font-size: 5.5px;
-
-    letter-spacing: 2px;
-
-    white-space: nowrap;
+    letter-spacing: 1.8px;
   }
 
   .date-teaser-footer strong {
-    font-size: 18px;
+    font-size: 19px;
   }
 
   .date-teaser-footer small {
-    font-size: 6px;
+    font-size: 5px;
   }
 
-  /* =======================================================
-     SCROLL
-  ======================================================== */
-
-  .scroll-reveal {
-    margin-top: 21px;
-  }
-
-  .scroll-text {
-    font-size: 6px;
-
-    letter-spacing: 2px;
-  }
-
-  .scroll-arrow {
-    font-size: 16px;
-  }
-
-  /* Smaller decorations */
-
-  .grand-petal {
-    font-size: 13px;
+  .bottom-art {
+    margin-top: 19px;
+    font-size: 14px;
   }
 }
 
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-
 @media (max-width: 380px) {
   .grand-reveal {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
   }
 
   .grand-reveal-card {
-    padding-left: 7px;
-    padding-right: 7px;
+    padding-left: 9px;
+    padding-right: 9px;
   }
 
-  /* Groom / Bride */
-
   .couple-display {
-    grid-template-columns:
-      minmax(0, 1fr)
-      34px
-      minmax(0, 1fr);
-
+    grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
     gap: 2px;
   }
 
   .person-name {
-    font-size: clamp(23px, 7.2vw, 31px);
-  }
-
-  .person-small-label {
-    font-size: 6px;
-
-    letter-spacing: 1.5px;
-  }
-
-  .parent-label {
-    font-size: 10px;
+    font-size: clamp(22px, 7.2vw, 29px);
   }
 
   .parent-names {
-    font-size: 9.5px;
+    font-size: 9px;
   }
 
-  /* Reception / Wedding */
-
-  .special-days-grid {
-    grid-template-columns:
-      minmax(0, 1fr)
-      minmax(0, 1fr);
-
-    gap: 5px;
+  .date-card {
+    min-height: 168px;
+    padding-left: 2px;
+    padding-right: 2px;
   }
 
-  .special-day-card {
-    min-height: 180px;
-
-    padding: 16px 2px 13px;
+  .date-value {
+    font-size: 10.5px;
   }
 
-  .date-card-date {
-    font-size: 11.5px;
-  }
-
-  .date-card-time {
-    font-size: 8.5px;
-  }
-
-  .date-card-location {
-    font-size: 5px;
-
-    letter-spacing: 1.5px;
-  }
-
-  .date-card-label {
-    font-size: 6px;
-
-    letter-spacing: 1.5px;
-  }
-
-  .date-card-icon {
-    width: 32px;
-    height: 32px;
-
-    font-size: 14px;
-  }
-
-  .date-card-divider span {
-    width: 13px;
+  .date-time {
+    font-size: 8px;
   }
 }
 
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
-  .grand-reveal *,
-  .grand-reveal *::before,
-  .grand-reveal *::after {
-    animation: none !important;
-
-    transition: none !important;
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

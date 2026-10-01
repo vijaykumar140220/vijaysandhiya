@@ -10,8 +10,8 @@ function Envelope({ onOpen }) {
 
     setIsOpening(true);
 
-    // Allow the complete opening animation to finish
-    timerRef.current = setTimeout(() => {
+    // Matches the complete envelope opening sequence.
+    timerRef.current = window.setTimeout(() => {
       onOpen();
     }, 2500);
   };
@@ -19,116 +19,123 @@ function Envelope({ onOpen }) {
   useEffect(() => {
     return () => {
       if (timerRef.current) {
-        clearTimeout(timerRef.current);
+        window.clearTimeout(timerRef.current);
       }
     };
   }, []);
 
   return (
-    <section className="envelope-screen">
-      {/* Ambient floating particles */}
+    <section className="envelope-screen" aria-label="Wedding invitation">
+      {/* Lightweight ambient particles */}
       <div className="envelope-particles" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
       </div>
 
       <div className="envelope-container">
         <div
           className={`luxury-envelope ${isOpening ? "envelope-opening" : ""}`}
         >
-          {/* Premium light layers */}
-          <div className="envelope-light"></div>
-          <div className="envelope-light-sweep"></div>
+          {/* Soft lighting */}
+          <div className="envelope-light" aria-hidden="true" />
+          <div className="envelope-light-sweep" aria-hidden="true" />
 
-          {/* Inner border */}
-          <div className="envelope-inner-border"></div>
+          {/* Border */}
+          <div className="envelope-inner-border" aria-hidden="true" />
 
-          {/* Decorative corner flowers */}
-          <div className="flower flower-left-top">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+          {/* Decorative flowers */}
+          <div className="flower flower-left-top" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
           </div>
 
-          <div className="flower flower-right-top">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className="flower flower-right-top" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
           </div>
 
-          <div className="flower flower-left-bottom">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className="flower flower-left-bottom" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
           </div>
 
-          <div className="flower flower-right-bottom">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className="flower flower-right-bottom" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
           </div>
 
           {/* Leaves */}
-          <div className="leaf-decoration leaf-left"></div>
-          <div className="leaf-decoration leaf-right"></div>
+          <div className="leaf-decoration leaf-left" aria-hidden="true" />
+
+          <div className="leaf-decoration leaf-right" aria-hidden="true" />
 
           {/* Gold corner ornaments */}
-          <div className="corner-ornament corner-top-left"></div>
-          <div className="corner-ornament corner-top-right"></div>
-          <div className="corner-ornament corner-bottom-left"></div>
-          <div className="corner-ornament corner-bottom-right"></div>
+          <div className="corner-ornament corner-top-left" aria-hidden="true" />
 
-          {/* Title */}
+          <div
+            className="corner-ornament corner-top-right"
+            aria-hidden="true"
+          />
+
+          <div
+            className="corner-ornament corner-bottom-left"
+            aria-hidden="true"
+          />
+
+          <div
+            className="corner-ornament corner-bottom-right"
+            aria-hidden="true"
+          />
+
+          {/* Invitation heading */}
           <div className="envelope-heading">
             <div className="heading-small">Together with their families</div>
 
             <div className="invitation-title">WEDDING INVITATION</div>
 
-            <div className="heading-line">
-              <span></span>
+            <div className="heading-line" aria-hidden="true">
+              <span />
               <i>✦</i>
-              <span></span>
+              <span />
             </div>
           </div>
 
-          {/* Four envelope flaps */}
-
-          {/* TOP */}
+          {/* TOP FLAP */}
           <div className="envelope-flap envelope-flap-top">
-            <div className="flap-shine"></div>
+            <div className="flap-shine" />
           </div>
 
-          {/* LEFT */}
+          {/* LEFT FLAP */}
           <div className="envelope-flap envelope-flap-left">
-            <div className="flap-shine"></div>
+            <div className="flap-shine" />
           </div>
 
-          {/* RIGHT */}
+          {/* RIGHT FLAP */}
           <div className="envelope-flap envelope-flap-right">
-            <div className="flap-shine"></div>
+            <div className="flap-shine" />
           </div>
 
-          {/* BOTTOM */}
+          {/* BOTTOM FLAP */}
           <div className="envelope-flap envelope-flap-bottom">
-            <div className="flap-shine"></div>
+            <div className="flap-shine" />
           </div>
 
           {/* Center glow */}
-          <div className="envelope-center-glow"></div>
+          <div className="envelope-center-glow" aria-hidden="true" />
 
           {/* Wax seal */}
           <button
@@ -139,13 +146,13 @@ function Envelope({ onOpen }) {
             aria-label="Open wedding invitation"
             aria-busy={isOpening}
           >
-            <span className="wax-outer-rim"></span>
+            <span className="wax-outer-rim" />
 
-            <span className="wax-highlight"></span>
+            <span className="wax-highlight" />
 
-            <span className="wax-ring wax-ring-one"></span>
+            <span className="wax-ring wax-ring-one" />
 
-            <span className="wax-ring wax-ring-two"></span>
+            <span className="wax-ring wax-ring-two" />
 
             <span className="wax-monogram">
               V<span>♥</span>S
@@ -159,28 +166,39 @@ function Envelope({ onOpen }) {
           {/* Seal glow */}
           <div
             className={`envelope-glow ${isOpening ? "glow-opening" : ""}`}
-          ></div>
+            aria-hidden="true"
+          />
 
           {/* Opening flash */}
           <div
             className={`opening-flash ${isOpening ? "flash-opening" : ""}`}
-          ></div>
+            aria-hidden="true"
+          />
         </div>
 
-        {/* Tap text */}
+        {/* Tap instruction */}
         <button
           type="button"
           className={`tap-seal-text ${isOpening ? "tap-text-opening" : ""}`}
           onClick={handleSealClick}
           disabled={isOpening}
+          aria-label={
+            isOpening
+              ? "Opening wedding invitation"
+              : "Tap to open wedding invitation"
+          }
         >
-          <span className="tap-star">✦</span>
+          <span className="tap-star" aria-hidden="true">
+            ✦
+          </span>
 
           <span className="tap-message">
             {isOpening ? "OPENING YOUR INVITATION" : "TAP THE SEAL TO OPEN"}
           </span>
 
-          <span className="tap-star">✦</span>
+          <span className="tap-star" aria-hidden="true">
+            ✦
+          </span>
         </button>
       </div>
     </section>

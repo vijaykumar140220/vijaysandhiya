@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import Envelope from "./components/Envelope";
 import GrandReveal from "./components/GrandReveal";
@@ -9,6 +9,7 @@ import Venue from "./components/Venue";
 import FinalMessage from "./components/FinalMessage";
 
 import weddingMusic from "./images/music1.mp3";
+import "./App.css";
 
 function App() {
   const [isOpened, setIsOpened] = useState(false);
@@ -16,52 +17,66 @@ function App() {
 
   const audioRef = useRef(null);
 
-  const playMusic = async () => {
+  /* =========================================================
+     PLAY MUSIC
+  ========================================================= */
+  const playMusic = useCallback(async () => {
     const audio = audioRef.current;
 
-    if (!audio) {
-      console.warn("Audio element not found.");
-      return;
-    }
+    if (!audio) return;
 
     try {
-      audio.volume = 0.7;
+      audio.volume = 0.65;
 
       await audio.play();
 
       setIsPlaying(true);
-
-      console.log("Wedding music started.");
-    } catch (error) {
-      console.error("Unable to play wedding music:", error);
-
+    } catch {
       setIsPlaying(false);
     }
-  };
+  }, []);
 
-  const pauseMusic = () => {
+  /* =========================================================
+     PAUSE MUSIC
+  ========================================================= */
+  const pauseMusic = useCallback(() => {
     const audio = audioRef.current;
 
     if (!audio) return;
 
     audio.pause();
     setIsPlaying(false);
-  };
+  }, []);
 
-  const openInvitation = async () => {
+  /* =========================================================
+     OPEN INVITATION
+  ========================================================= */
+  const openInvitation = useCallback(async () => {
     setIsOpened(true);
 
+    /*
+      Music starts directly from the user's click.
+      This gives the browser the best chance of allowing playback.
+    */
     await playMusic();
 
-    setTimeout(() => {
-      document.getElementById("invitation-content")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }, 700);
-  };
+    /*
+      Scroll after React has mounted the invitation.
+    */
+    window.requestAnimationFrame(() => {
+      window.setTimeout(() => {
+        document.getElementById("invitation-content")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 120);
+    });
+  }, [playMusic]);
 
-  const toggleMusic = async () => {
+  /* =========================================================
+     TOGGLE MUSIC
+  ========================================================= */
+  const toggleMusic = useCallback(async () => {
     const audio = audioRef.current;
 
     if (!audio) return;
@@ -71,30 +86,20 @@ function App() {
     } else {
       pauseMusic();
     }
-  };
+  }, [playMusic, pauseMusic]);
 
+  /* =========================================================
+     AUDIO EVENTS
+  ========================================================= */
   useEffect(() => {
     const audio = audioRef.current;
 
     if (!audio) return;
 
-    const handlePlay = () => {
-      setIsPlaying(true);
-    };
-
-    const handlePause = () => {
-      setIsPlaying(false);
-    };
-
-    const handleEnded = () => {
-      setIsPlaying(false);
-    };
-
-    const handleError = () => {
-      setIsPlaying(false);
-
-      console.error("Wedding music could not be loaded.");
-    };
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+    const handleEnded = () => setIsPlaying(false);
+    const handleError = () => setIsPlaying(false);
 
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
@@ -106,42 +111,40 @@ function App() {
       audio.removeEventListener("pause", handlePause);
       audio.removeEventListener("ended", handleEnded);
       audio.removeEventListener("error", handleError);
-    };
-  }, []);
 
-  useEffect(() => {
-    const audioElement = audioRef.current;
-
-    return () => {
-      if (audioElement) {
-        audioElement.pause();
-      }
+      audio.pause();
     };
   }, []);
 
   return (
     <div className="invitation-app">
-      {/* WEDDING MUSIC */}
-      <audio ref={audioRef} src={weddingMusic} loop preload="auto" />
+      {/* =====================================================
+          WEDDING MUSIC
+      ====================================================== */}
+      <audio ref={audioRef} src={weddingMusic} loop preload="metadata" />
 
-      {/* MUSIC BUTTON */}
+      {/* =====================================================
+          MUSIC CONTROL
+      ====================================================== */}
       <button
         type="button"
-        className={`music-button ${
-          isPlaying ? "music-playing" : ""
-        } ${!isOpened ? "music-button-first-page" : ""}`}
+        className={`music-button ${isPlaying ? "music-playing" : ""}`}
         onClick={toggleMusic}
         aria-label={isPlaying ? "Pause wedding music" : "Play wedding music"}
-        title={isPlaying ? "Pause Music" : "Play Music"}
+        aria-pressed={isPlaying}
       >
-        <span className="music-icon">{isPlaying ? "♫" : "♪"}</span>
+        <span className="music-icon" aria-hidden="true">
+          {isPlaying ? "♫" : "♪"}
+        </span>
 
         <span className="music-text">
           {isPlaying ? "Music On" : "Music Off"}
         </span>
       </button>
 
-      {/* INVITATION */}
+      {/* =====================================================
+          ENVELOPE
+      ====================================================== */}
       {!isOpened ? (
         <Envelope onOpen={openInvitation} />
       ) : (
