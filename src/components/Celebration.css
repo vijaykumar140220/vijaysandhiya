@@ -1,536 +1,890 @@
-/* =========================================================
-   COUPLE SECTION — FAST LUXURY TAMIL WEDDING DESIGN
-   Optimized for mobile, low paint cost and smooth scrolling.
-   ========================================================= */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap");
 
-.couple-section {
-  --maroon: #76152a;
-  --maroon-dark: #5b0e20;
-  --gold: #b78945;
-  --gold-light: #d9b66d;
-  --paper: #fffaf1;
-  --paper-soft: #f8eee1;
-  --text: #70555a;
-  --line: rgba(183, 137, 69, 0.45);
+/* =========================================
+   THEME & SECTION
+========================================= */
+
+.celebration-section {
+  --wine: #570717;
+  --deep-wine: #65091b;
+  --gold: #b08a54;
+  --light-gold: #d6b675;
+  --ivory: #fffaf1;
+  --cream: #f8eee3;
+  --muted: #806d5b;
 
   position: relative;
+  isolation: isolate;
   width: 100%;
-  min-height: 100svh;
-  padding: 72px 16px 82px;
+  padding: 90px 24px 72px;
   overflow: hidden;
-  background: #fbf4e8;
-  color: var(--text);
+  color: var(--ivory);
+  background:
+    radial-gradient(
+      ellipse at 12% 12%,
+      rgba(214, 169, 89, 0.13),
+      transparent 34%
+    ),
+    radial-gradient(
+      ellipse at 90% 75%,
+      rgba(198, 130, 72, 0.12),
+      transparent 32%
+    ),
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(145, 35, 54, 0.42),
+      transparent 42%
+    ),
+    var(--wine);
 }
 
-/* Very light paper texture — no blur/filter/animation */
-.couple-section::before {
+.celebration-section,
+.celebration-section * {
+  box-sizing: border-box;
+}
+
+.celebration-section::before {
+  position: absolute;
+  inset: 18px;
+  z-index: -1;
+  border: 1px solid rgba(214, 169, 89, 0.24);
   content: "";
+  pointer-events: none;
+}
+
+.celebration-section::after {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  opacity: 0.45;
+  z-index: -2;
   background-image: radial-gradient(
-    rgba(118, 21, 42, 0.035) 0.7px,
-    transparent 0.7px
+    circle,
+    rgba(255, 226, 174, 0.15) 1px,
+    transparent 1.2px
   );
-  background-size: 12px 12px;
+  background-size: 36px 36px;
+  opacity: 0.28;
+  content: "";
+  pointer-events: none;
 }
 
-.couple-container {
+/* =========================================
+   DECORATIONS
+========================================= */
+
+.celebration-decoration {
+  position: absolute;
+  z-index: -1;
+  color: rgba(214, 169, 89, 0.35);
+  font-family: Georgia, serif;
+  font-size: 105px;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  animation: celebrationFloat 7s ease-in-out infinite;
+}
+
+.celebration-decoration-top {
+  top: 25px;
+  right: 6%;
+}
+
+.celebration-decoration-bottom {
+  bottom: 25px;
+  left: 5%;
+  animation-delay: -3s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes celebrationFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(7deg);
+    opacity: 0.9;
+  }
+}
+
+/* =========================================
+   CONTAINER & SCROLL REVEAL
+========================================= */
+
+.celebration-container {
   position: relative;
   z-index: 1;
-  width: min(880px, 100%);
+  width: 100%;
+  max-width: 1120px;
   margin-inline: auto;
+}
+
+.celebration-reveal {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 550ms ease,
+    transform 550ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.celebration-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.celebration-timeline .celebration-card:nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.celebration-timeline .celebration-card:nth-child(3) {
+  transition-delay: 150ms;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.celebration-header {
+  max-width: 720px;
+  margin: 0 auto 54px;
   text-align: center;
 }
 
-/* Traditional divider */
-.couple-ornament {
+.celebration-eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--light-gold);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  line-height: 1.8;
+}
+
+.celebration-heading-ornament {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin: 0 auto 20px;
-  color: var(--gold);
+  gap: 13px;
+  margin-bottom: 22px;
 }
 
-.couple-ornament span,
-.couple-ornament b {
-  flex: 0 0 auto;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.couple-ornament i {
-  display: block;
-  width: 74px;
+.celebration-heading-ornament > span:not(.ornament-diamond) {
+  width: 60px;
   height: 1px;
-  background: var(--line);
+  background: linear-gradient(90deg, transparent, var(--gold));
 }
 
-.bottom-ornament {
-  margin-top: 26px;
-  margin-bottom: 0;
+.celebration-heading-ornament > span:last-child {
+  transform: rotate(180deg);
 }
 
-/* Heading */
-.couple-heading {
-  margin-bottom: 36px;
+.celebration-heading-ornament .ornament-diamond {
+  color: var(--light-gold);
+  font-size: 14px;
 }
 
-.couple-subtitle {
-  margin: 0 0 9px;
-  color: var(--maroon);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.couple-title {
-  max-width: 760px;
-  margin: 0 auto;
-  color: var(--maroon);
-  font-family: "Great Vibes", "Brush Script MT", cursive;
-  font-size: clamp(42px, 6.5vw, 70px);
-  font-weight: 400;
-  line-height: 1.05;
-  text-wrap: balance;
-}
-
-.couple-intro {
-  max-width: 560px;
-  margin: 15px auto 0;
-  color: #755d60;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 17px;
-  line-height: 1.55;
-}
-
-/* Main card */
-.couple-card {
-  position: relative;
-  width: min(720px, 100%);
-  margin: 0 auto;
-  padding: 14px;
-  border: 1px solid var(--gold);
-  background: var(--gold);
-  box-shadow: 0 16px 35px rgba(91, 14, 32, 0.12);
-}
-
-/* Inner paper */
-.card-inner {
-  position: relative;
-  padding: 34px 30px 36px;
-  border: 1px solid rgba(118, 21, 42, 0.22);
-  background: var(--paper);
-}
-
-/* Traditional corner marks */
-.card-corner {
-  position: absolute;
-  z-index: 2;
-  color: var(--gold);
-  font-size: 17px;
-  line-height: 1;
-}
-
-.top-left {
-  top: 8px;
-  left: 8px;
-}
-.top-right {
-  top: 8px;
-  right: 8px;
-}
-.bottom-left {
-  bottom: 8px;
-  left: 8px;
-}
-.bottom-right {
-  bottom: 8px;
-  right: 8px;
-}
-
-/* Photo */
-.couple-photo-area {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 28px;
-}
-
-.photo-frame {
-  width: 300px;
-  height: 365px;
-  padding: 7px;
-  background: linear-gradient(145deg, var(--gold-light), var(--gold), #9b6d30);
-  border-radius: 150px 150px 14px 14px;
-  box-shadow: 0 12px 26px rgba(91, 14, 32, 0.16);
-}
-
-.photo-inner {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border: 3px solid var(--paper);
-  border-radius: 145px 145px 10px 10px;
-  background: var(--paper-soft);
-}
-
-.couple-photo {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.photo-badge {
-  position: absolute;
-  right: calc(50% - 171px);
-  bottom: -3px;
-  display: grid;
-  width: 45px;
-  height: 45px;
-  place-items: center;
-  border: 3px solid var(--paper);
-  border-radius: 50%;
-  background: var(--maroon);
-  color: #f7d99a;
-  font-size: 17px;
-  box-shadow: 0 5px 12px rgba(91, 14, 32, 0.2);
-}
-
-/* Names */
-.couple-names {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
-  align-items: center;
-  width: 100%;
-  max-width: 630px;
-  margin: 0 auto;
-}
-
-.couple-name {
+.celebration-main-title {
   margin: 0;
-  color: var(--maroon);
-  font-family: "Great Vibes", "Brush Script MT", cursive;
-  font-size: clamp(40px, 6vw, 64px);
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(44px, 6vw, 74px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -1px;
+}
+
+.celebration-main-title em {
+  display: inline-block;
+  margin-top: 5px;
+  color: var(--light-gold);
+  font-family: "Great Vibes", cursive;
+  font-size: 1.2em;
   font-weight: 400;
-  line-height: 1;
-  white-space: nowrap;
+  letter-spacing: 0;
 }
 
-.vijay-name {
-  padding-right: 8px;
-  text-align: right;
+.celebration-description {
+  max-width: 540px;
+  margin: 22px auto 0;
+  color: rgba(255, 250, 241, 0.82);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 20px;
+  line-height: 1.7;
 }
 
-.sandhiya-name {
-  padding-left: 8px;
-  text-align: left;
+/* =========================================
+   EVENT GRID
+========================================= */
+
+.celebration-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 24px;
 }
 
-.couple-heart {
+/* =========================================
+   EVENT CARDS
+========================================= */
+
+.celebration-card {
+  --card-accent: #a6783b;
+
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: var(--gold);
+  min-width: 0;
+  padding: 40px 24px 28px;
+  overflow: hidden;
+  color: var(--deep-wine);
+  text-align: center;
+  border: 1px solid rgba(176, 138, 84, 0.75);
+  border-radius: 150px 150px 5px 5px;
+  background:
+    radial-gradient(
+      circle at 18% 12%,
+      rgba(255, 255, 255, 0.8),
+      transparent 36%
+    ),
+    linear-gradient(145deg, var(--ivory), var(--cream) 58%, #fffaf3);
+  box-shadow:
+    0 14px 32px rgba(20, 0, 5, 0.17),
+    inset 0 0 25px rgba(215, 165, 79, 0.035);
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease,
+    border-color 280ms ease;
 }
 
-.couple-heart span {
-  color: #a72d46;
-  font-size: 18px;
-  line-height: 1;
+.celebration-card-reception {
+  --card-accent: #956c83;
 }
 
-.couple-heart small {
-  margin-top: 2px;
-  color: #967354;
-  font-family: Georgia, serif;
-  font-size: 19px;
+.celebration-card-music {
+  --card-accent: #a6783b;
 }
 
-/* Caption */
-.couple-caption {
-  margin: 20px 0 0;
-  color: #765d5e;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 17px;
-  line-height: 1.5;
+.celebration-card-wedding {
+  --card-accent: #65091b;
 }
 
-/* Divider */
-.couple-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: min(230px, 80%);
-  margin: 23px auto 16px;
+.celebration-card::before {
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(176, 138, 84, 0.3);
+  content: "";
+  pointer-events: none;
 }
 
-.couple-divider i {
-  flex: 1;
+.celebration-card::after {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 70%;
   height: 1px;
-  background: var(--line);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(176, 138, 84, 0.8),
+    transparent
+  );
+  content: "";
 }
 
-.couple-divider span {
-  color: var(--gold);
-  font-size: 14px;
+@media (hover: hover) and (pointer: fine) {
+  .celebration-card:hover {
+    transform: translate3d(0, -6px, 0);
+    border-color: var(--light-gold);
+    box-shadow:
+      0 22px 38px rgba(20, 0, 5, 0.24),
+      0 0 18px rgba(214, 169, 89, 0.08);
+  }
 }
 
-/* Blessing */
-.family-blessing {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 0 22px;
+/* Card number */
+
+.celebration-card-number {
+  position: absolute;
+  top: 24px;
+  left: 25px;
+  color: rgba(101, 9, 27, 0.48);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 16px;
+  letter-spacing: 2px;
 }
 
-.family-blessing p {
-  margin: 0;
-  color: #846b69;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 15px;
-  font-style: italic;
+/* Card icon */
+
+.celebration-card-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 23px;
+  color: var(--card-accent);
+  font-family: Georgia, serif;
+  font-size: 29px;
+  border: 1px solid rgba(176, 138, 84, 0.7);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 0 0 4px rgba(176, 138, 84, 0.07);
+}
+
+/* Card text */
+
+.celebration-card-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.celebration-card-label {
+  display: block;
+  min-height: 24px;
+  color: #a6783b;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  line-height: 1.7;
+}
+
+.celebration-card-content h3 {
+  margin: 10px 0 15px;
+  color: var(--deep-wine);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(26px, 2.4vw, 33px);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.celebration-card-date {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
   line-height: 1.55;
 }
 
-.quote-mark {
-  display: block;
-  height: 8px;
+.celebration-card-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 0;
+  color: var(--card-accent);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.celebration-card-time span {
+  font-size: 17px;
+}
+
+.celebration-card-detail {
+  max-width: 280px;
+  margin: 18px auto 24px;
+  color: var(--muted);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Card ornament */
+
+.celebration-card-bottom-ornament {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: auto;
   color: var(--gold);
+}
+
+.celebration-card-bottom-ornament span:nth-child(2) {
+  font-size: 23px;
+}
+
+/* =========================================
+   VENUE
+========================================= */
+
+.celebration-venue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  max-width: 850px;
+  margin: 62px auto 0;
+  padding: 34px 28px;
+  border-top: 1px solid rgba(214, 169, 89, 0.5);
+  border-bottom: 1px solid rgba(214, 169, 89, 0.5);
+  background: rgba(255, 250, 241, 0.025);
+}
+
+.celebration-venue-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  color: #e0bd7a;
   font-family: Georgia, serif;
-  font-size: 28px;
-  line-height: 0.5;
+  font-size: 35px;
+  border: 1px solid rgba(214, 169, 89, 0.6);
+  border-radius: 50%;
+  background: rgba(255, 250, 241, 0.04);
 }
 
-.closing {
-  margin-top: 8px;
+.celebration-venue-content {
+  flex: 1;
+  min-width: 0;
 }
 
-/* =========================================================
+.celebration-venue-label {
+  display: block;
+  margin-bottom: 9px;
+  color: #e0bd7a;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.celebration-venue-content h3 {
+  margin: 0 0 8px;
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(24px, 3vw, 33px);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.celebration-venue-content p {
+  margin: 0;
+  color: rgba(255, 250, 241, 0.8);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+/* Buttons */
+
+.celebration-directions-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 17px;
+  padding: 13px 22px;
+  color: var(--wine);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid var(--light-gold);
+  border-radius: 2px;
+  background: linear-gradient(135deg, #f8e8bd, var(--light-gold), #e8cc91);
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    transform 220ms ease;
+}
+
+.celebration-directions-button:focus-visible,
+.celebration-calendar-button:focus-visible {
+  outline: 2px solid var(--ivory);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .celebration-directions-button:hover {
+    color: var(--ivory);
+    background: transparent;
+    transform: translateY(-2px);
+  }
+}
+
+/* =========================================
+   SAVE THE DATE
+========================================= */
+
+.celebration-calendar {
+  margin: 38px auto 0;
+  text-align: center;
+}
+
+.celebration-calendar > p {
+  margin: 0 0 20px;
+  color: rgba(255, 250, 241, 0.83);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.celebration-calendar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-width: 220px;
+  padding: 14px 24px;
+  color: var(--ivory);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.7px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid var(--light-gold);
+  border-radius: 2px;
+  background: rgba(255, 250, 241, 0.035);
+  transition:
+    color 220ms ease,
+    background 220ms ease,
+    transform 220ms ease;
+}
+
+.celebration-calendar-button > span:first-child {
+  color: #e0bd7a;
+  font-size: 21px;
+}
+
+.celebration-calendar-arrow {
+  color: #e0bd7a;
+  font-size: 17px;
+  transition: transform 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .celebration-calendar-button:hover {
+    color: var(--wine);
+    background: linear-gradient(135deg, #f8e8bd, var(--light-gold), #e8cc91);
+    transform: translateY(-2px);
+  }
+
+  .celebration-calendar-button:hover > span:first-child,
+  .celebration-calendar-button:hover .celebration-calendar-arrow {
+    color: var(--wine);
+  }
+
+  .celebration-calendar-button:hover .celebration-calendar-arrow {
+    transform: translateX(3px);
+  }
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.celebration-footer {
+  margin-top: 62px;
+  text-align: center;
+}
+
+.celebration-footer-line {
+  display: block;
+  width: 80px;
+  height: 1px;
+  margin: 0 auto 23px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--light-gold),
+    transparent
+  );
+}
+
+.celebration-footer > p {
+  margin: 0;
+  color: rgba(255, 250, 241, 0.83);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.75;
+}
+
+.celebration-couple-names {
+  margin-top: 19px;
+  color: var(--ivory);
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(36px, 5vw, 50px);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.celebration-couple-names span {
+  display: inline-block;
+  padding-inline: 7px;
+  color: var(--light-gold);
+  font-family: Georgia, serif;
+  font-size: 0.48em;
+  vertical-align: middle;
+}
+
+.celebration-footer-small {
+  display: block;
+  margin-top: 12px;
+  color: var(--light-gold);
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.8px;
+}
+
+/* =========================================
    TABLET
-   ========================================================= */
-@media (max-width: 768px) {
-  .couple-section {
-    padding: 58px 13px 70px;
+========================================= */
+
+@media (max-width: 900px) {
+  .celebration-section {
+    padding: 76px 22px 62px;
   }
 
-  .couple-heading {
-    margin-bottom: 28px;
+  .celebration-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
   }
 
-  .couple-card {
-    padding: 10px;
+  .celebration-card-wedding {
+    grid-column: 1 / -1;
+    width: min(100%, 430px);
+    justify-self: center;
   }
 
-  .card-inner {
-    padding: 30px 20px 32px;
-  }
-
-  .photo-frame {
-    width: 270px;
-    height: 335px;
-  }
-
-  .photo-badge {
-    right: calc(50% - 155px);
-  }
-
-  .couple-name {
-    font-size: clamp(34px, 8vw, 54px);
+  .celebration-card-content h3 {
+    font-size: 30px;
   }
 }
 
-/* =========================================================
+/* =========================================
    MOBILE
-   ========================================================= */
+========================================= */
+
 @media (max-width: 600px) {
-  .couple-section {
-    min-height: auto;
-    padding: 48px 9px 58px;
+  .celebration-section {
+    padding: 62px 17px 48px;
   }
 
-  .couple-ornament {
-    gap: 7px;
-    margin-bottom: 16px;
+  .celebration-section::before {
+    inset: 9px;
   }
 
-  .couple-ornament i {
-    width: 42px;
+  .celebration-decoration {
+    font-size: 65px;
   }
 
-  .couple-ornament span,
-  .couple-ornament b {
-    font-size: 11px;
+  .celebration-decoration-top {
+    top: 12px;
+    right: 12px;
   }
 
-  .couple-subtitle {
+  .celebration-decoration-bottom {
+    bottom: 10px;
+    left: 12px;
+  }
+
+  .celebration-header {
+    margin-bottom: 35px;
+  }
+
+  .celebration-eyebrow {
+    margin-bottom: 13px;
     font-size: 9px;
     letter-spacing: 2px;
   }
 
-  .couple-title {
-    font-size: clamp(38px, 11vw, 48px);
-    line-height: 1.08;
+  .celebration-heading-ornament {
+    margin-bottom: 17px;
   }
 
-  .couple-intro {
-    margin-top: 12px;
-    padding-inline: 8px;
-    font-size: 14px;
-    line-height: 1.5;
+  .celebration-main-title {
+    font-size: clamp(40px, 10.5vw, 56px);
   }
 
-  .couple-card {
-    padding: 7px;
+  .celebration-description {
+    max-width: 360px;
+    margin-top: 17px;
+    font-size: 18px;
+    line-height: 1.65;
   }
 
-  .card-inner {
-    padding: 25px 10px 28px;
+  .celebration-timeline {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
   }
 
-  .card-corner {
-    font-size: 13px;
+  .celebration-card,
+  .celebration-card-wedding {
+    grid-column: auto;
+    width: 100%;
+    max-width: 410px;
+    justify-self: center;
+    padding: 34px 23px 25px;
+    border-radius: 135px 135px 5px 5px;
   }
 
-  .photo-frame {
-    width: min(68vw, 235px);
-    height: min(82vw, 290px);
-    padding: 6px;
-    border-radius: 120px 120px 12px 12px;
-  }
-
-  .photo-inner {
-    border-radius: 115px 115px 8px 8px;
-  }
-
-  .photo-badge {
-    right: calc(50% - 132px);
-    width: 39px;
-    height: 39px;
+  .celebration-card-number {
+    top: 20px;
+    left: 21px;
     font-size: 15px;
   }
 
-  .couple-names {
-    grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
+  .celebration-card-icon {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 19px;
+    font-size: 27px;
   }
 
-  .couple-name {
-    font-size: clamp(25px, 8vw, 38px);
-    letter-spacing: -0.3px;
+  .celebration-card-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
   }
 
-  .vijay-name {
-    padding-right: 3px;
+  .celebration-card-content h3 {
+    margin-top: 8px;
+    font-size: 29px;
   }
 
-  .sandhiya-name {
-    padding-left: 3px;
-  }
-
-  .couple-heart span {
-    font-size: 14px;
-  }
-
-  .couple-heart small {
+  .celebration-card-date {
     font-size: 17px;
   }
 
-  .couple-caption {
-    margin-top: 17px;
-    font-size: 14px;
+  .celebration-card-time {
+    font-size: 10px;
   }
 
-  .family-blessing {
-    padding-inline: 12px;
+  .celebration-card-detail {
+    margin: 16px auto 21px;
+    font-size: 18px;
   }
 
-  .family-blessing p {
-    font-size: 13px;
-  }
-}
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-@media (max-width: 390px) {
-  .couple-section {
-    padding-inline: 6px;
+  .celebration-venue {
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 40px;
+    padding: 28px 8px;
+    text-align: center;
   }
 
-  .couple-title {
-    font-size: 37px;
+  .celebration-venue-icon {
+    width: 62px;
+    height: 62px;
+    font-size: 31px;
   }
 
-  .couple-intro {
-    font-size: 13px;
+  .celebration-venue-label {
+    font-size: 9px;
+    letter-spacing: 1.7px;
   }
 
-  .card-inner {
-    padding-inline: 7px;
+  .celebration-venue-content h3 {
+    font-size: 26px;
   }
 
-  .photo-frame {
-    width: 205px;
-    height: 260px;
+  .celebration-venue-content p {
+    font-size: 18px;
   }
 
-  .photo-badge {
-    right: calc(50% - 117px);
-    width: 36px;
-    height: 36px;
+  .celebration-calendar {
+    margin-top: 31px;
   }
 
-  .couple-names {
-    grid-template-columns: minmax(0, 1fr) 27px minmax(0, 1fr);
+  .celebration-calendar > p {
+    font-size: 18px;
   }
 
-  .couple-name {
-    font-size: clamp(21px, 7.2vw, 29px);
-    letter-spacing: -0.6px;
+  .celebration-calendar-button {
+    width: 100%;
+    max-width: 280px;
+    padding: 14px 16px;
+    font-size: 10px;
+    letter-spacing: 1.2px;
   }
 
-  .couple-heart span {
-    font-size: 12px;
+  .celebration-footer {
+    margin-top: 46px;
   }
 
-  .couple-heart small {
-    font-size: 15px;
-  }
-}
-
-/* =========================================================
-   VERY SMALL PHONES
-   ========================================================= */
-@media (max-width: 340px) {
-  .couple-name {
-    font-size: 20px;
-    letter-spacing: -0.8px;
+  .celebration-footer > p {
+    font-size: 18px;
   }
 
-  .couple-names {
-    grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr);
+  .celebration-couple-names {
+    font-size: clamp(33px, 9vw, 43px);
   }
 
-  .couple-intro {
-    padding-inline: 2px;
+  .celebration-footer-small {
+    font-size: 8px;
+    letter-spacing: 2px;
   }
 }
 
-/* Accessibility: user can disable motion globally */
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 360px) {
+  .celebration-section {
+    padding-right: 13px;
+    padding-left: 13px;
+  }
+
+  .celebration-card,
+  .celebration-card-wedding {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+
+  .celebration-card-content h3 {
+    font-size: 26px;
+  }
+
+  .celebration-card-date {
+    font-size: 16px;
+  }
+
+  .celebration-venue-content h3 {
+    font-size: 23px;
+  }
+
+  .celebration-couple-names {
+    font-size: 31px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY & PERFORMANCE
+========================================= */
+
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  .celebration-decoration {
+    animation: none;
+  }
+
+  .celebration-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .celebration-card,
+  .celebration-directions-button,
+  .celebration-calendar-button,
+  .celebration-calendar-arrow {
+    transition: none;
   }
 }
